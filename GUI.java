@@ -198,19 +198,30 @@ public class GUI {
         generateReport.addActionListener(e->{
             String valueOfInsertAmountTextField = insertLoanAmountField.getText();
             String valueOfInsertLoanTermTextField = insertLoanTextField.getText();
-
+            
             if (valueOfInsertAmountTextField.equals("") || valueOfInsertLoanTermTextField.equals("")) {
                 JOptionPane.showMessageDialog(null, "Please Input Amount and Years");
-
                 
             } else {
                 int intValueOfInsertAmountTextField = Integer.parseInt(valueOfInsertAmountTextField);
                 int intvalueOfInsertLoanTermTextField = Integer.parseInt(valueOfInsertLoanTermTextField);
                 if (intValueOfInsertAmountTextField <= 0 || intvalueOfInsertLoanTermTextField <= 0 ) {
                     JOptionPane.showMessageDialog(null, "Please Input Amount and Years");
-                }   
+                }  
+                if(intValueOfInsertAmountTextField > 0 && intvalueOfInsertLoanTermTextField > 0 ){
+                    calcFrame.dispose();
+                    reportPage();
+                } // Added this for goes to the report page, @Isaac pls check if any bug.
             }
+            
         });
+        
+        /*generateReport.addActionListener(e->{
+            while(!insertLoanTextField.isEmpty()){
+            calcFrame.dispose();
+            reportPage();
+            }
+        });   */               // Button to click to generate report after insert amount, will use this after the calculations is done
     } 
     
     public void reportPage() {
