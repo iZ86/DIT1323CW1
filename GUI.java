@@ -215,13 +215,9 @@ public class GUI {
             }
             
         });
+
+        // For collect the input
         
-        /*generateReport.addActionListener(e->{
-            while(!insertLoanTextField.isEmpty()){
-            calcFrame.dispose();
-            reportPage();
-            }
-        });   */               // Button to click to generate report after insert amount, will use this after the calculations is done
     } 
     
     public void reportPage() {
@@ -238,7 +234,7 @@ public class GUI {
         summaryReportFrame.add(summaryPageHeader);
 
         // Showing the Loan Years
-        int years = 0; // To show the loan duration
+        int years = 0;
         JLabel showLoanYears = new JLabel("Your Total Loan Years is: " + years);
         showLoanYears.setBounds(250,60, 200,30);
         summaryReportFrame.add(showLoanYears);
@@ -292,6 +288,7 @@ public class GUI {
         summaryReportFrame.dispose();
         CarLoanGUI();
         });
+        
 
     }
 }
