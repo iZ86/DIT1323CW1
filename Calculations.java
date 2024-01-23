@@ -1,7 +1,7 @@
 public class Calculations {
     public double calculate(String carType, double loanAmount, int loanYears) {
         // TODO: calculations for everything
-        GUI gui = new GUI();
+        /** GUI gui = new GUI();
 
         double interestRate = 0;
         carType = gui.carTypeComboBox.getSelectedItem();
@@ -39,6 +39,7 @@ public class Calculations {
 
     return totalRepayment;
 
+         */
         return 0;
     }
 }
