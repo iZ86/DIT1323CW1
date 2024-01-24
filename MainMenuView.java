@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
 /** This class represents the kawaguchi bank car loan main menu. */
@@ -28,6 +29,7 @@ public class MainMenuView {
         JPanel headerPanel = new JPanel();
         headerPanel.setLayout(new BorderLayout());
         headerPanel.setBorder(BorderFactory.createEmptyBorder(70, 0, 0, 0));
+        headerPanel.setBackground(Color.black);
 
         // Setting up the label
         JLabel panelLabel = new JLabel("Kawaguchi Bank Car Loan Application");
@@ -45,16 +47,32 @@ public class MainMenuView {
     private JPanel createMainMenuPanel() {
         // Setting up the panel
         JPanel bodyPanel = new JPanel();
-        bodyPanel.setLayout(new BoxLayout(bodyPanel, BoxLayout.Y_AXIS));
-        bodyPanel.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
+        bodyPanel.setLayout(new GridBagLayout());
 
-        // Setting up the buttons
-        JButton displayCarLoanButton = new JButton("Display Car Loan Scheme");
-        displayCarLoanButton.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-        displayCarLoanButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Setting up the display car loan option button
+        JButton displayCarLoanSchemeButton = new JButton("Display Car Loan Scheme");
+        displayCarLoanSchemeButton.setBorder(new CompoundBorder(BorderFactory.createLineBorder(Color.black, 1), BorderFactory.createEmptyBorder(15, 29, 15, 29)));
+        // displayCarLoanSchemeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         // TODO: add more buttons.
+
+        // Setting up the calculate car loan installment option button
+        JButton calculateCarLoanInstallmentButton = new JButton("Calculate Car Loan Installment");
+        calculateCarLoanInstallmentButton.setBorder(new CompoundBorder(BorderFactory.createLineBorder(Color.black, 1), BorderFactory.createEmptyBorder(15, 15, 15, 15)));
+        // calculateCarLoanInstallmentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
+
+
+        // Setting up constraints
+        GridBagConstraints c = new GridBagConstraints();
+        GridBagConstraints c1 = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
         // Add the buttons to the panel
-        bodyPanel.add(displayCarLoanButton);
+        bodyPanel.add(displayCarLoanSchemeButton, c);
+        c1.gridy = 1;
+        c1.insets = new Insets(10, 10, 10 , 10);
+        bodyPanel.add(calculateCarLoanInstallmentButton, c1);
 
         return bodyPanel;
 
