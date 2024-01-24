@@ -27,7 +27,7 @@ public class MainMenuView {
         // Setting up the panel
         JPanel headerPanel = new JPanel();
         headerPanel.setLayout(new BorderLayout());
-        headerPanel.setBorder(BorderFactory.createEmptyBorder(50, 5, 5, 5));
+        headerPanel.setBorder(BorderFactory.createEmptyBorder(70, 0, 0, 0));
 
         // Setting up the label
         JLabel panelLabel = new JLabel("Kawaguchi Bank Car Loan Application");
@@ -46,11 +46,11 @@ public class MainMenuView {
         // Setting up the panel
         JPanel bodyPanel = new JPanel();
         bodyPanel.setLayout(new BoxLayout(bodyPanel, BoxLayout.Y_AXIS));
-        bodyPanel.setBorder(BorderFactory.createEmptyBorder(300, 5, 5, 5));
+        bodyPanel.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
 
         // Setting up the buttons
         JButton displayCarLoanButton = new JButton("Display Car Loan Scheme");
-        displayCarLoanButton.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        displayCarLoanButton.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         displayCarLoanButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         // TODO: add more buttons.
         // Add the buttons to the panel
