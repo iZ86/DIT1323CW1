@@ -1,13 +1,11 @@
 
-
-/** This class represents the Kawaguchi Bank Model for the Kawaguchi Bank program. */
-public class KawaguchiBankModel {
-
+/** This class represents the calculation model for the Kawaguchi bank car loan program. */
+public class CarLoanCalculationModel {
     private boolean loanInsurance;
     private double totalLoanYears, totalLoanAmount, loanPayback, interestRate, monthlyRepayment;
     private String carType;
 
-    public KawaguchiBankModel() {
+    public CarLoanCalculationModel() {
         this.loanInsurance = false;
         this.totalLoanYears = this.totalLoanAmount = this.loanPayback = this.interestRate = this.monthlyRepayment = 0;
         this.carType = "None";
@@ -69,5 +67,4 @@ public class KawaguchiBankModel {
         this.carType = carType;
     }
 
-    
 }
