@@ -7,7 +7,11 @@ public class CarLoanCalculationModel {
 
     public CarLoanCalculationModel() {
         this.loanInsurance = false;
-        this.loanYears = this.loanAmount = this.loanPayback = this.interestRate = this.monthlyRepayment = 0;
+        this.loanYears = 0;
+        this.loanAmount = 0;
+        this.loanPayback = 0;
+        this.interestRate = 0;
+        this.monthlyRepayment = 0;
         this.carType = "None";
     }
 
@@ -42,12 +46,12 @@ public class CarLoanCalculationModel {
     }
 
     /** Returns the loan years. */
-    public double getloanYears() {
+    public double getLoanYears() {
         return loanYears;
     }
 
     /** Sets the loan years. */
-    public void setloanYears(double loanYears) {
+    public void setLoanYears(double loanYears) {
         this.loanYears = loanYears;
     }
 
