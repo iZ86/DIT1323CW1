@@ -5,9 +5,9 @@ import java.awt.*;
 public class CarLoanSchemeTableModel extends AbstractTableModel {
 
     private final Object[][] data;
-    private final String[] columnNames;
+    private final Object[] columnNames;
 
-    public CarLoanSchemeTableModel(Object[][] data, String[] columnNames) {
+    public CarLoanSchemeTableModel(Object[][] data, Object[] columnNames) {
         super();
         this.data = data;
         this.columnNames = columnNames;
