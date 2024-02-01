@@ -7,30 +7,38 @@ public class CarLoanSchemeView {
     private final JPanel carLoanSchemeViewPanel;
 
     // Don't know how I'm going to pass my data yet.
-    public CarLoanSchemeView() {
-        this.carLoanSchemeViewPanel = setupCarLoanSchemeViewPanel();
+    public CarLoanSchemeView(Object[][] tableData, String[] columnNames) {
+        this.carLoanSchemeViewPanel = setupCarLoanSchemeViewPanel(tableData, columnNames);
     }
 
     public JPanel getCarLoanSchemeViewPanel() {
         return carLoanSchemeViewPanel;
     }
 
-    private JPanel setupCarLoanSchemeViewPanel() {
+    private JPanel setupCarLoanSchemeViewPanel(Object[][] tableData, String[] columnNames) {
 
         // TODO: Constraints.
         JPanel carLoanSchemeViewPanel = new JPanel(new GridBagLayout());
 
-        carLoanSchemeViewPanel.add(setupCarLoanSchemeTable());
+        carLoanSchemeViewPanel.add(setupCarLoanSchemeTable(tableData, columnNames));
 
-        carLoanSchemeViewPanel.add(carLoanSchemeButtonsPanel());
+        //carLoanSchemeViewPanel.add(carLoanSchemeButtonsPanel());
 
         return carLoanSchemeViewPanel;
     }
 
-    private JScrollPane setupCarLoanSchemeTable() {
-        JTable carLoanSchemeTable = new JTable();
+    private JScrollPane setupCarLoanSchemeTable(Object[][] tableData, String[] columnNames) {
+
+        // Table model created so that user cannot edit cells.
+        JTable carLoanSchemeTable = new JTable(new CarLoanSchemeTableModel(tableData, columnNames));
+
+        // Setting property of table so that it can't be selected.
+        carLoanSchemeTable.setFocusable(false);
+        carLoanSchemeTable.setRowSelectionAllowed(false);
+        carLoanSchemeTable.setColumnSelectionAllowed(false);
+
         // TODO: Pass the data that will then be created for the table.
-        return null;
+        return new JScrollPane(carLoanSchemeTable);
     }
 
     private JPanel carLoanSchemeButtonsPanel() {
