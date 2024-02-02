@@ -33,7 +33,9 @@ public class CarLoanSchemeView {
                 constraintsForCarLoanSchemeViewTable);
 
 
-        //carLoanSchemeViewPanel.add(carLoanSchemeButtonsPanel());
+        GridBagConstraints tempConstraitn = new GridBagConstraints();
+        tempConstraitn.gridy = 1;
+        carLoanSchemeViewPanel.add(carLoanSchemeButtonsPanel(), tempConstraitn);
 
         return carLoanSchemeViewPanel;
     }
@@ -49,13 +51,35 @@ public class CarLoanSchemeView {
         carLoanSchemeTable.setRowSelectionAllowed(false);
         carLoanSchemeTable.setColumnSelectionAllowed(false);
 
-        // TODO: Pass the data that will then be created for the table.
+        // One way to set the size
+        carLoanSchemeTable.setPreferredScrollableViewportSize(new Dimension(500, 100));
         return new JScrollPane(carLoanSchemeTable);
     }
 
     private JPanel carLoanSchemeButtonsPanel() {
         // TODO: Buttons
-        return null;
+        // Initialization.
+        JPanel carLoanSchemeButtonsPanel = new JPanel(new GridBagLayout());
+        JButton backToMainMenuButton = new JButton("Back to Main Menu");
+        JButton calculateCarLoanInstallmentButton = new JButton("Calculate Car Loan Installment");
+
+        // Setting up properties for Back to Main Menu Button.
+        GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
+        constraintsForBackToMainMenuButton.gridx = 0;
+
+        // Setting up properties for Calculate Car Loan Installment Button.
+        GridBagConstraints constraintsForCalculateCarLoanInstallmentButton = new GridBagConstraints();
+        constraintsForCalculateCarLoanInstallmentButton.gridx = 1;
+
+        carLoanSchemeButtonsPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
+        carLoanSchemeButtonsPanel.add(calculateCarLoanInstallmentButton,
+                constraintsForCalculateCarLoanInstallmentButton);
+        return carLoanSchemeButtonsPanel;
+    }
+
+    // Maybe temporary method to create buttons.
+    private JButton createCarLoanSchemeButtonsPanel(String name) {
+        return new JButton(name);
     }
 
 }
