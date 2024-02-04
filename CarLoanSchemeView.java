@@ -3,7 +3,6 @@ import java.awt.*;
 
 /** This class represents the view for the car loan scheme. */
 public class CarLoanSchemeView {
-    // TODO: Implementation after implement the model.
     private final JPanel carLoanSchemeViewPanel;
 
     /** Creates the view for car loan scheme view.
@@ -28,14 +27,20 @@ public class CarLoanSchemeView {
 
         //Setting up properties for car loan scheme table.
         GridBagConstraints constraintsForCarLoanSchemeViewTable = new GridBagConstraints();
-        constraintsForCarLoanSchemeViewTable.gridy = 0;
+        constraintsForCarLoanSchemeViewTable.gridy = 0; // Places the panel at the top.
+
+
+
+        // Setting up the properties for the button panel.
+        GridBagConstraints constraintsForButtonsPanel = new GridBagConstraints();
+        constraintsForButtonsPanel.gridy = 1; // Places the panel below the first panel.
+        constraintsForButtonsPanel.insets = new Insets(50, 0, 0, 0); // Add gap between the panel above.
+
+
+        // Add panels to main Panel.
         carLoanSchemeViewPanel.add(setupCarLoanSchemeTable(tableData, columnNames),
                 constraintsForCarLoanSchemeViewTable);
-
-
-        GridBagConstraints tempConstraitn = new GridBagConstraints();
-        tempConstraitn.gridy = 1;
-        carLoanSchemeViewPanel.add(carLoanSchemeButtonsPanel(), tempConstraitn);
+        carLoanSchemeViewPanel.add(carLoanSchemeButtonsPanel(), constraintsForButtonsPanel);
 
         return carLoanSchemeViewPanel;
     }
@@ -51,29 +56,40 @@ public class CarLoanSchemeView {
         carLoanSchemeTable.setRowSelectionAllowed(false);
         carLoanSchemeTable.setColumnSelectionAllowed(false);
 
-        // One way to set the size
-        carLoanSchemeTable.setPreferredScrollableViewportSize(new Dimension(500, 100));
+        // Setting the table size.
+        carLoanSchemeTable.setPreferredScrollableViewportSize(new Dimension(500, 96));
+
         return new JScrollPane(carLoanSchemeTable);
     }
 
     private JPanel carLoanSchemeButtonsPanel() {
-        // TODO: Buttons
+
         // Initialization.
         JPanel carLoanSchemeButtonsPanel = new JPanel(new GridBagLayout());
         JButton backToMainMenuButton = new JButton("Back to Main Menu");
         JButton calculateCarLoanInstallmentButton = new JButton("Calculate Car Loan Installment");
+        int horizontalSizeOfButton = 70;
+        int verticalSizeOfButton = 10;
+        int gapXBetweenButtons = 20;
 
         // Setting up properties for Back to Main Menu Button.
         GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
-        constraintsForBackToMainMenuButton.gridx = 0;
+        constraintsForBackToMainMenuButton.gridx = 0; // Place the button on the left side.
+        constraintsForBackToMainMenuButton.ipadx = horizontalSizeOfButton; // Set the button horizontal size.
+        constraintsForBackToMainMenuButton.ipady = verticalSizeOfButton; // Set the button vertical size.
+        constraintsForBackToMainMenuButton.insets = new Insets(0, 0, 0, gapXBetweenButtons); // Add some space on the left side of the button.
 
         // Setting up properties for Calculate Car Loan Installment Button.
         GridBagConstraints constraintsForCalculateCarLoanInstallmentButton = new GridBagConstraints();
-        constraintsForCalculateCarLoanInstallmentButton.gridx = 1;
+        constraintsForCalculateCarLoanInstallmentButton.gridx = 1; // Place the button on the right side.
+        constraintsForCalculateCarLoanInstallmentButton.ipadx = horizontalSizeOfButton; // Set the button horizontal size.
+        constraintsForCalculateCarLoanInstallmentButton.fill = GridBagConstraints.VERTICAL; // Set the button vertical size the same as the button on the left.
 
+        // Add buttons to the panel.
         carLoanSchemeButtonsPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
         carLoanSchemeButtonsPanel.add(calculateCarLoanInstallmentButton,
                 constraintsForCalculateCarLoanInstallmentButton);
+
         return carLoanSchemeButtonsPanel;
     }
 
