@@ -28,12 +28,18 @@ public class CarLoanInstallmentCalculator {
         // TODO: Here.
         // Configuring panel that contains text fields.
         GridBagConstraints constraintsForTextFieldPanels = new GridBagConstraints();
+        constraintsForTextFieldPanels.anchor = GridBagConstraints.LINE_START;
         constraintsForTextFieldPanels.gridy = 1;
+
+        // TODO: Here too.
+        // Configuring panel that contains buttons.
+        GridBagConstraints constraintsForButtons = new GridBagConstraints();
+        constraintsForButtons.gridy = 2;
 
         // Adding drop down box panel to the car loan installment calculator panel.
         carLoanInstallmentCalculatorPanel.add(setupCarTypeDropDownBoxPanel(), constraintsForCarTypeDropDownBox);
         carLoanInstallmentCalculatorPanel.add(setupTextFieldsPanel(), constraintsForTextFieldPanels);
-
+        carLoanInstallmentCalculatorPanel.add(setupCarLoanInstallmentCalculationButtonPanel(), constraintsForButtons);
 
 
         return carLoanInstallmentCalculatorPanel;
@@ -81,7 +87,7 @@ public class CarLoanInstallmentCalculator {
 
         // Configuring for loan amount text field.
         GridBagConstraints constraintsForLoanAmountTextField = new GridBagConstraints();
-        constraintsForLoanAmountTextField.anchor = GridBagConstraints.LINE_START; // Set the component on the left.
+        // constraintsForLoanAmountTextField.anchor = GridBagConstraints.LINE_START; // Set the component on the left.
         constraintsForLoanAmountTextField.gridy = 1;
 
         // Adding text fields with their respective label to the panel.
@@ -114,5 +120,36 @@ public class CarLoanInstallmentCalculator {
 
         return textBoxPanel;
     }
+
+    /** Returns a panel that contains all the necessary buttons for car loan installment calculation. */
+    private JPanel setupCarLoanInstallmentCalculationButtonPanel() {
+
+        // Initialization.
+        JPanel carLoanInstallmentCalculationButtonPanel = new JPanel(new GridBagLayout());
+        int heightOfButton = 20;
+        JButton backToMainMenuButton = new JButton("Back to main menu");
+        JButton generateSummaryReportButton = new JButton("Generate summary report");
+
+        // Configuring back to main menu button.
+        GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
+        constraintsForBackToMainMenuButton.gridx = 0; // Button will be on the left.
+        constraintsForBackToMainMenuButton.ipady = heightOfButton; // Set the height of the button.
+        constraintsForBackToMainMenuButton.insets = new Insets(0, 0, 0, 20); // Set a gap on the right side of the button.
+
+        // Configuring generate summary report button.
+        GridBagConstraints constraintsForGenerateSummaryReportButton = new GridBagConstraints();
+        constraintsForGenerateSummaryReportButton.gridx = 1; // Button will be on the right.
+        constraintsForGenerateSummaryReportButton.fill = GridBagConstraints.VERTICAL; // Same height as the button on the left.
+
+        // Adding buttons to the panel.
+        carLoanInstallmentCalculationButtonPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
+        carLoanInstallmentCalculationButtonPanel.add(generateSummaryReportButton, constraintsForGenerateSummaryReportButton);
+
+
+
+        return carLoanInstallmentCalculationButtonPanel;
+    }
+
+
 
 }
