@@ -7,7 +7,7 @@ public class TempMain {
         JFrame test = new JFrame();
 
         // Change the method to get the different view Panels.
-        test.add(carLoanSchemeViewPanel());
+        test.add(carLoanInstallmentCalculator());
 
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         test.pack();
@@ -38,5 +38,10 @@ public class TempMain {
         String column[]= {"Car Type","Loan Amount (RM)","Interest Rate (%)"};
         CarLoanSchemeView carLoanSchemeView = new CarLoanSchemeView(loans, column);
         return carLoanSchemeView.getCarLoanSchemeViewPanel();
+    }
+
+    public static JPanel carLoanInstallmentCalculator() {
+        CarLoanInstallmentCalculator clim = new CarLoanInstallmentCalculator();
+        return clim.getCarLoanInstallmentCalculatorPanel();
     }
 }
