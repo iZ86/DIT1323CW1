@@ -22,6 +22,7 @@ public class CarLoanInstallmentCalculator {
 
         // Configuring drop down box for car type.
         GridBagConstraints constraintsForCarTypeDropDownBox = new GridBagConstraints();
+        constraintsForCarTypeDropDownBox.anchor = GridBagConstraints.LINE_START;
         constraintsForCarTypeDropDownBox.gridy = 0;
 
         // TODO: Here.
@@ -71,13 +72,16 @@ public class CarLoanInstallmentCalculator {
      */
     private JPanel setupTextFieldsPanel() {
         JPanel textFieldsPanel = new JPanel(new GridBagLayout());
+        int gapBetweenTextFields = 20;
 
         // Configuring for loan term text field.
         GridBagConstraints constraintsForLoanTermTextField = new GridBagConstraints();
-        constraintsForLoanTermTextField.gridy = 0;
+        constraintsForLoanTermTextField.insets = new Insets(gapBetweenTextFields, 0, gapBetweenTextFields, 0);
+        constraintsForLoanTermTextField.gridy = 0; // Set the component at the top.
 
         // Configuring for loan amount text field.
         GridBagConstraints constraintsForLoanAmountTextField = new GridBagConstraints();
+        constraintsForLoanAmountTextField.anchor = GridBagConstraints.LINE_START; // Set the component on the left.
         constraintsForLoanAmountTextField.gridy = 1;
 
         // Adding text fields with their respective label to the panel.
@@ -96,10 +100,13 @@ public class CarLoanInstallmentCalculator {
         // Configuring text field label.
         GridBagConstraints constraintsForTextFieldLabel = new GridBagConstraints();
         constraintsForTextFieldLabel.gridy = 0;
+        constraintsForTextFieldLabel.anchor = GridBagConstraints.LINE_START;
 
         // Configuring text field.
         GridBagConstraints constraintsForTextField = new GridBagConstraints();
         constraintsForTextField.gridy = 1;
+        constraintsForTextField.ipady = 5; // Set the height of the text field, may change to another code later.
+        constraintsForTextField.anchor = GridBagConstraints.LINE_START;
 
         // Adding the components with their respective constraints.
         textBoxPanel.add(textFieldLabel, constraintsForTextFieldLabel);
