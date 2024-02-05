@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class TempMain {
 
@@ -10,7 +11,7 @@ public class TempMain {
         test.add(carLoanInstallmentCalculator());
 
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        test.pack();
+        test.setSize(new Dimension(700, 500));
         test.setVisible(true);
     }
 
