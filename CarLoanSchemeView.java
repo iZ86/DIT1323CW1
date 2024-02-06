@@ -3,9 +3,11 @@ import java.awt.*;
 
 /** This class represents the view for the car loan scheme. */
 public class CarLoanSchemeView {
+
+    /** The panel that contains all the components in car loan scheme view. */
     private final JPanel carLoanSchemeViewPanel;
 
-    /** Creates the view for car loan scheme view.
+    /** Constructor sets up the view for car loan scheme view.
      * Takes in data to be shown in the GUI via table.
      */
     public CarLoanSchemeView(Object[][] tableData, String[] columnNames) {
@@ -18,51 +20,51 @@ public class CarLoanSchemeView {
     }
 
     /** Return a panel that has all the necessary components,
-     * that is composed of the car loan scheme view.
+     * that composes the car loan scheme view.
      */
     private JPanel setupCarLoanSchemeViewPanel(Object[][] tableData, String[] columnNames) {
 
         // Initialization
-        JPanel carLoanSchemeViewPanel = new JPanel(new GridBagLayout());
+        JPanel viewPanel = new JPanel(new GridBagLayout());
 
-        //Setting up properties for car loan scheme table.
+        // Setting up configuration for car loan scheme table pane.
         GridBagConstraints constraintsForCarLoanSchemeViewTable = new GridBagConstraints();
-        constraintsForCarLoanSchemeViewTable.gridy = 0; // Places the panel at the top.
+        constraintsForCarLoanSchemeViewTable.gridy = 0; // Position of component is first in Y order.
 
 
-
-        // Setting up the properties for the button panel.
+        // Setting up configuration for car loan scheme view buttons panel.
+        // TODO: Asked if can reduce names for comments.
         GridBagConstraints constraintsForButtonsPanel = new GridBagConstraints();
-        constraintsForButtonsPanel.gridy = 1; // Places the panel below the first panel.
-        constraintsForButtonsPanel.insets = new Insets(50, 0, 0, 0); // Add gap between the panel above.
+        constraintsForButtonsPanel.gridy = 1; // Position of component is second in Y order.
+        constraintsForButtonsPanel.insets = new Insets(50, 0, 0, 0); // Add gap above.
 
 
-        // Add panels to main Panel.
-        carLoanSchemeViewPanel.add(setupCarLoanSchemeTable(tableData, columnNames),
+        // Add panels to the car loan scheme view panel with their configurations.
+        viewPanel.add(setupCarLoanSchemeTablePane(tableData, columnNames),
                 constraintsForCarLoanSchemeViewTable);
-        carLoanSchemeViewPanel.add(carLoanSchemeButtonsPanel(), constraintsForButtonsPanel);
+        viewPanel.add(setupCarLoanSchemeButtonsPanel(), constraintsForButtonsPanel);
 
-        return carLoanSchemeViewPanel;
+        return viewPanel;
     }
 
-    /** Returns the car loan scheme table contained in a JScrollPane. */
-    private JScrollPane setupCarLoanSchemeTable(Object[][] tableData, String[] columnNames) {
+    /** Returns a JScrollPane that contains the car loan scheme JTable object. */
+    private JScrollPane setupCarLoanSchemeTablePane(Object[][] tableData, String[] columnNames) {
 
-        // Table model created so that user cannot edit cells.
+        // Initialization
         JTable carLoanSchemeTable = new JTable(new CarLoanSchemeTableModel(tableData, columnNames));
 
-        // Setting property of table so that it can't be selected.
+        // Configuring car loan scheme table.
         carLoanSchemeTable.setFocusable(false);
-        carLoanSchemeTable.setRowSelectionAllowed(false);
-        carLoanSchemeTable.setColumnSelectionAllowed(false);
+        carLoanSchemeTable.setRowSelectionAllowed(false); // Disable selecting rows of table.
+        carLoanSchemeTable.setColumnSelectionAllowed(false); // Disable selecting columns of table.
+        carLoanSchemeTable.setPreferredScrollableViewportSize(new Dimension(500, 96)); // Setting size of the table.
 
-        // Setting the table size.
-        carLoanSchemeTable.setPreferredScrollableViewportSize(new Dimension(500, 96));
-
+        // Return a new JScrollPane that contains the table.
         return new JScrollPane(carLoanSchemeTable);
     }
 
-    private JPanel carLoanSchemeButtonsPanel() {
+    /** Return a panel that contains the buttons needed for the car loan scheme view. */
+    private JPanel setupCarLoanSchemeButtonsPanel() {
 
         // Initialization.
         JPanel carLoanSchemeButtonsPanel = new JPanel(new GridBagLayout());
@@ -72,30 +74,25 @@ public class CarLoanSchemeView {
         int verticalSizeOfButton = 10;
         int gapXBetweenButtons = 20;
 
-        // Setting up properties for Back to Main Menu Button.
+        // Setting up configuration for back to main menu button.
         GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
-        constraintsForBackToMainMenuButton.gridx = 0; // Place the button on the left side.
-        constraintsForBackToMainMenuButton.ipadx = horizontalSizeOfButton; // Set the button horizontal size.
-        constraintsForBackToMainMenuButton.ipady = verticalSizeOfButton; // Set the button vertical size.
-        constraintsForBackToMainMenuButton.insets = new Insets(0, 0, 0, gapXBetweenButtons); // Add some space on the left side of the button.
+        constraintsForBackToMainMenuButton.gridx = 0; // Position of button is first in X order.
+        constraintsForBackToMainMenuButton.ipadx = horizontalSizeOfButton; // Horizontal size of button.
+        constraintsForBackToMainMenuButton.ipady = verticalSizeOfButton; // Vertical size of button.
+        constraintsForBackToMainMenuButton.insets = new Insets(0, 0, 0, gapXBetweenButtons); // Gap on the right side of button.
 
-        // Setting up properties for Calculate Car Loan Installment Button.
+        // Setting up configuration for calculate car loan installment button.
         GridBagConstraints constraintsForCalculateCarLoanInstallmentButton = new GridBagConstraints();
-        constraintsForCalculateCarLoanInstallmentButton.gridx = 1; // Place the button on the right side.
-        constraintsForCalculateCarLoanInstallmentButton.ipadx = horizontalSizeOfButton; // Set the button horizontal size.
-        constraintsForCalculateCarLoanInstallmentButton.fill = GridBagConstraints.VERTICAL; // Set the button vertical size the same as the button on the left.
+        constraintsForCalculateCarLoanInstallmentButton.gridx = 1; // Position of button is second in X order.
+        constraintsForCalculateCarLoanInstallmentButton.ipadx = horizontalSizeOfButton; // Horizontal size of button.
+        constraintsForCalculateCarLoanInstallmentButton.fill = GridBagConstraints.VERTICAL; // Vertical size of button is the same as the second button in X order.
 
-        // Add buttons to the panel.
+        // Add the buttons to the car loan scheme buttons panel with their configuration.
         carLoanSchemeButtonsPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
         carLoanSchemeButtonsPanel.add(calculateCarLoanInstallmentButton,
                 constraintsForCalculateCarLoanInstallmentButton);
 
+        // Return the panel.
         return carLoanSchemeButtonsPanel;
     }
-
-    // Maybe temporary method to create buttons.
-    private JButton createCarLoanSchemeButtonsPanel(String name) {
-        return new JButton(name);
-    }
-
 }
