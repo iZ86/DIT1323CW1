@@ -2,14 +2,14 @@
 /** This class represents the calculation model for the Kawaguchi bank car loan program. */
 public class CarLoanCalculationModel {
     private boolean loanInsurance;
-    private double loanYears, loanAmount, loanPayback, interestRate, monthlyRepayment;
+    private double loanYears, loanAmount, outstandingLoanAmount, interestRate, monthlyRepayment;
     private String carType;
 
     public CarLoanCalculationModel() {
         this.loanInsurance = false;
         this.loanYears = 0;
         this.loanAmount = 0;
-        this.loanPayback = 0;
+        this.outstandingLoanAmount = 0;
         this.interestRate = 0;
         this.monthlyRepayment = 0;
         this.carType = "None";
@@ -21,8 +21,8 @@ public class CarLoanCalculationModel {
         this.loanYears = loanYears;
         this.loanAmount = loanAmount;
         this.interestRate = interestRate / 100;
-        this.loanPayback = roundUpTwoDecimal(loanAmount + (loanYears * loanAmount * interestRate));
-        this.monthlyRepayment = roundUpTwoDecimal((this.loanPayback / loanYears) / 12);
+        this.outstandingLoanAmount = roundUpTwoDecimal(loanAmount + (loanYears * loanAmount * interestRate));
+        this.monthlyRepayment = roundUpTwoDecimal((this.outstandingLoanAmount / loanYears) / 12);
     }
 
     /** Rounds up any value to two decimal places. */
@@ -65,14 +65,14 @@ public class CarLoanCalculationModel {
         this.loanAmount = loanAmount;
     }
 
-    /** Returns the loan payback. */
-    public double getLoanPayback() {
-        return loanPayback;
+    /** Returns the outstanding loan amount. */
+    public double getOutstandingLoanAmount() {
+        return outstandingLoanAmount;
     }
 
-    /** Sets the loan payback. */
-    public void setLoanPayback(double loanPayback) {
-        this.loanPayback = loanPayback;
+    /** Sets the outstanding loan amount. */
+    public void setOutstandingLoanAmount(double loanPayback) {
+        this.outstandingLoanAmount = loanPayback;
     }
 
     /** Returns the interest rate. */
