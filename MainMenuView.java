@@ -22,7 +22,7 @@ public class MainMenuView {
     private JPanel setupMainMenuViewPanel() {
 
         // Initialization
-        JPanel mainMenuViewPanel = new JPanel(new GridBagLayout());
+        JPanel viewPanel = new JPanel(new GridBagLayout());
 
         // Setting up configuration for the main menu title panel.
         GridBagConstraints constraintsForMainMenuTitlePanel = new GridBagConstraints();
@@ -34,11 +34,11 @@ public class MainMenuView {
         constraintsForMainMenuButtonsPanel.gridy = 1; // Position of component is second in Y order.
 
         // Add the panels to the main menu view panel with their configurations.
-        mainMenuViewPanel.add(setupMainMenuTitlePanel(), constraintsForMainMenuTitlePanel);
-        mainMenuViewPanel.add(setupMainMenuButtonsPanel(), constraintsForMainMenuButtonsPanel);
+        viewPanel.add(setupMainMenuTitlePanel(), constraintsForMainMenuTitlePanel);
+        viewPanel.add(setupMainMenuButtonsPanel(), constraintsForMainMenuButtonsPanel);
 
 
-        return mainMenuViewPanel;
+        return viewPanel;
     }
 
     /** Return a panel that contains the title for the main menu. */
