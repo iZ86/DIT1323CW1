@@ -35,6 +35,7 @@ public class CarLoanInstallmentCalculator {
         // Configuring panel that contains buttons.
         GridBagConstraints constraintsForButtons = new GridBagConstraints();
         constraintsForButtons.gridy = 2;
+        constraintsForButtons.insets = new Insets(50, 0, 0, 0);
 
         // Adding drop down box panel to the car loan installment calculator panel.
         carLoanInstallmentCalculatorPanel.add(setupCarTypeDropDownBoxPanel(), constraintsForCarTypeDropDownBox);
@@ -84,10 +85,11 @@ public class CarLoanInstallmentCalculator {
         GridBagConstraints constraintsForLoanTermTextField = new GridBagConstraints();
         constraintsForLoanTermTextField.insets = new Insets(gapBetweenTextFields, 0, gapBetweenTextFields, 0);
         constraintsForLoanTermTextField.gridy = 0; // Set the component at the top.
+        constraintsForLoanTermTextField.anchor = GridBagConstraints.LINE_START;
 
         // Configuring for loan amount text field.
         GridBagConstraints constraintsForLoanAmountTextField = new GridBagConstraints();
-        // constraintsForLoanAmountTextField.anchor = GridBagConstraints.LINE_START; // Set the component on the left.
+        constraintsForLoanAmountTextField.anchor = GridBagConstraints.LINE_START;
         constraintsForLoanAmountTextField.gridy = 1;
 
         // Adding text fields with their respective label to the panel.
@@ -101,18 +103,19 @@ public class CarLoanInstallmentCalculator {
     private JPanel setupTextFieldPanel(String labelForTextField) {
         JPanel textBoxPanel = new JPanel(new GridBagLayout());
         JLabel textFieldLabel = new JLabel(labelForTextField);
-        JTextField textField = new JTextField(20);
+        JTextField textField = new JTextField();
 
         // Configuring text field label.
         GridBagConstraints constraintsForTextFieldLabel = new GridBagConstraints();
         constraintsForTextFieldLabel.gridy = 0;
-        constraintsForTextFieldLabel.anchor = GridBagConstraints.LINE_START;
+
 
         // Configuring text field.
         GridBagConstraints constraintsForTextField = new GridBagConstraints();
+        constraintsForTextField.anchor = GridBagConstraints.LINE_START;
         constraintsForTextField.gridy = 1;
         constraintsForTextField.ipady = 5; // Set the height of the text field, may change to another code later.
-        constraintsForTextField.anchor = GridBagConstraints.LINE_START;
+        constraintsForTextField.ipadx = 150;
 
         // Adding the components with their respective constraints.
         textBoxPanel.add(textFieldLabel, constraintsForTextFieldLabel);
@@ -126,7 +129,7 @@ public class CarLoanInstallmentCalculator {
 
         // Initialization.
         JPanel carLoanInstallmentCalculationButtonPanel = new JPanel(new GridBagLayout());
-        int heightOfButton = 20;
+        int heightOfButton = 15;
         JButton backToMainMenuButton = new JButton("Back to main menu");
         JButton generateSummaryReportButton = new JButton("Generate summary report");
 
