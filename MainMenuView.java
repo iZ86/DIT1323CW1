@@ -6,6 +6,15 @@ public class MainMenuView {
 
     /** The panel that contains all the components in the main menu view. */
     private final JPanel mainMenuViewPanel;
+    /** Button that changes the view to the car loan scheme view. */
+    private final JButton displayCarLoanSchemeButton = new JButton("Display Car Loan Scheme");
+    /** Button that changes the view to calculate car loan installment view. */
+    private final JButton calculateCarLoanInstallmentButton = new JButton("Calculate Car Loan Installment");
+    /** Button that changes the view to summary report view. */
+    private final JButton generateSummaryReportButton = new JButton("Generate summary report");
+    /** Button that exits out of the program. */
+    private final JButton exitButton = new JButton("Exit");
+
 
     /** Constructor is used to set up the main menu view. */
     public MainMenuView() {
@@ -13,31 +22,31 @@ public class MainMenuView {
 
     }
 
-    /** Return the MainMenuViewPanel. */
+    /** Return the MainMenuViewPanel object. */
     public JPanel getMainMenuViewPanel() {
         return mainMenuViewPanel;
     }
 
-    /** Return a panel that has all the necessary components needed to make the main menu. */
+    /** Return a JPanel that has all the necessary components needed to make the main menu view. */
     private JPanel setupMainMenuViewPanel() {
 
         // Initialization
         JPanel viewPanel = new JPanel(new GridBagLayout());
 
-        // Setting up configuration for the main menu title panel.
+        // Setting up configuration for the main menu title JPanel.
         GridBagConstraints constraintsForMainMenuTitlePanel = new GridBagConstraints();
         constraintsForMainMenuTitlePanel.gridy = 0; // Position of component is first in Y order.
         constraintsForMainMenuTitlePanel.insets = new Insets(0, 0, 50, 0); // Gap below the title.
 
-        // Setting up configuration for the main menu buttons panel.
+        // Setting up configuration for the main menu buttons JPanel.
         GridBagConstraints constraintsForMainMenuButtonsPanel = new GridBagConstraints();
         constraintsForMainMenuButtonsPanel.gridy = 1; // Position of component is second in Y order.
 
-        // Add the panels to the main menu view panel with their configurations.
+        // Add the JPanels to JPanel viewPanel with their configurations.
         viewPanel.add(setupMainMenuTitlePanel(), constraintsForMainMenuTitlePanel);
         viewPanel.add(setupMainMenuButtonsPanel(), constraintsForMainMenuButtonsPanel);
 
-
+        // Returns the viewPanel.
         return viewPanel;
     }
 
@@ -63,10 +72,6 @@ public class MainMenuView {
 
         // Initialization
         JPanel mainMenuButtonsPanel = new JPanel(new GridBagLayout());
-        JButton displayCarLoanSchemeButton = new JButton("Display Car Loan Scheme");
-        JButton calculateCarLoanInstallmentButton = new JButton("Calculate Car Loan Installment");
-        JButton generateSummaryReportButton = new JButton("Generate summary report");
-        JButton exitButton = new JButton("Exit");
         int horizontalSizeOfButton = 70;
         int horizontalSizeOfExitButton = (horizontalSizeOfButton * 3) / 2;
         int verticalSizeOfButton = 10;
