@@ -6,6 +6,10 @@ public class CarLoanSchemeView {
 
     /** The panel that contains all the components in car loan scheme view. */
     private final JPanel carLoanSchemeViewPanel;
+    /** Button that changes the view back to the MainMenuView. */
+    private final JButton backToMainMenuButton = new JButton("Back to Main Menu");
+    /** Button that changes the view to the CalculateCarLoanInstallmentView. */
+    private final JButton calculateCarLoanInstallmentButton = new JButton("Calculate Car Loan Installment");
 
     /** Constructor sets up the view for car loan scheme view.
      * Takes in data to be shown in the GUI via table.
@@ -68,8 +72,6 @@ public class CarLoanSchemeView {
 
         // Initialization.
         JPanel carLoanSchemeButtonsPanel = new JPanel(new GridBagLayout());
-        JButton backToMainMenuButton = new JButton("Back to Main Menu");
-        JButton calculateCarLoanInstallmentButton = new JButton("Calculate Car Loan Installment");
         int horizontalSizeOfButton = 70;
         int verticalSizeOfButton = 10;
         int gapXBetweenButtons = 20;
