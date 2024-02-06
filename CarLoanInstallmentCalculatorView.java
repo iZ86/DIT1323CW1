@@ -7,6 +7,17 @@ public class CarLoanInstallmentCalculatorView {
      *  in the car loan installment calculator view.
      */
     private final JPanel carLoanInstallmentCalculatorViewPanel;
+    /** Drop-down box that allows user to choose between imported and local car types. */
+    private final JComboBox<String> carTypeDropDownBox = new JComboBox<String>();
+    /** Text field where user enters their desired loan term. */
+    private final JTextField loanTermTextField = new JTextField();
+    /** Text field where user enters their desired loan amount. */
+    private final JTextField loanAmountTextField = new JTextField();
+    /** Button that changes the view back to the MainMenuView. */
+    private final JButton backToMainMenuButton = new JButton("Back to main menu");
+    /** Button that changes the view to the SummaryReportView. */
+    private final JButton generateSummaryReportButton = new JButton("Generate summary report");
+
 
     /** Constructor to set up the car loan installment calculator view panel. */
     public CarLoanInstallmentCalculatorView() {
@@ -74,7 +85,9 @@ public class CarLoanInstallmentCalculatorView {
 
         // Initialization
         String[] carTypes = {"Imported", "Local"};
-        JComboBox<String> carTypeDropDownBox = new JComboBox<String>(carTypes);
+        for (String carType : carTypes) {
+            carTypeDropDownBox.addItem(carType);
+        }
 
         // Configuring the drop-down box.
         // Set default option to the 0th element in the CARTYPES array.
@@ -98,8 +111,8 @@ public class CarLoanInstallmentCalculatorView {
         // Initialization
         JPanel textFieldsPanel = new JPanel(new GridBagLayout());
         int gapBetweenTextFieldsPanels = 20;
-        JPanel loanTermTextFieldPanel = setupTextFieldPanel("Please insert your loan terms (Years)");
-        JPanel loanAmountTextFieldPanel = setupTextFieldPanel("Please insert your loan amount (RM)");
+        JPanel loanTermTextFieldPanel = setupTextFieldPanel("Please insert your loan terms (Years)", loanTermTextField);
+        JPanel loanAmountTextFieldPanel = setupTextFieldPanel("Please insert your loan amount (RM)", loanAmountTextField);
 
         // Setting up the configuration for loan term text field panel.
         GridBagConstraints constraintsForLoanTermTextFieldPanel = new GridBagConstraints();
@@ -121,12 +134,11 @@ public class CarLoanInstallmentCalculatorView {
     }
 
     /** Returns a panel that contains a label and a text field. */
-    private JPanel setupTextFieldPanel(String labelForTextField) {
+    private JPanel setupTextFieldPanel(String labelForTextField, JTextField textField) {
 
         // Initialization
         JPanel textFieldPanel = new JPanel(new GridBagLayout());
         JLabel textFieldLabel = new JLabel(labelForTextField);
-        JTextField textField = new JTextField();
 
         // Setting up configurations for label.
         GridBagConstraints constraintsForTextFieldLabel = new GridBagConstraints();
@@ -153,8 +165,6 @@ public class CarLoanInstallmentCalculatorView {
 
         // Initialization.
         JPanel carLoanInstallmentCalculationButtonPanel = new JPanel(new GridBagLayout());
-        JButton backToMainMenuButton = new JButton("Back to main menu");
-        JButton generateSummaryReportButton = new JButton("Generate summary report");
         int heightOfButton = 15;
 
         // Setting up the configuration for back to main menu button.
