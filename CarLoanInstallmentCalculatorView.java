@@ -70,8 +70,12 @@ public class CarLoanInstallmentCalculatorView {
         // Initialization
         JPanel carTypeDropDownBoxPanel = new JPanel(new GridBagLayout());
 
-        // Add the dropdown box to the panel
-        carTypeDropDownBoxPanel.add(setupCarTypeDropDownBox());
+        // Setting up the configuration for JComboBox carTypeDropDownBox.
+        GridBagConstraints constraintsForCarTypeDropDownBox = new GridBagConstraints();
+        constraintsForCarTypeDropDownBox.ipadx = 20;
+
+        // Add the dropdown box to the panel with their configuration.
+        carTypeDropDownBoxPanel.add(setupCarTypeDropDownBox(), constraintsForCarTypeDropDownBox);
 
         // Return the car type drop-down box panel.
         return carTypeDropDownBoxPanel;
