@@ -8,7 +8,7 @@ public class TempMain {
         JFrame test = new JFrame();
 
         // Change the method to get the different view Panels.
-        test.add(carLoanInstallmentCalculator());
+        test.add(summaryReportViewPanel());
 
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         test.setSize(new Dimension(700, 500));
@@ -41,8 +41,13 @@ public class TempMain {
         return carLoanSchemeView.getCarLoanSchemeViewPanel();
     }
 
-    public static JPanel carLoanInstallmentCalculator() {
-        CarLoanInstallmentCalculator clim = new CarLoanInstallmentCalculator();
-        return clim.getCarLoanInstallmentCalculatorPanel();
+    public static JPanel carLoanInstallmentCalculatorViewPanel() {
+        CarLoanInstallmentCalculatorView clim = new CarLoanInstallmentCalculatorView();
+        return clim.getCarLoanInstallmentCalculatorViewPanel();
+    }
+
+    public static JPanel summaryReportViewPanel() {
+        SummaryReportView SRV = new SummaryReportView();
+        return SRV.getSummaryReportViewPanel();
     }
 }
