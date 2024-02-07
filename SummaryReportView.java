@@ -7,6 +7,10 @@ public class SummaryReportView {
     /** Data of loan. */
     private String loanYears, loanAmount, outstandingLoanAmount, interestRate, monthlyRepayment, carType;
     private boolean loanInsurance;
+    /** Button that changes the view to the MainMenuView. */
+    private JButton backToMainMenuButton = new JButton("Back to main menu");
+    /** Button that changes the view to CarLoanInstallmentCalculatorView. */
+    private JButton calculateCarLoanInstallmentButton = new JButton("Calculate new car loan installment");
 
     /** Constructor to set up the summaryReportViewPanel. */
     public SummaryReportView() {
@@ -34,10 +38,12 @@ public class SummaryReportView {
         // Setting up the configuration of the loanDataPanel.
         GridBagConstraints constraintsForShowLoanDataPanel = new GridBagConstraints();
         constraintsForShowLoanDataPanel.gridy = 1; // Position of component is second in Y order.
+        constraintsForShowLoanDataPanel.insets = new Insets(30, 0, 70, 0); // Add gap below and above this component.
 
         // Setting up the configuration of SummaryReportButtonsPanel.
         GridBagConstraints constraintsForSummaryReportButtonsPanel = new GridBagConstraints();
         constraintsForSummaryReportButtonsPanel.gridy = 2; // Position of component is third in Y order.
+        constraintsForSummaryReportButtonsPanel.insets = new Insets(100, 0, 0, 0); // Add gap above this component.
 
         // Add necessary JPanels to the viewPanel with their configurations.
         viewPanel.add(setupSummaryReportTitle(), constraintsForSummaryReportTitle);
@@ -102,7 +108,7 @@ public class SummaryReportView {
         GridBagConstraints constraintsForShowMonthlyRepayment = new GridBagConstraints();
         constraintsForShowMonthlyRepayment.gridy = 5; // Position of this JLabel is sixth in Y order.
 
-        // Add the labels into the panel with their configurations.
+        // Add the JLabels into the JPanel with their configurations.
         showLoanDataPanel.add(showCarType,constraintsForShowCarType);
         showLoanDataPanel.add(showLoanAmount, constraintsForShowLoanAmount);
         showLoanDataPanel.add(showInterestRate, constraintsForShowInterestRate);
@@ -118,7 +124,25 @@ public class SummaryReportView {
 
         // Initialization.
         JPanel summaryReportButtonsPanel = new JPanel(new GridBagLayout());
+        int heightOfButton = 7;
+        int gapXBetweenButtons = 10;
 
+        // Setting up configuration for JButton backToMainMenuButton.
+        GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
+        constraintsForBackToMainMenuButton.gridx = 0; // Position of button is first in X order.
+        constraintsForBackToMainMenuButton.ipady = heightOfButton; // Vertical height of button.
+        constraintsForBackToMainMenuButton.insets = new Insets(0, 0, 0, gapXBetweenButtons); // Add gap on the right.
+
+        //Setting up configuration for JButton calculateCarLoanInstallmentButton.
+        GridBagConstraints constraintsForCalculateCarLoanInstallmentButton = new GridBagConstraints();
+        constraintsForCalculateCarLoanInstallmentButton.gridx = 1; // Position of button is second in X order.
+        constraintsForCalculateCarLoanInstallmentButton.fill = GridBagConstraints.VERTICAL; // Make vertical height of this button same as the first button of X order.
+
+        // Add the JButtons to the JPanel summaryReportButtonsPanel with their configurations.
+        summaryReportButtonsPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
+        summaryReportButtonsPanel.add(calculateCarLoanInstallmentButton, constraintsForCalculateCarLoanInstallmentButton);
+
+        // Return the JPanel.
         return summaryReportButtonsPanel;
     }
 }
