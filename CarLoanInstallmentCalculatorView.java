@@ -40,12 +40,12 @@ public class CarLoanInstallmentCalculatorView {
         // TODO: Shorter variable names allowed? For example, 2nd and 3rd.
         // Setting up the configuration for car type drop down box.
         GridBagConstraints constraintsForCarTypeDropDownBox = new GridBagConstraints();
-        constraintsForCarTypeDropDownBox.anchor = GridBagConstraints.LINE_START; // Anchor component to the left.
+        //constraintsForCarTypeDropDownBox.anchor = GridBagConstraints.LINE_START; // Anchor component to the left.
         constraintsForCarTypeDropDownBox.gridy = 0; // Position of component is the first in Y order.
 
         // Setting up the configuration for text fields panel.
         GridBagConstraints constraintsForTextFieldPanels = new GridBagConstraints();
-        constraintsForTextFieldPanels.anchor = GridBagConstraints.LINE_START; // Anchor component to the left.
+        //constraintsForTextFieldPanels.anchor = GridBagConstraints.LINE_START; // Anchor component to the left.
         constraintsForTextFieldPanels.gridy = 1; // Position of component is the second in Y order.
 
         // Setting up the configuration for the buttons panel.
@@ -73,6 +73,7 @@ public class CarLoanInstallmentCalculatorView {
         // Setting up the configuration for JComboBox carTypeDropDownBox.
         GridBagConstraints constraintsForCarTypeDropDownBox = new GridBagConstraints();
         constraintsForCarTypeDropDownBox.ipadx = 20;
+        constraintsForCarTypeDropDownBox.insets = new Insets(0, 0, 0, 120);
 
         // Add the dropdown box to the panel with their configuration.
         carTypeDropDownBoxPanel.add(setupCarTypeDropDownBox(), constraintsForCarTypeDropDownBox);
@@ -93,7 +94,6 @@ public class CarLoanInstallmentCalculatorView {
             carTypeDropDownBox.addItem(carType);
         }
 
-        // Configuring the drop-down box.
         // Set default option to the 0th element in the CARTYPES array.
         carTypeDropDownBox.setSelectedIndex(0);
 
