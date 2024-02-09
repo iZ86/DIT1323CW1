@@ -23,6 +23,9 @@ public class SummaryReportView {
     }
 
 
+    /** Updates the SummaryReportView. */
+    public void updateSummaryReportView() {
+    }
     /** Return a JPanel that contains all the necessary components needed,
      * to set up SummaryReportView.
      */
