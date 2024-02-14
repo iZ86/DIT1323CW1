@@ -4,11 +4,11 @@ import java.awt.*;
 /** This class represents the view for the car loan scheme. */
 public class CarLoanSchemeView {
 
-    /** The JPanel that contains all the components in car loan scheme view. */
+    /** The car loan scheme view. */
     private final JPanel carLoanSchemeViewPanel;
-    /** JButton that changes the view back to the MainMenuView. */
+    /** Button that changes the view back to the MainMenuView. */
     private final JButton backToMainMenuButton = new JButton("Back to Main Menu");
-    /** JButton that changes the view to the CalculateCarLoanInstallmentView. */
+    /** Button that changes the view to the CalculateCarLoanInstallmentView. */
     private final JButton calculateCarLoanInstallmentButton = new JButton("Calculate Car Loan Installment");
 
     /** Constructor sets up the car loan scheme view.
@@ -50,7 +50,7 @@ public class CarLoanSchemeView {
         return viewPanel;
     }
 
-    /** Returns a JScrollPane that contains JTable carLoanSchemeTable. */
+    /** Return a JScrollPane that contains JTable carLoanSchemeTable. */
     private JScrollPane setupCarLoanSchemeTablePane(Object[][] tableData, String[] columnNames) {
 
         // Initialization
