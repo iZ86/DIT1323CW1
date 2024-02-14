@@ -34,9 +34,9 @@ public class CarLoanInstallmentCalculatorView {
 
         // Initialization
         JPanel viewPanel = new JPanel(new GridBagLayout());
-        JPanel carTypeDropDownBoxPanel = setupCarTypeDropDownBoxPanel();
-        JPanel textFieldsPanel = setupTextFieldsPanel();
-        JPanel buttonsPanel = setupCarLoanInstallmentCalculationButtonPanel();
+        JPanel carTypeDropDownBoxPanel = setupCarTypeDropDownBoxPanel(); // Drop-down box.
+        JPanel textFieldsPanel = setupTextFieldsPanel(); // Text fields for user input.
+        JPanel buttonsPanel = setupCarLoanInstallmentCalculationButtonPanel(); // Buttons for the view.
 
         // Setting up the configuration for JPanel carTypeDropDownBoxPanel.
         GridBagConstraints constraintsForCarTypeDropDownBox = new GridBagConstraints();
@@ -47,14 +47,14 @@ public class CarLoanInstallmentCalculatorView {
         constraintsForTextFieldPanels.gridy = 1; // Position of component is the second in Y order.
 
         // Setting up the configuration for JPanel buttonsPanel.
-        GridBagConstraints constraintsForButtons = new GridBagConstraints();
-        constraintsForButtons.gridy = 2; // Position of component is third in Y order.
-        constraintsForButtons.insets = new Insets(50, 0, 0, 0); // Add gap above.
+        GridBagConstraints constraintsForButtonsPanel = new GridBagConstraints();
+        constraintsForButtonsPanel.gridy = 2; // Position of component is third in Y order.
+        constraintsForButtonsPanel.insets = new Insets(50, 0, 0, 0); // Add gap above.
 
         // Add the JPanels to the viewPanel with their configurations.
         viewPanel.add(carTypeDropDownBoxPanel, constraintsForCarTypeDropDownBox);
         viewPanel.add(textFieldsPanel, constraintsForTextFieldPanels);
-        viewPanel.add(buttonsPanel, constraintsForButtons);
+        viewPanel.add(buttonsPanel, constraintsForButtonsPanel);
 
         // Return JPanel viewPanel.
         return viewPanel;
