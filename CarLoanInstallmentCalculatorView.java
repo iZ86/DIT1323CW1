@@ -3,9 +3,7 @@ import java.awt.*;
 
 public class CarLoanInstallmentCalculatorView {
 
-    /** The panel that contains all the components,
-     *  in the car loan installment calculator view.
-     */
+    /** The car loan installment calculator view. */
     private final JPanel carLoanInstallmentCalculatorViewPanel;
     /** Drop-down box that allows user to choose between imported and local car types. */
     private final JComboBox<String> carTypeDropDownBox = new JComboBox<String>();
@@ -24,12 +22,12 @@ public class CarLoanInstallmentCalculatorView {
         this.carLoanInstallmentCalculatorViewPanel = setupCarLoanInstallmentCalculatorViewPanel();
     }
 
-    /** Return the CarLoanInstallmentCalculatorViewPanel. */
+    /** Return JPanel CarLoanInstallmentCalculatorViewPanel. */
     public JPanel getCarLoanInstallmentCalculatorViewPanel() {
         return carLoanInstallmentCalculatorViewPanel;
     }
 
-    /** Return a panel that has all the necessary components,
+    /** Return a JPanel that has all the necessary components,
      *  to make the car loan installment calculator view.
      */
     private JPanel setupCarLoanInstallmentCalculatorViewPanel() {
@@ -37,32 +35,29 @@ public class CarLoanInstallmentCalculatorView {
         // Initialization
         JPanel viewPanel = new JPanel(new GridBagLayout());
 
-        // TODO: Shorter variable names allowed? For example, 2nd and 3rd.
         // Setting up the configuration for car type drop down box.
         GridBagConstraints constraintsForCarTypeDropDownBox = new GridBagConstraints();
-        //constraintsForCarTypeDropDownBox.anchor = GridBagConstraints.LINE_START; // Anchor component to the left.
         constraintsForCarTypeDropDownBox.gridy = 0; // Position of component is the first in Y order.
 
-        // Setting up the configuration for text fields panel.
+        // Setting up the configuration for the JPanel that contains text fields.
         GridBagConstraints constraintsForTextFieldPanels = new GridBagConstraints();
-        //constraintsForTextFieldPanels.anchor = GridBagConstraints.LINE_START; // Anchor component to the left.
         constraintsForTextFieldPanels.gridy = 1; // Position of component is the second in Y order.
 
-        // Setting up the configuration for the buttons panel.
+        // Setting up the configuration for the JPanel that contains buttons.
         GridBagConstraints constraintsForButtons = new GridBagConstraints();
         constraintsForButtons.gridy = 2; // Position of component is third in Y order.
         constraintsForButtons.insets = new Insets(50, 0, 0, 0); // Add gap above.
 
-        // Add the panels to the view panel with their configurations.
+        // Add the JPanels to the viewPanel with their configurations.
         viewPanel.add(setupCarTypeDropDownBoxPanel(), constraintsForCarTypeDropDownBox);
         viewPanel.add(setupTextFieldsPanel(), constraintsForTextFieldPanels);
         viewPanel.add(setupCarLoanInstallmentCalculationButtonPanel(), constraintsForButtons);
 
-        // Return the panel.
+        // Return the JPanel.
         return viewPanel;
     }
 
-    /** Return a panel that contains a dropdown box component.
+    /** Return a JPanel that contains a drop-down box component.
      * For user to choose between, local and imported car types.
      */
     private JPanel setupCarTypeDropDownBoxPanel() {
@@ -75,10 +70,10 @@ public class CarLoanInstallmentCalculatorView {
         constraintsForCarTypeDropDownBox.ipadx = 20;
         constraintsForCarTypeDropDownBox.insets = new Insets(0, 0, 0, 120);
 
-        // Add the dropdown box to the panel with their configuration.
+        // Add the dropdown box to JPanel carTypeDropDownBoxPanel with their configuration.
         carTypeDropDownBoxPanel.add(setupCarTypeDropDownBox(), constraintsForCarTypeDropDownBox);
 
-        // Return the car type drop-down box panel.
+        // Return the JPanel.
         return carTypeDropDownBoxPanel;
     }
 
