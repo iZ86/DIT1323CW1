@@ -33,32 +33,35 @@ public class SummaryReportView {
 
         // Initialization.
         JPanel viewPanel = new JPanel(new GridBagLayout());
+        JPanel titlePanel = setupSummaryReportTitlePanel(); // Title of the view.
+        JPanel showLoanDataPanel = setupShowLoanDataPanel(); // Loan data.
+        JPanel buttonsPanel = setupSummaryReportButtonsPanel(); // Buttons in summary report view
 
-        // Setting up the configuration for summaryReportTitle.
-        GridBagConstraints constraintsForSummaryReportTitle = new GridBagConstraints();
-        constraintsForSummaryReportTitle.gridy = 0; // Position of component is first in Y order.
+        // Setting up the configuration for JPanel titlePanel.
+        GridBagConstraints constraintsForTitlePanel = new GridBagConstraints();
+        constraintsForTitlePanel.gridy = 0; // Position of component is first in Y order.
 
-        // Setting up the configuration of the loanDataPanel.
+        // Setting up the configuration for JPanel showLoanDataPanel.
         GridBagConstraints constraintsForShowLoanDataPanel = new GridBagConstraints();
         constraintsForShowLoanDataPanel.gridy = 1; // Position of component is second in Y order.
         constraintsForShowLoanDataPanel.insets = new Insets(30, 0, 70, 0); // Add gap below and above this component.
 
-        // Setting up the configuration of SummaryReportButtonsPanel.
-        GridBagConstraints constraintsForSummaryReportButtonsPanel = new GridBagConstraints();
-        constraintsForSummaryReportButtonsPanel.gridy = 2; // Position of component is third in Y order.
-        constraintsForSummaryReportButtonsPanel.insets = new Insets(100, 0, 0, 0); // Add gap above this component.
+        // Setting up the configuration for JPanel buttonsPanel.
+        GridBagConstraints constraintsForButtonsPanel = new GridBagConstraints();
+        constraintsForButtonsPanel.gridy = 2; // Position of component is third in Y order.
+        constraintsForButtonsPanel.insets = new Insets(100, 0, 0, 0); // Add gap above this component.
 
-        // Add necessary JPanels to the viewPanel with their configurations.
-        viewPanel.add(setupSummaryReportTitle(), constraintsForSummaryReportTitle);
-        viewPanel.add(setupShowLoanDataPanel(), constraintsForShowLoanDataPanel);
-        viewPanel.add(setupSummaryReportButtonsPanel(), constraintsForSummaryReportButtonsPanel);
+        // Add the JPanels to JPanel viewPanel with their configurations.
+        viewPanel.add(titlePanel, constraintsForTitlePanel);
+        viewPanel.add(showLoanDataPanel, constraintsForShowLoanDataPanel);
+        viewPanel.add(buttonsPanel, constraintsForButtonsPanel);
 
-
+        // Return JPanel viewPanel.
         return viewPanel;
     }
 
     /** Return a JPanel that contains the title of the SummaryReportView. */
-    private JPanel setupSummaryReportTitle() {
+    private JPanel setupSummaryReportTitlePanel() {
 
         // Initialization.
         JPanel summaryReportTitlePanel = new JPanel(new GridBagLayout());
