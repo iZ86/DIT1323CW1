@@ -33,9 +33,9 @@ public class SummaryReportView {
 
         // Initialization.
         JPanel viewPanel = new JPanel(new GridBagLayout());
-        JPanel titlePanel = setupSummaryReportTitlePanel(); // Title of the view.
+        JPanel titlePanel = setupSummaryReportTitlePanel(); // Summary report title.
         JPanel showLoanDataPanel = setupShowLoanDataPanel(); // Loan data.
-        JPanel buttonsPanel = setupSummaryReportButtonsPanel(); // Buttons in summary report view
+        JPanel buttonsPanel = setupSummaryReportButtonsPanel(); // Buttons in summary report view.
 
         // Setting up the configuration for JPanel titlePanel.
         GridBagConstraints constraintsForTitlePanel = new GridBagConstraints();
