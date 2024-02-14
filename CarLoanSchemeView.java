@@ -30,12 +30,12 @@ public class CarLoanSchemeView {
 
         // Initialization
         JPanel viewPanel = new JPanel(new GridBagLayout());
-        JScrollPane carLoanSchemeTablePane = setupCarLoanSchemeTablePane(tableData, columnNames);
-        JPanel buttonsPanel = setupCarLoanSchemeButtonsPanel();
+        JScrollPane carLoanSchemeTablePane = setupCarLoanSchemeTablePane(tableData, columnNames); // Table containing car loan scheme.
+        JPanel buttonsPanel = setupCarLoanSchemeButtonsPanel(); // Buttons in JPanel carLoanSchemeViewPanel.
 
         // Setting up configuration for JScrollPane carLoanSchemeTablePane.
-        GridBagConstraints constraintsForCarLoanSchemeViewTable = new GridBagConstraints();
-        constraintsForCarLoanSchemeViewTable.gridy = 0; // Position of component is first in Y order.
+        GridBagConstraints constraintsForCarLoanTablePane = new GridBagConstraints();
+        constraintsForCarLoanTablePane.gridy = 0; // Position of component is first in Y order.
 
 
         // Setting up configuration for JPanel buttonsPanel.
@@ -45,7 +45,7 @@ public class CarLoanSchemeView {
 
 
         // Adding the components to JPanel viewPanel with their configurations.
-        viewPanel.add(carLoanSchemeTablePane, constraintsForCarLoanSchemeViewTable);
+        viewPanel.add(carLoanSchemeTablePane, constraintsForCarLoanTablePane);
         viewPanel.add(buttonsPanel, constraintsForButtonsPanel);
 
         return viewPanel;
