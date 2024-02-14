@@ -17,7 +17,7 @@ public class CarLoanInstallmentCalculatorView {
     private final JButton generateSummaryReportButton = new JButton("Generate summary report");
 
 
-    /** Constructor to set up the car loan installment calculator view panel. */
+    /** Constructor to set up the car loan installment calculator view. */
     public CarLoanInstallmentCalculatorView() {
         this.carLoanInstallmentCalculatorViewPanel = setupCarLoanInstallmentCalculatorViewPanel();
     }
@@ -35,15 +35,15 @@ public class CarLoanInstallmentCalculatorView {
         // Initialization
         JPanel viewPanel = new JPanel(new GridBagLayout());
 
-        // Setting up the configuration for car type drop down box.
+        // Setting up the configuration for the JPanel that contains a JComboBox.
         GridBagConstraints constraintsForCarTypeDropDownBox = new GridBagConstraints();
         constraintsForCarTypeDropDownBox.gridy = 0; // Position of component is the first in Y order.
 
-        // Setting up the configuration for the JPanel that contains text fields.
+        // Setting up the configuration for the JPanel that contains JTextFields.
         GridBagConstraints constraintsForTextFieldPanels = new GridBagConstraints();
         constraintsForTextFieldPanels.gridy = 1; // Position of component is the second in Y order.
 
-        // Setting up the configuration for the JPanel that contains buttons.
+        // Setting up the configuration for the JPanel that contains JButtons.
         GridBagConstraints constraintsForButtons = new GridBagConstraints();
         constraintsForButtons.gridy = 2; // Position of component is third in Y order.
         constraintsForButtons.insets = new Insets(50, 0, 0, 0); // Add gap above.
@@ -53,11 +53,11 @@ public class CarLoanInstallmentCalculatorView {
         viewPanel.add(setupTextFieldsPanel(), constraintsForTextFieldPanels);
         viewPanel.add(setupCarLoanInstallmentCalculationButtonPanel(), constraintsForButtons);
 
-        // Return the JPanel.
+        // Return JPanel viewPanel.
         return viewPanel;
     }
 
-    /** Return a JPanel that contains a drop-down box component.
+    /** Return a JPanel that contains a JComboBox<String> object.
      * For user to choose between, local and imported car types.
      */
     private JPanel setupCarTypeDropDownBoxPanel() {
@@ -70,10 +70,10 @@ public class CarLoanInstallmentCalculatorView {
         constraintsForCarTypeDropDownBox.ipadx = 20;
         constraintsForCarTypeDropDownBox.insets = new Insets(0, 0, 0, 120);
 
-        // Add the dropdown box to JPanel carTypeDropDownBoxPanel with their configuration.
+        // Add the JComboBox to JPanel carTypeDropDownBoxPanel with their configuration.
         carTypeDropDownBoxPanel.add(setupCarTypeDropDownBox(), constraintsForCarTypeDropDownBox);
 
-        // Return the JPanel.
+        // Return JPanel carTypeDropDownBoxPanel.
         return carTypeDropDownBoxPanel;
     }
 
@@ -92,15 +92,15 @@ public class CarLoanInstallmentCalculatorView {
         // Set default option to the 0th element in the CARTYPES array.
         carTypeDropDownBox.setSelectedIndex(0);
 
-        // Return the drop-down box.
+        // Return JComboBox carTypeDropDownBox.
         return carTypeDropDownBox;
     }
 
     // TODO: Everything down here, might be a bit redundant/too complex.
     // TODO: If possible, try to simplify, or reduce cognitive load.
     // TODO: If not, get a better naming system lol.
-    /** Returns a panel that contains panels that contains text fields,
-     * and their respective labels,
+    /** Return a JPanel that contains panels that contains JTextFields,
+     * and their respective JLabels,
      * needed for the car loan installment calculator view panel.
      * This is for user to input their loan term,
      * and loan amount.
@@ -113,75 +113,76 @@ public class CarLoanInstallmentCalculatorView {
         JPanel loanTermTextFieldPanel = setupTextFieldPanel("Please insert your loan terms (Years)", loanTermTextField);
         JPanel loanAmountTextFieldPanel = setupTextFieldPanel("Please insert your loan amount (RM)", loanAmountTextField);
 
-        // Setting up the configuration for loan term text field panel.
+        // Setting up the configuration for JPanel loanTermTextFieldPanel.
         GridBagConstraints constraintsForLoanTermTextFieldPanel = new GridBagConstraints();
         constraintsForLoanTermTextFieldPanel.insets = new Insets(gapBetweenTextFieldsPanels,
                 0, gapBetweenTextFieldsPanels, 0); // Add gap below and above.
         constraintsForLoanTermTextFieldPanel.gridy = 0; // Position of panel is first in Y order.
         constraintsForLoanTermTextFieldPanel.anchor = GridBagConstraints.LINE_START; // Anchor panel to the left.
 
-        // Setting up the configuration for loan amount text field panel.
+        // Setting up the configuration for JPanel loanAmountTextFieldPanel.
         GridBagConstraints constraintsForLoanAmountTextFieldPanel = new GridBagConstraints();
         constraintsForLoanAmountTextFieldPanel.gridy = 1; // Position of panel is second in Y order.
         constraintsForLoanAmountTextFieldPanel.anchor = GridBagConstraints.LINE_START; // Anchor panel to the left.
 
-        // Add text fields panels with their configurations.
+        // Add the JPanels to JPanel textFieldsPanel with their configurations.
         textFieldsPanel.add(loanTermTextFieldPanel, constraintsForLoanTermTextFieldPanel);
         textFieldsPanel.add(loanAmountTextFieldPanel, constraintsForLoanAmountTextFieldPanel);
 
+        // Return JPanel textFieldsPanel.
         return textFieldsPanel;
     }
 
-    /** Returns a panel that contains a label and a text field. */
+    /** Returns a JPanel that contains a JLabel and JTextField. */
     private JPanel setupTextFieldPanel(String labelForTextField, JTextField textField) {
 
         // Initialization
         JPanel textFieldPanel = new JPanel(new GridBagLayout());
         JLabel textFieldLabel = new JLabel(labelForTextField);
 
-        // Setting up configurations for label.
+        // Setting up configurations for JLabel textFieldLabel.
         GridBagConstraints constraintsForTextFieldLabel = new GridBagConstraints();
         constraintsForTextFieldLabel.gridy = 0;
 
 
-        // Setting up configurations for text field.
+        // Setting up configurations for JTextField textField.
         GridBagConstraints constraintsForTextField = new GridBagConstraints();
         constraintsForTextField.anchor = GridBagConstraints.LINE_START;
         constraintsForTextField.gridy = 1;
         constraintsForTextField.ipady = 5; // Set the height of the text field, may change to another code later.
         constraintsForTextField.ipadx = 150;
 
-        // Add the components with their configurations.
+        // Add the components to JPanel textFieldPanel with their configurations.
         textFieldPanel.add(textFieldLabel, constraintsForTextFieldLabel);
         textFieldPanel.add(textField, constraintsForTextField);
 
-        // Return the panel.
+        // Return JPanel textFieldPanel.
         return textFieldPanel;
     }
 
-    /** Returns a panel that contains all the necessary buttons for car loan installment calculation view. */
+    /** Return a JPanel that contains all the necessary buttons for car loan installment calculation view. */
     private JPanel setupCarLoanInstallmentCalculationButtonPanel() {
 
         // Initialization.
         JPanel carLoanInstallmentCalculationButtonPanel = new JPanel(new GridBagLayout());
         int heightOfButton = 15;
 
-        // Setting up the configuration for back to main menu button.
+        // Setting up the configuration for JButton backToMainMenu.
         GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
         constraintsForBackToMainMenuButton.gridx = 0; // Position of button is first in X order.
         constraintsForBackToMainMenuButton.ipady = heightOfButton; // Height of button.
         constraintsForBackToMainMenuButton.insets = new Insets(0, 0, 0, 20); // Add a gap on the right side.
 
-        // Setting up the configuration for generate summary report button.
+        // Setting up the configuration for JButton generateSummaryReportButton.
         GridBagConstraints constraintsForGenerateSummaryReportButton = new GridBagConstraints();
         constraintsForGenerateSummaryReportButton.gridx = 1; // Position of button is second in X order.
         constraintsForGenerateSummaryReportButton.fill = GridBagConstraints.VERTICAL; // Same height as the button on the left.
 
-        // Add the buttons to the buttons panel with their configurations.
+        // Add the JButtons to JPanel carLoanInstallmentCalculationButtonPanel with their configurations.
         carLoanInstallmentCalculationButtonPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
         carLoanInstallmentCalculationButtonPanel.add(generateSummaryReportButton, constraintsForGenerateSummaryReportButton);
 
-        // Return the car loan installment calculation button panel.
+        // Return JPanel carLoanInstallmentCalculationButtonPanel.
         return carLoanInstallmentCalculationButtonPanel;
     }
 }
