@@ -32,21 +32,21 @@ public class MainMenuView {
 
         // Initialization
         JPanel viewPanel = new JPanel(new GridBagLayout());
-        JPanel mainMenuTitlePanel = setupMainMenuTitlePanel();
-        JPanel mainMenuButtonsPanel = setupMainMenuButtonsPanel();
+        JPanel titlePanel = setupMainMenuTitlePanel(); // Main menu title.
+        JPanel buttonsPanel = setupMainMenuButtonsPanel(); // Buttons in main menu.
 
-        // Setting up configuration for JPanel mainMenuTitlePanel.
-        GridBagConstraints constraintsForMainMenuTitlePanel = new GridBagConstraints();
-        constraintsForMainMenuTitlePanel.gridy = 0; // Position of component is first in Y order.
-        constraintsForMainMenuTitlePanel.insets = new Insets(0, 0, 50, 0); // Gap below the title.
+        // Setting up configuration for JPanel titlePanel.
+        GridBagConstraints constraintsForTitlePanel = new GridBagConstraints();
+        constraintsForTitlePanel.gridy = 0; // Position of component is first in Y order.
+        constraintsForTitlePanel.insets = new Insets(0, 0, 50, 0); // Gap below the title.
 
-        // Setting up configuration for JPanel mainMenuButtonsPanel.
-        GridBagConstraints constraintsForMainMenuButtonsPanel = new GridBagConstraints();
-        constraintsForMainMenuButtonsPanel.gridy = 1; // Position of component is second in Y order.
+        // Setting up configuration for JPanel buttonsPanel.
+        GridBagConstraints constraintsForButtonsPanel = new GridBagConstraints();
+        constraintsForButtonsPanel.gridy = 1; // Position of component is second in Y order.
 
         // Add the JPanels to JPanel viewPanel with their configurations.
-        viewPanel.add(mainMenuTitlePanel, constraintsForMainMenuTitlePanel);
-        viewPanel.add(mainMenuButtonsPanel, constraintsForMainMenuButtonsPanel);
+        viewPanel.add(titlePanel, constraintsForTitlePanel);
+        viewPanel.add(buttonsPanel, constraintsForButtonsPanel);
 
         // Returns the viewPanel.
         return viewPanel;
