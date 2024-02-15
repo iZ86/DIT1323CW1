@@ -45,7 +45,7 @@ public class CarLoanCalculationModel {
      * true if it there is loan insurance.
      * Otherwise, false
      */
-    public String setLoanInsurance(String loanInsurance) {
+    public void setLoanInsurance(String loanInsurance) {
         this.loanInsurance = loanInsurance;
     }
 
