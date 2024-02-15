@@ -6,8 +6,10 @@ public class CarLoanInstallmentCalculatorView {
 
     /** The car loan installment calculator view. */
     private final JPanel carLoanInstallmentCalculatorViewPanel;
-    /** Drop-down box that allows user to choose between imported and local car types. */
+    /** Drop-down box to allow user to choose between imported and local car types. */
     private final JComboBox<String> carTypeDropDownBox = new JComboBox<String>();
+    /** Check box to allow user to choose if they want insurance or not. */
+    private final JCheckBox loanInsuranceCheckBox = new JCheckBox("Loan Insurance");
     /** Text field where user enters their desired loan term. */
     private final JTextField loanTermTextField = new JTextField();
     /** Text field where user enters their desired loan amount. */
@@ -29,8 +31,13 @@ public class CarLoanInstallmentCalculatorView {
     }
 
     /** Return the selected item in JComboBox carTypeDropDownBox. */
-    public String getCarTypeDropDownBoxItem() {
+    public String getCarTypeDropDownBoxSelectedItem() {
         return (String) carTypeDropDownBox.getSelectedItem();
+    }
+
+    /** Return true iff JCheckBox loanInsuranceCheckBox has been checked. */
+    public boolean isLoanInsuranceCheckBoxChecked() {
+        return loanInsuranceCheckBox.isSelected();
     }
     /** Return the loan term in JTextField loanTermTextField inputted by user. */
     public String getLoanTerm() {
@@ -59,69 +66,148 @@ public class CarLoanInstallmentCalculatorView {
 
         // Initialization
         JPanel viewPanel = new JPanel(new GridBagLayout());
-        JPanel carTypeDropDownBoxPanel = setupCarTypeDropDownBoxPanel(); // Drop-down box.
+        JPanel carTypeDropDownBoxPanel = setupCarTypeDropDownBoxPanel(); // Car types drop-down box.
         JPanel textFieldsPanel = setupTextFieldsPanel(); // Text fields for user input.
+        JPanel loanInsuranceCheckBoxPanel = setupLoanInsuranceCheckBoxPanel(); // Loan insurance choice check box.
         JPanel buttonsPanel = setupCarLoanInstallmentCalculationButtonPanel(); // Buttons for the view.
 
         // Setting up the configuration for JPanel carTypeDropDownBoxPanel.
         GridBagConstraints constraintsForCarTypeDropDownBox = new GridBagConstraints();
-        constraintsForCarTypeDropDownBox.gridy = 0; // Position of component is the first in Y order.
+        constraintsForCarTypeDropDownBox.gridy = 0; // Position is first in Y order.
 
         // Setting up the configuration for JPanel textFieldsPanel.
         GridBagConstraints constraintsForTextFieldPanels = new GridBagConstraints();
-        constraintsForTextFieldPanels.gridy = 1; // Position of component is the second in Y order.
+        constraintsForTextFieldPanels.gridy = 1; // Position is second in Y order.
+
+        // Setting up the configuration for JPanel loanInsuranceCheckBoxPanel.
+        GridBagConstraints constraintsForLoanInsuranceCheckBoxPanel = new GridBagConstraints();
+        constraintsForLoanInsuranceCheckBoxPanel.gridy = 2; // Position is third in Y order.
+
 
         // Setting up the configuration for JPanel buttonsPanel.
         GridBagConstraints constraintsForButtonsPanel = new GridBagConstraints();
-        constraintsForButtonsPanel.gridy = 2; // Position of component is third in Y order.
-        constraintsForButtonsPanel.insets = new Insets(50, 0, 0, 0); // Add gap above.
+        constraintsForButtonsPanel.gridy = 3; // Position is fourth in Y order.
+        constraintsForButtonsPanel.insets = new Insets(20, 0, 0, 0); // Add gap above.
+
+
 
         // Add the JPanels to the viewPanel with their configurations.
         viewPanel.add(carTypeDropDownBoxPanel, constraintsForCarTypeDropDownBox);
         viewPanel.add(textFieldsPanel, constraintsForTextFieldPanels);
+        viewPanel.add(loanInsuranceCheckBoxPanel, constraintsForLoanInsuranceCheckBoxPanel);
         viewPanel.add(buttonsPanel, constraintsForButtonsPanel);
+
 
         // Return JPanel viewPanel.
         return viewPanel;
     }
 
-    /** Return a JPanel that contains a JComboBox<String> object.
+    /** Return a JPanel that contains JComboBox carTypeDropDownBox.
      * For user to choose between, local and imported car types.
      */
     private JPanel setupCarTypeDropDownBoxPanel() {
 
         // Initialization
         JPanel carTypeDropDownBoxPanel = new JPanel(new GridBagLayout());
+        JLabel carTypeLabel = new JLabel("Car Type"); // Let user know the drop-down box is for car types.
+        String[] carTypes = {"Imported", "Local"}; // Car type options
+
+        // Setting up the configuration for JLabel carTypeLabel.
+        GridBagConstraints constraintsForCarTypeLabel = new GridBagConstraints();
+        constraintsForCarTypeLabel.gridy = 0; // Position of JLabel carTypeLabel is first in Y order.
+        constraintsForCarTypeLabel.anchor = GridBagConstraints.LINE_START; // Align to the left.
 
         // Setting up the configuration for JComboBox carTypeDropDownBox.
         GridBagConstraints constraintsForCarTypeDropDownBox = new GridBagConstraints();
-        constraintsForCarTypeDropDownBox.ipadx = 20;
-        constraintsForCarTypeDropDownBox.insets = new Insets(0, 0, 0, 120);
+        constraintsForCarTypeDropDownBox.gridy = 1; // Position of JComboBox carTypeDropDownBox is second in Y order.
+        constraintsForCarTypeDropDownBox.ipadx = 20; // Horizontal size of JComboBox carTypeDropDownBox.
+        constraintsForCarTypeDropDownBox.insets = new Insets(0, 0, 0, 115); // Add gap to the right.
 
         // Add the JComboBox to JPanel carTypeDropDownBoxPanel with their configuration.
-        carTypeDropDownBoxPanel.add(setupCarTypeDropDownBox(), constraintsForCarTypeDropDownBox);
+        carTypeDropDownBoxPanel.add(carTypeLabel, constraintsForCarTypeLabel);
+        carTypeDropDownBoxPanel.add(setupDropDownBox(carTypeDropDownBox, carTypes), constraintsForCarTypeDropDownBox);
 
         // Return JPanel carTypeDropDownBoxPanel.
         return carTypeDropDownBoxPanel;
     }
 
-    /** Returns a JComboBox that is represented as a drop-down box,
-     * that contains options that allow users,
-     * to choose the desired car type.
+    /** Return a JPanel that contains JCheckBox insuranceDropDownBox.
+     * For user to choose whether to get insurance or not.
      */
-    private JComboBox<String> setupCarTypeDropDownBox() {
+    private JPanel setupLoanInsuranceCheckBoxPanel() {
 
         // Initialization
-        String[] carTypes = {"Imported", "Local"};
-        for (String carType : carTypes) {
-            carTypeDropDownBox.addItem(carType);
+        JPanel loanInsuranceCheckBoxPanel = new JPanel(new GridBagLayout());
+        JLabel loanInsuranceFirstDescription = new JLabel("*Loan payback will be waived in the event,"); // First half of loan insurance description.
+        JLabel loanInsuranceSecondDescription = new JLabel("of the borrower's death or permanent disability."); // Second half of loan insurance description.
+        JLabel loanInsurancePriceFirstDescription = new JLabel("*An additional RM200 (per year) surcharge,"); // First half of loan insurance price description.
+        JLabel loanInsurancePriceSecondDescription = new JLabel("will be added to the loan amount."); // Second half of loan insurance price description.
+
+        // Configuring JLabel loanInsuranceDescription.
+        loanInsuranceFirstDescription.setFont(new Font("Arial", Font.PLAIN, 10)); // Setting font and size.
+
+        // Configuring JLabel loanInsuranceSecondDescription.
+        loanInsuranceSecondDescription.setFont(new Font("Arial", Font.PLAIN, 10)); // Setting font and size.
+
+        // Configuring JLabel loanInsurancePriceFirstDescription.
+        loanInsurancePriceFirstDescription.setFont(new Font("Arial", Font.PLAIN, 10)); // Setting font and size.
+
+        // Configuring JLabel loanInsurancePriceSecondDescription.
+        loanInsurancePriceSecondDescription.setFont(new Font("Arial", Font.PLAIN, 10)); // Setting font and size.
+
+        // Setting up the configuration for JComboBox loanInsuranceCheckBoxPanel.
+        GridBagConstraints constraintsForLoanInsuranceCheckBox = new GridBagConstraints();
+        constraintsForLoanInsuranceCheckBox.gridy = 0; // Position is first in Y order.
+        constraintsForLoanInsuranceCheckBox.ipadx = 20; // Horizontal size of JComboBox loanInsuranceCheckBox.
+        constraintsForLoanInsuranceCheckBox.insets = new Insets(10, 0, 0, 85); // Add gap to the right.
+
+        // Setting up the configuration for JLabel loanInsuranceFirstDescription.
+        GridBagConstraints constraintsForLoanInsuranceFirstDescription = new GridBagConstraints();
+        constraintsForLoanInsuranceFirstDescription.gridy = 1; // Position is second in Y order.
+        constraintsForLoanInsuranceFirstDescription.anchor = GridBagConstraints.LINE_START; // Align to the left.
+
+        // Setting up the configuration for JLabel loanInsuranceSecondDescription.
+        GridBagConstraints constraintsForLoanInsuranceSecondDescription = new GridBagConstraints();
+        constraintsForLoanInsuranceSecondDescription.gridy = 2; // Position is third in Y order.
+        constraintsForLoanInsuranceSecondDescription.anchor = GridBagConstraints.LINE_START; // Align to the left.
+
+        // Setting up the configuration for JLabel loanInsurancePriceFirstDescription.
+        GridBagConstraints constraintsForLoanInsurancePriceFirstDescription = new GridBagConstraints();
+        constraintsForLoanInsurancePriceFirstDescription.gridy = 3; // Position is fourth in Y order.
+        constraintsForLoanInsurancePriceFirstDescription.anchor = GridBagConstraints.LINE_START; // Align to the left.
+
+        // Setting up the configuration for JLabel constraintsForLoanInsurancePriceSecondDescription.
+        GridBagConstraints constraintsForLoanInsurancePriceSecondDescription = new GridBagConstraints();
+        constraintsForLoanInsurancePriceSecondDescription.gridy = 4; // Position is fifth in Y order.
+        constraintsForLoanInsurancePriceSecondDescription.anchor = GridBagConstraints.LINE_START; // Align to the left.
+
+
+        // Add the JPanels to JPanel loanInsuranceCheckBoxPanel with their configurations.
+        loanInsuranceCheckBoxPanel.add(loanInsuranceCheckBox, constraintsForLoanInsuranceCheckBox);
+        loanInsuranceCheckBoxPanel.add(loanInsuranceFirstDescription, constraintsForLoanInsuranceFirstDescription);
+        loanInsuranceCheckBoxPanel.add(loanInsuranceSecondDescription, constraintsForLoanInsuranceSecondDescription);
+        loanInsuranceCheckBoxPanel.add(loanInsurancePriceFirstDescription, constraintsForLoanInsurancePriceFirstDescription);
+        loanInsuranceCheckBoxPanel.add(loanInsurancePriceSecondDescription, constraintsForLoanInsurancePriceSecondDescription);
+
+        return loanInsuranceCheckBoxPanel;
+    }
+
+    /** Returns a JComboBox that is represented as a drop-down box,
+     * that contains String[] options that allow users,
+     * to choose the desired option.
+     */
+    private JComboBox<String> setupDropDownBox(JComboBox<String> dropDownBox, String[] options) {
+
+
+        for (String option : options) {
+            dropDownBox.addItem(option);
         }
 
-        // Set default option to the 0th element in the CARTYPES array.
-        carTypeDropDownBox.setSelectedIndex(0);
+        // Set default option to the 0th element in String[] options.
+        dropDownBox.setSelectedIndex(0);
 
-        // Return JComboBox carTypeDropDownBox.
-        return carTypeDropDownBox;
+        // Return JComboBox dropDownBox.
+        return dropDownBox;
     }
 
     // TODO: Everything down here, might be a bit redundant/too complex.
