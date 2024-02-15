@@ -1,12 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class SummaryReportView {
     /** JPanel that contains all the component in SummaryReportView. */
     JPanel summaryReportViewPanel;
-    /** Data of loan. */
-    private String loanYears, loanAmount, outstandingLoanAmount, interestRate, monthlyRepayment, carType;
-    private boolean loanInsurance;
+    /** Type of car loaned. */
+    private String carType;
+    /** Loan insurance. */
+    private String loanInsurance;
+    /** Loan data. */
+    private double loanAmount, interestRate, loanTerm, outstandingLoanAmount, monthlyRepayment;
     /** Button that changes the view to the MainMenuView. */
     private JButton backToMainMenuButton = new JButton("Back to main menu");
     /** Button that changes the view to CarLoanInstallmentCalculatorView. */
@@ -22,10 +26,27 @@ public class SummaryReportView {
         return summaryReportViewPanel;
     }
 
+    /** Add ActionListener listenForBackToMainMenuButton to JButton backToMainMenuButton. */
+    public void addBackToMainMenuButtonListener(ActionListener listenForBackToMainMenuButton) {
+        backToMainMenuButton.addActionListener(listenForBackToMainMenuButton);
+    }
+
+    /** Adds an ActionListener to JButton calculateCarLoanInstallmentButton. */
+    public void addCalculateCarLoanInstallmentButtonListener(ActionListener listenForCalculateCarLoanInstallmentButton) {
+        calculateCarLoanInstallmentButton.addActionListener(listenForCalculateCarLoanInstallmentButton);
+    }
 
     /** Updates the SummaryReportView. */
-    public void updateSummaryReportView() {
+    public void updateSummaryReportView(String carType, double loanAmount, double interestRate, double loanTerm, double outstandingLoanAmount, double monthlyRepayment, String loanInsurance) {
+        this.carType = carType;
+        this.loanAmount = loanAmount;
+        this.interestRate = interestRate;
+        this.loanTerm = loanTerm;
+        this.outstandingLoanAmount = outstandingLoanAmount;
+        this.monthlyRepayment = monthlyRepayment;
+        this.loanInsurance = loanInsurance;
     }
+
     /** Return a JPanel that contains all the necessary components needed,
      * to set up SummaryReportView.
      */
@@ -86,8 +107,8 @@ public class SummaryReportView {
         JLabel showCarType = new JLabel("Car Type: " + this.carType);
         JLabel showLoanAmount = new JLabel("Loan Amount (RM): " + this.loanAmount);
         JLabel showInterestRate = new JLabel("Interest Rate (%): " + this.interestRate);
-        JLabel showLoanTerm = new JLabel("Loan Term (Years): " + this.loanYears);
-        JLabel showOutstandingLoanAmount = new JLabel("Total Payback (RM): " + this.outstandingLoanAmount);
+        JLabel showLoanTerm = new JLabel("Loan Term (Years): " + this.loanTerm);
+        JLabel showOutstandingLoanAmount = new JLabel("Total Outstanding Loan Amount (RM): " + this.outstandingLoanAmount);
         JLabel showMonthlyRepayment = new JLabel("Monthly Repayment (RM): " + this.monthlyRepayment);
 
         // Setting up configuration for JLabel showCarType.
