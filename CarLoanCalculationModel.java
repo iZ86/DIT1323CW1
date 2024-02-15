@@ -1,28 +1,32 @@
 
 /** This class represents the calculation model for the Kawaguchi bank car loan program. */
 public class CarLoanCalculationModel {
-    private boolean loanInsurance;
-    private double loanYears, loanAmount, outstandingLoanAmount, interestRate, monthlyRepayment;
+    /** Type of car loaned. */
     private String carType;
+    /** Loan insurance. */
+    private String loanInsurance;
+    /** Loan data. */
+    private double loanAmount, interestRate, loanTerm, outstandingLoanAmount, monthlyRepayment;
 
     public CarLoanCalculationModel() {
-        this.loanInsurance = false;
-        this.loanYears = 0;
+        this.carType = null;
+        this.loanTerm = 0;
         this.loanAmount = 0;
-        this.outstandingLoanAmount = 0;
         this.interestRate = 0;
+        this.outstandingLoanAmount = 0;
         this.monthlyRepayment = 0;
-        this.carType = "None";
+        this.loanInsurance = null;
     }
 
     /** Calculates the loan and saves the data. */
-    public void calculateLoan(String carType, double loanYears, double loanAmount, double interestRate) {
+    public void calculateLoan(String carType, double loanTerm, double loanAmount, double interestRate, String loanInsurance) {
         this.carType = carType;
-        this.loanYears = loanYears;
+        this.loanTerm = loanTerm;
         this.loanAmount = loanAmount;
         this.interestRate = interestRate / 100;
-        this.outstandingLoanAmount = roundUpTwoDecimal(loanAmount + (loanYears * loanAmount * interestRate));
-        this.monthlyRepayment = roundUpTwoDecimal((this.outstandingLoanAmount / loanYears) / 12);
+        this.outstandingLoanAmount = roundUpTwoDecimal(loanAmount + (loanTerm * loanAmount * interestRate));
+        this.monthlyRepayment = roundUpTwoDecimal((this.outstandingLoanAmount / loanTerm) / 12);
+        this.loanInsurance = loanInsurance;
     }
 
     /** Rounds up any value to two decimal places. */
@@ -33,7 +37,7 @@ public class CarLoanCalculationModel {
     /** Returns true if there is loan insurance.
      * Otherwise, false
      */
-    public boolean isLoanInsurance() {
+    public String getLoanInsurance() {
         return loanInsurance;
     }
 
@@ -41,18 +45,18 @@ public class CarLoanCalculationModel {
      * true if it there is loan insurance.
      * Otherwise, false
      */
-    public void setLoanInsurance(boolean loanInsurance) {
+    public String setLoanInsurance(String loanInsurance) {
         this.loanInsurance = loanInsurance;
     }
 
-    /** Returns the loan years. */
-    public double getLoanYears() {
-        return loanYears;
+    /** Returns the loan term. */
+    public double getLoanTerm() {
+        return loanTerm;
     }
 
-    /** Sets the loan years. */
-    public void setLoanYears(double loanYears) {
-        this.loanYears = loanYears;
+    /** Sets the loan term. */
+    public void setLoanTerm(double loanTerm) {
+        this.loanTerm = loanTerm;
     }
 
     /** Returns the loan amount. */
@@ -71,8 +75,8 @@ public class CarLoanCalculationModel {
     }
 
     /** Sets the outstanding loan amount. */
-    public void setOutstandingLoanAmount(double loanPayback) {
-        this.outstandingLoanAmount = loanPayback;
+    public void setOutstandingLoanAmount(double outstandingLoanAmount) {
+        this.outstandingLoanAmount = outstandingLoanAmount;
     }
 
     /** Returns the interest rate. */
