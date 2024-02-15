@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class CarLoanInstallmentCalculatorView {
 
@@ -14,7 +15,7 @@ public class CarLoanInstallmentCalculatorView {
     /** Button that changes the view back to the MainMenuView. */
     private final JButton backToMainMenuButton = new JButton("Back to main menu");
     /** Button that changes the view to the SummaryReportView. */
-    private final JButton generateSummaryReportButton = new JButton("Generate summary report");
+    private final JButton calculateCarLoanButton = new JButton("Calculate car loan installment");
 
 
     /** Constructor to set up the car loan installment calculator view. */
@@ -27,6 +28,10 @@ public class CarLoanInstallmentCalculatorView {
         return carLoanInstallmentCalculatorViewPanel;
     }
 
+    /** Return the selected item in JComboBox carTypeDropDownBox. */
+    public String getCarTypeDropDownBoxItem() {
+        return (String) carTypeDropDownBox.getSelectedItem();
+    }
     /** Return the loan term in JTextField loanTermTextField inputted by user. */
     public String getLoanTerm() {
         return loanTermTextField.getText();
@@ -35,6 +40,16 @@ public class CarLoanInstallmentCalculatorView {
     /** Return the loan amount in JTextField loanAmountTextField inputted by user. */
     public String getLoanAmount() {
         return loanAmountTextField.getText();
+    }
+
+    /** Add ActionListener listenForBackToMainMenuButton to JButton backToMainMenuButton. */
+    public void addBackToMainMenuButtonListener(ActionListener listenForBackToMainMenuButton) {
+        backToMainMenuButton.addActionListener(listenForBackToMainMenuButton);
+    }
+
+    /** Add ActionListener listenForCalculateLoanInstallmentButton to JButton calculateLoanInstallmentButton. */
+    public void addCalculateCarLoanButtonListener(ActionListener listenForCalculateCarLoanButton) {
+        calculateCarLoanButton.addActionListener(listenForCalculateCarLoanButton);
     }
 
     /** Return a JPanel that has all the necessary components,
@@ -186,14 +201,14 @@ public class CarLoanInstallmentCalculatorView {
         constraintsForBackToMainMenuButton.ipady = heightOfButton; // Height of button.
         constraintsForBackToMainMenuButton.insets = new Insets(0, 0, 0, 20); // Add a gap on the right side.
 
-        // Setting up the configuration for JButton generateSummaryReportButton.
-        GridBagConstraints constraintsForGenerateSummaryReportButton = new GridBagConstraints();
-        constraintsForGenerateSummaryReportButton.gridx = 1; // Position of button is second in X order.
-        constraintsForGenerateSummaryReportButton.fill = GridBagConstraints.VERTICAL; // Same height as the button on the left.
+        // Setting up the configuration for JButton calculateCarLoanButton.
+        GridBagConstraints constraintsForCalculateCarLoanButton = new GridBagConstraints();
+        constraintsForCalculateCarLoanButton.gridx = 1; // Position of button is second in X order.
+        constraintsForCalculateCarLoanButton.fill = GridBagConstraints.VERTICAL; // Same height as the button on the left.
 
         // Add the JButtons to JPanel carLoanInstallmentCalculationButtonPanel with their configurations.
         carLoanInstallmentCalculationButtonPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
-        carLoanInstallmentCalculationButtonPanel.add(generateSummaryReportButton, constraintsForGenerateSummaryReportButton);
+        carLoanInstallmentCalculationButtonPanel.add(calculateCarLoanButton, constraintsForCalculateCarLoanButton);
 
         // Return JPanel carLoanInstallmentCalculationButtonPanel.
         return carLoanInstallmentCalculationButtonPanel;
