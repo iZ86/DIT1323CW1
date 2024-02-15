@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /** This class represents the view for the car loan scheme. */
 public class CarLoanSchemeView {
@@ -21,6 +22,16 @@ public class CarLoanSchemeView {
     /** Return JPanel carLoanSchemeViewPanel. */
     public JPanel getCarLoanSchemeViewPanel() {
         return carLoanSchemeViewPanel;
+    }
+
+    /** Add ActionListener listenForBackToMainMenuButton to JButton backToMainMenuButton. */
+    public void addBackToMainMenuButtonListener(ActionListener listenForBackToMainMenuButton) {
+        backToMainMenuButton.addActionListener(listenForBackToMainMenuButton);
+    }
+
+    /** Add ActionListener listenForCalculateCarLoanInstallmentButton JButton calculateCarLoanInstallmentButton. */
+    public void addCalculateCarLoanInstallmentButtonListener(ActionListener listenForCalculateCarLoanInstallmentButton) {
+        calculateCarLoanInstallmentButton.addActionListener(listenForCalculateCarLoanInstallmentButton);
     }
 
     /** Sets up a JScrollPane that will contain the table of the car loan scheme. */
