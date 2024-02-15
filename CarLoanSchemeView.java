@@ -14,8 +14,8 @@ public class CarLoanSchemeView {
     /** Constructor sets up the car loan scheme view.
      * Takes in data needed for table.
      */
-    public CarLoanSchemeView(Object[][] tableData, String[] columnNames) {
-        this.carLoanSchemeViewPanel = setupCarLoanSchemeViewPanel(tableData, columnNames);
+    public CarLoanSchemeView() {
+        this.carLoanSchemeViewPanel = setupCarLoanSchemeViewPanel();
     }
 
     /** Return JPanel carLoanSchemeViewPanel. */
@@ -23,29 +23,34 @@ public class CarLoanSchemeView {
         return carLoanSchemeViewPanel;
     }
 
-    /** Return a JPanel that has all the necessary components,
-     * that composes the car loan scheme view.
-     */
-    private JPanel setupCarLoanSchemeViewPanel(Object[][] tableData, String[] columnNames) {
-
+    /** Sets up a JScrollPane that will contain the table of the car loan scheme. */
+    public void setCarLoanSchemeTable(Object[][] tableData, String[] columnNames) {
         // Initialization
-        JPanel viewPanel = new JPanel(new GridBagLayout());
         JScrollPane carLoanSchemeTablePane = setupCarLoanSchemeTablePane(tableData, columnNames); // Table containing car loan scheme.
-        JPanel buttonsPanel = setupCarLoanSchemeButtonsPanel(); // Buttons in JPanel carLoanSchemeViewPanel.
 
         // Setting up configuration for JScrollPane carLoanSchemeTablePane.
         GridBagConstraints constraintsForCarLoanSchemeTablePane = new GridBagConstraints();
         constraintsForCarLoanSchemeTablePane.gridy = 0; // Position of component is first in Y order.
 
 
+        carLoanSchemeViewPanel.add(carLoanSchemeTablePane, constraintsForCarLoanSchemeTablePane);
+    }
+
+    /** Return a JPanel that has all the necessary components,
+     * that composes the car loan scheme view.
+     */
+    private JPanel setupCarLoanSchemeViewPanel() {
+
+        // Initialization
+        JPanel viewPanel = new JPanel(new GridBagLayout());
+        JPanel buttonsPanel = setupCarLoanSchemeButtonsPanel(); // Buttons in JPanel carLoanSchemeViewPanel.
+
         // Setting up configuration for JPanel buttonsPanel.
         GridBagConstraints constraintsForButtonsPanel = new GridBagConstraints();
         constraintsForButtonsPanel.gridy = 1; // Position of component is second in Y order.
         constraintsForButtonsPanel.insets = new Insets(50, 0, 0, 0); // Add gap above.
 
-
         // Adding the components to JPanel viewPanel with their configurations.
-        viewPanel.add(carLoanSchemeTablePane, constraintsForCarLoanSchemeTablePane);
         viewPanel.add(buttonsPanel, constraintsForButtonsPanel);
 
         return viewPanel;
