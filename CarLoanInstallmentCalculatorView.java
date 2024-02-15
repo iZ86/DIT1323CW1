@@ -27,6 +27,16 @@ public class CarLoanInstallmentCalculatorView {
         return carLoanInstallmentCalculatorViewPanel;
     }
 
+    /** Return the loan term in JTextField loanTermTextField inputted by user. */
+    public String getLoanTerm() {
+        return loanTermTextField.getText();
+    }
+
+    /** Return the loan amount in JTextField loanAmountTextField inputted by user. */
+    public String getLoanAmount() {
+        return loanAmountTextField.getText();
+    }
+
     /** Return a JPanel that has all the necessary components,
      *  to make the car loan installment calculator view.
      */
