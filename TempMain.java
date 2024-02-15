@@ -1,3 +1,5 @@
+import com.sun.tools.javac.Main;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -5,10 +7,24 @@ public class TempMain {
 
     /** Main used to temporarily work the new MVC implementations. */
     public static void main(String[] args) {
+        testProgram();
+    }
+
+    /** To test the whole program. */
+    public static void testProgram() {
+        GUI gui = new GUI();
+        CarLoanSchemeModel carLoanSchemeModel = new CarLoanSchemeModel();
+        CarLoanCalculationModel carLoanCalculationModel = new CarLoanCalculationModel();
+        Controller controller = new Controller(gui, carLoanSchemeModel, carLoanCalculationModel);
+        gui.display();
+    }
+    
+    /** To test each individual Views. */
+    public static void testIndividualView() {
         JFrame test = new JFrame();
 
         // Change the method to get the different view Panels.
-        test.add(summaryReportViewPanel());
+        test.add(mainMenuViewPanel());
 
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         test.setSize(new Dimension(700, 500));
@@ -37,7 +53,8 @@ public class TempMain {
                 {null,"<50,000","3.2%"},
         };
         String column[]= {"Car Type","Loan Amount (RM)","Interest Rate (%)"};
-        CarLoanSchemeView carLoanSchemeView = new CarLoanSchemeView(loans, column);
+        CarLoanSchemeView carLoanSchemeView = new CarLoanSchemeView();
+        carLoanSchemeView.setCarLoanSchemeTable(loans, column);
         return carLoanSchemeView.getCarLoanSchemeViewPanel();
     }
 
