@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /** This class represents the kawaguchi bank car loan main menu. */
 public class MainMenuView {
@@ -25,6 +26,21 @@ public class MainMenuView {
     /** Return JPanel mainMenuViewPanel. */
     public JPanel getMainMenuViewPanel() {
         return mainMenuViewPanel;
+    }
+
+    /** Adds an ActionListener to JButton displayCarLoanSchemeButton. */
+    public void addDisplayCarLoanSchemeButtonListener(ActionListener listenerForDisplayCarLoanSchemeButton) {
+        displayCarLoanSchemeButton.addActionListener(listenerForDisplayCarLoanSchemeButton);
+    }
+
+    /** Adds an ActionListener to JButton calculateCarLoanInstallmentButton. */
+    public void addCalculateCarLoanInstallmentButtonListener(ActionListener listenerForCalculateCarLoanInstallmentButton) {
+        calculateCarLoanInstallmentButton.addActionListener(listenerForCalculateCarLoanInstallmentButton);
+    }
+
+    /** Adds an ActionListener to JButton exitButton. */
+    public void addExitButtonListener(ActionListener listenerForExitButton) {
+        exitButton.addActionListener(listenerForExitButton);
     }
 
     /** Return a JPanel that has all the necessary components needed to make the main menu view. */
