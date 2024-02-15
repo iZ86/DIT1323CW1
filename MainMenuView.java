@@ -29,18 +29,18 @@ public class MainMenuView {
     }
 
     /** Adds an ActionListener to JButton displayCarLoanSchemeButton. */
-    public void addDisplayCarLoanSchemeButtonListener(ActionListener listenerForDisplayCarLoanSchemeButton) {
-        displayCarLoanSchemeButton.addActionListener(listenerForDisplayCarLoanSchemeButton);
+    public void addDisplayCarLoanSchemeButtonListener(ActionListener listenForDisplayCarLoanSchemeButton) {
+        displayCarLoanSchemeButton.addActionListener(listenForDisplayCarLoanSchemeButton);
     }
 
     /** Adds an ActionListener to JButton calculateCarLoanInstallmentButton. */
-    public void addCalculateCarLoanInstallmentButtonListener(ActionListener listenerForCalculateCarLoanInstallmentButton) {
-        calculateCarLoanInstallmentButton.addActionListener(listenerForCalculateCarLoanInstallmentButton);
+    public void addCalculateCarLoanInstallmentButtonListener(ActionListener listenForCalculateCarLoanInstallmentButton) {
+        calculateCarLoanInstallmentButton.addActionListener(listenForCalculateCarLoanInstallmentButton);
     }
 
     /** Adds an ActionListener to JButton exitButton. */
-    public void addExitButtonListener(ActionListener listenerForExitButton) {
-        exitButton.addActionListener(listenerForExitButton);
+    public void addExitButtonListener(ActionListener listenForExitButton) {
+        exitButton.addActionListener(listenForExitButton);
     }
 
     /** Return a JPanel that has all the necessary components needed to make the main menu view. */
