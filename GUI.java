@@ -17,16 +17,16 @@ public class GUI {
     private CarLoanSchemeView carLoanSchemeView;
     /** Car Loan Installment Calculator View. */
     private CarLoanInstallmentCalculatorView carLoanInstallmentCalculatorView;
-    /** Summary Report View. */
-    private SummaryReportView summaryReportView;
+    /** Loan Installment Report View. */
+    private LoanInstallmentReportView loanInstallmentReportView;
     /** Index used to access Main Menu View in JPanel GUIPanel. */
     private String mainMenuViewIndex = "MainMenuView";
     /** Index used to access Car Loan Scheme View in JPanel GUIPanel. */
     private String carLoanSchemeViewIndex = "CarLoanSchemeView";
     /** Index used to access Car Loan Installment Calculator View in JPanel GUIPanel. */
     private String carLoanInstallmentCalculatorViewIndex = "CarLoanInstallmentCalculatorView";
-    /** Index used to access Summary Report View in JPanel GUIPanel. */
-    private String summaryReportViewIndex = "SummaryReportView";
+    /** Index used to access Loan Installment Report View in JPanel GUIPanel. */
+    private String loanInstallmentReportViewIndex = "LoanInstallmentReportView";
 
 
     /** A new JFrame with all the view classes. */
@@ -37,7 +37,7 @@ public class GUI {
         mainMenuView = new MainMenuView();
         carLoanSchemeView = new CarLoanSchemeView();
         carLoanInstallmentCalculatorView = new CarLoanInstallmentCalculatorView();
-        summaryReportView = new SummaryReportView();
+        loanInstallmentReportView = new LoanInstallmentReportView();
 
         setupGUI();
 
@@ -53,7 +53,7 @@ public class GUI {
         GUIPanel.add(carLoanSchemeView.getCarLoanSchemeViewPanel(), carLoanSchemeViewIndex);
         GUIPanel.add(carLoanInstallmentCalculatorView.getCarLoanInstallmentCalculatorViewPanel(),
                 carLoanInstallmentCalculatorViewIndex);
-        GUIPanel.add(summaryReportView.getSummaryReportViewPanel(), summaryReportViewIndex);
+        GUIPanel.add(loanInstallmentReportView.getLoanInstallmentReportViewPanel(), loanInstallmentReportViewIndex);
     }
 
     /** Displays the GUI. */
@@ -87,9 +87,9 @@ public class GUI {
         return carLoanInstallmentCalculatorViewIndex;
     }
 
-    /** Return String summaryReportViewIndex. */
-    public String getSummaryReportViewIndex() {
-        return summaryReportViewIndex;
+    /** Return String loanInstallmentReportViewIndex. */
+    public String getLoanInstallmentReportViewIndex() {
+        return loanInstallmentReportViewIndex;
     }
     
     /** Add ActionListener listenForAllDisplayCarLoanSchemeButton to all JButton displayCarLoanSchemeButton. */
@@ -101,7 +101,7 @@ public class GUI {
     public void addAllCalculateCarLoanInstallmentButtonListener(ActionListener listenForAllCalculateCarLoanInstallmentButton) {
         mainMenuView.addCalculateCarLoanInstallmentButtonListener(listenForAllCalculateCarLoanInstallmentButton);
         carLoanSchemeView.addCalculateCarLoanInstallmentButtonListener(listenForAllCalculateCarLoanInstallmentButton);
-        summaryReportView.addCalculateCarLoanInstallmentButtonListener(listenForAllCalculateCarLoanInstallmentButton);
+        loanInstallmentReportView.addCalculateCarLoanInstallmentButtonListener(listenForAllCalculateCarLoanInstallmentButton);
     }
 
     /** Add ActionListener listenForAllExitButton to all JButton exitButton. */
@@ -113,7 +113,7 @@ public class GUI {
     public void addAllBackToMainMenuButtonListener(ActionListener listenForAllBackToMainMenuButton) {
         carLoanSchemeView.addBackToMainMenuButtonListener(listenForAllBackToMainMenuButton);
         carLoanInstallmentCalculatorView.addBackToMainMenuButtonListener(listenForAllBackToMainMenuButton);
-        summaryReportView.addBackToMainMenuButtonListener(listenForAllBackToMainMenuButton);
+        loanInstallmentReportView.addBackToMainMenuButtonListener(listenForAllBackToMainMenuButton);
     }
 
     /** Add ActionListener listenForAllCalculateCarLoanInstallmentReportButtonButton to all JButton calculateCarLoanInstallmentReportButton. */
