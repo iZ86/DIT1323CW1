@@ -60,7 +60,7 @@ public class Controller {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            gui.changeView(gui.getSummaryReportViewIndex());
+            gui.changeView(gui.getLoanInstallmentReportViewIndex());
         }
     }
 
