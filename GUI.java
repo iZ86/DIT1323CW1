@@ -72,6 +72,11 @@ public class GUI {
         cl.show(GUIPanel, index);
     }
 
+    /** Sets JPanel carLoanSchemeView table data. */
+    public void setCarLoanSchemeViewTable(String[][] tableData, String[] columnNames) {
+        carLoanSchemeView.setCarLoanSchemeTable(tableData, columnNames);
+    }
+
     /** Return String mainMenuViewIndex. */
     public String getMainMenuViewIndex() {
         return mainMenuViewIndex;
