@@ -7,10 +7,10 @@ public class LoanInstallmentReportView {
     JPanel loanInstallmentReportViewPanel;
     /** Type of car loaned. */
     private String carType;
-    /** Loan insurance. */
-    private String loanInsurance;
     /** Loan data. */
-    private double loanAmount, interestRate, loanTerm, outstandingLoanAmount, monthlyRepayment;
+    private double loanTerm, loanAmount, interestRate , outstandingLoanAmount, monthlyRepayment;
+    /** Loan insurance. */
+    private String loanInsuranceStatus;
     /** Button that changes the view to the MainMenuView. */
     private JButton backToMainMenuButton = new JButton("Back to main menu");
     /** Button that changes the view to CarLoanInstallmentCalculatorView. */
@@ -36,15 +36,21 @@ public class LoanInstallmentReportView {
         calculateCarLoanInstallmentButton.addActionListener(listenForCalculateCarLoanInstallmentButton);
     }
 
-    /** Updates the LoanInstallmentReportView. */
-    public void updateLoanInstallmentReportView(String carType, double loanAmount, double interestRate, double loanTerm, double outstandingLoanAmount, double monthlyRepayment, String loanInsurance) {
+    /** Update JPanel LoanInstallmentReportView. */
+    public void updateLoanInstallmentReportView(String carType, double loanTerm, double loanAmount, double interestRate, double outstandingLoanAmount, double monthlyRepayment, String loanInsuranceStatus) {
+
+        // Assigning new values.
         this.carType = carType;
+        this.loanTerm = loanTerm;
         this.loanAmount = loanAmount;
         this.interestRate = interestRate;
-        this.loanTerm = loanTerm;
         this.outstandingLoanAmount = outstandingLoanAmount;
         this.monthlyRepayment = monthlyRepayment;
-        this.loanInsurance = loanInsurance;
+        this.loanInsuranceStatus = loanInsuranceStatus;
+
+        // Updating the view.
+        this.loanInstallmentReportViewPanel.revalidate();
+        this.loanInstallmentReportViewPanel.repaint();
     }
 
     /** Return a JPanel that contains all the necessary components needed,
@@ -105,43 +111,49 @@ public class LoanInstallmentReportView {
         // Initialization.
         JPanel showLoanDataPanel = new JPanel(new GridBagLayout());
         JLabel showCarType = new JLabel("Car Type: " + this.carType);
+        JLabel showLoanTerm = new JLabel("Loan Term (Years): " + this.loanTerm);
         JLabel showLoanAmount = new JLabel("Loan Amount (RM): " + this.loanAmount);
         JLabel showInterestRate = new JLabel("Interest Rate (%): " + this.interestRate);
-        JLabel showLoanTerm = new JLabel("Loan Term (Years): " + this.loanTerm);
         JLabel showOutstandingLoanAmount = new JLabel("Total Outstanding Loan Amount (RM): " + this.outstandingLoanAmount);
         JLabel showMonthlyRepayment = new JLabel("Monthly Repayment (RM): " + this.monthlyRepayment);
+        JLabel showLoanInstallmentInsurance = new JLabel("Loan Insurance Status: " + this.loanInsuranceStatus);
 
         // Setting up configuration for JLabel showCarType.
         GridBagConstraints constraintsForShowCarType = new GridBagConstraints();
-        constraintsForShowCarType.gridy = 0; // Position of this JLabel is first in Y order.
-
-        // Setting up configuration for JLabel showLoanAmount.
-        GridBagConstraints constraintsForShowLoanAmount = new GridBagConstraints();
-        constraintsForShowLoanAmount.gridy = 1; // Position of this JLabel is second in Y order.
-
-        // Setting up configuration for JLabel showInterestRate.
-        GridBagConstraints constraintsForShowInterestRate = new GridBagConstraints();
-        constraintsForShowInterestRate.gridy = 2; // Position of this JLabel is third in Y order.
+        constraintsForShowCarType.gridy = 0; // Position is first in Y order.
 
         // Setting up configuration for JLabel showLoanTerm.
         GridBagConstraints constraintsForShowLoanTerm = new GridBagConstraints();
-        constraintsForShowLoanTerm.gridy = 3; // Position of this JLabel is fourth in Y order.
+        constraintsForShowLoanTerm.gridy = 1; // Position is second in Y order.
+
+        // Setting up configuration for JLabel showLoanAmount.
+        GridBagConstraints constraintsForShowLoanAmount = new GridBagConstraints();
+        constraintsForShowLoanAmount.gridy = 2; // Position is third in Y order.
+
+        // Setting up configuration for JLabel showInterestRate.
+        GridBagConstraints constraintsForShowInterestRate = new GridBagConstraints();
+        constraintsForShowInterestRate.gridy = 3; // Position is fourth in Y order.
 
         // Setting up configuration for JLabel showOutstandingLoanAmount.
         GridBagConstraints constraintsForShowOutstandingLoanAmount = new GridBagConstraints();
-        constraintsForShowOutstandingLoanAmount.gridy = 4; // Position of this JLabel is fifth in Y order.
+        constraintsForShowOutstandingLoanAmount.gridy = 4; // Position is fifth in Y order.
 
         // Setting up configuration for JLabel showMonthlyRepayment.
         GridBagConstraints constraintsForShowMonthlyRepayment = new GridBagConstraints();
-        constraintsForShowMonthlyRepayment.gridy = 5; // Position of this JLabel is sixth in Y order.
+        constraintsForShowMonthlyRepayment.gridy = 5; // Position is sixth in Y order.
+
+        // Setting up configuration for JLabel showLoanInstallmentInsurance.
+        GridBagConstraints constraintsForShowLoanInstallmentInsurance = new GridBagConstraints();
+        constraintsForShowLoanInstallmentInsurance.gridy = 6; // Position is seventh in Y order.
 
         // Add the JLabels into the JPanel with their configurations.
         showLoanDataPanel.add(showCarType,constraintsForShowCarType);
+        showLoanDataPanel.add(showLoanTerm, constraintsForShowLoanTerm);
         showLoanDataPanel.add(showLoanAmount, constraintsForShowLoanAmount);
         showLoanDataPanel.add(showInterestRate, constraintsForShowInterestRate);
-        showLoanDataPanel.add(showLoanTerm, constraintsForShowLoanTerm);
         showLoanDataPanel.add(showOutstandingLoanAmount, constraintsForShowOutstandingLoanAmount);
         showLoanDataPanel.add(showMonthlyRepayment, constraintsForShowMonthlyRepayment);
+        showLoanDataPanel.add(showLoanInstallmentInsurance, constraintsForShowLoanInstallmentInsurance);
 
         return showLoanDataPanel;
     }
