@@ -21,6 +21,13 @@ public class Controller {
         this.gui.addAllExitButtonListener(new ExitButtonListener());
         this.gui.addAllBackToMainMenuButtonListener(new BackToMainMenuButtonListener());
         this.gui.addAllCalculateCarLoanInstallmentReportButtonListener(new CalculateCarLoanInstallmentReportButtonListener());
+        setupCarLoanSchemeViewTable();
+    }
+
+    private void setupCarLoanSchemeViewTable() {
+        String[] carLoanTableDataColumn = carLoanSchemeModel.getCarLoanTableDataColumn();
+        String[][] carLoanTableData = carLoanSchemeModel.getCarLoanTableData();
+        this.gui.setCarLoanSchemeViewTable(carLoanTableData, carLoanTableDataColumn);
     }
 
     public class DisplayCarLoanSchemeButtonListener implements ActionListener {
