@@ -6,7 +6,7 @@ public class CarLoanCalculationModel {
     /** Loan insurance. */
     private String loanInsuranceStatus;
     /** Loan data. */
-    private double loanAmount, interestRate, loanTerm, outstandingLoanAmount, monthlyRepayment;
+    private double loanTerm, loanAmount, interestRate , outstandingLoanAmount, monthlyRepayment;
 
     public CarLoanCalculationModel() {
         this.carType = null;
@@ -91,7 +91,7 @@ public class CarLoanCalculationModel {
 
     /** Return the loan insurance status. */
     private String getLoanInsuranceStatus(boolean loanInsurance) {
-        
+
         String loanInsuranceStatus = "Not insured";
 
         if (loanInsurance) {
