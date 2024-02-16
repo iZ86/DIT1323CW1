@@ -2,7 +2,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // TODO: Logic between model and comments
-// TODO: Most important is the carLoanSchemeTable
 
 public class Controller {
     GUI gui;
@@ -27,14 +26,14 @@ public class Controller {
     private void setupCarLoanSchemeViewTable() {
         String[] carLoanTableDataColumn = carLoanSchemeModel.getCarLoanTableDataColumn();
         String[][] carLoanTableData = carLoanSchemeModel.getCarLoanTableData();
-        this.gui.setCarLoanSchemeViewTable(carLoanTableData, carLoanTableDataColumn);
+        gui.getCarLoanSchemeView().setCarLoanSchemeTable(carLoanTableData, carLoanTableDataColumn);
     }
 
     public class DisplayCarLoanSchemeButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            gui.changeView(gui.getCarLoanSchemeViewIndex());
+            gui.changeView(GUI.carLoanSchemeViewIndex);
         }
 
     }
@@ -43,7 +42,7 @@ public class Controller {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            gui.changeView(gui.getCarLoanInstallmentCalculatorViewIndex());
+            gui.changeView(GUI.carLoanInstallmentCalculatorViewIndex);
         }
     }
 
@@ -59,7 +58,7 @@ public class Controller {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            gui.changeView(gui.getMainMenuViewIndex());
+            gui.changeView(GUI.mainMenuViewIndex);
         }
     }
 
@@ -67,7 +66,14 @@ public class Controller {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            gui.changeView(gui.getLoanInstallmentReportViewIndex());
+            // Initialization
+            String carType;
+            double loanTerm;
+            double loanAmount;
+            boolean loanInsurance;
+
+
+            gui.changeView(GUI.loanInstallmentReportViewIndex);
         }
     }
 
