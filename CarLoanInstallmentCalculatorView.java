@@ -31,22 +31,22 @@ public class CarLoanInstallmentCalculatorView {
     }
 
     /** Return the selected item in JComboBox carTypeDropDownBox. */
-    public String getCarTypeDropDownBoxSelectedItem() {
+    public String getSelectedCarType() {
         return (String) carTypeDropDownBox.getSelectedItem();
     }
 
     /** Return true iff JCheckBox loanInsuranceCheckBox has been checked. */
-    public boolean isLoanInsuranceCheckBoxChecked() {
+    public boolean getLoanInsuranceCheckBoxChecked() {
         return loanInsuranceCheckBox.isSelected();
     }
     /** Return the loan term in JTextField loanTermTextField inputted by user. */
-    public String getLoanTerm() {
-        return loanTermTextField.getText();
+    public double getLoanTerm() {
+        return Double.parseDouble(loanTermTextField.getText());
     }
 
     /** Return the loan amount in JTextField loanAmountTextField inputted by user. */
-    public String getLoanAmount() {
-        return loanAmountTextField.getText();
+    public double getLoanAmount() {
+        return Double.parseDouble(loanAmountTextField.getText());
     }
 
     /** Add ActionListener listenForBackToMainMenuButton to JButton backToMainMenuButton. */
