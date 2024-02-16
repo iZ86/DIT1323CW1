@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 // TODO: Get logic from controller
-// TODO: Most important is the carLoanSchemeTable
 // TODO: Maybe change the index variables to static.
 
 public class GUI {
@@ -20,13 +19,13 @@ public class GUI {
     /** Loan Installment Report View. */
     private LoanInstallmentReportView loanInstallmentReportView;
     /** Index used to access Main Menu View in JPanel GUIPanel. */
-    private String mainMenuViewIndex = "MainMenuView";
+    public static final String mainMenuViewIndex = "MainMenuView";
     /** Index used to access Car Loan Scheme View in JPanel GUIPanel. */
-    private String carLoanSchemeViewIndex = "CarLoanSchemeView";
+    public static final String carLoanSchemeViewIndex = "CarLoanSchemeView";
     /** Index used to access Car Loan Installment Calculator View in JPanel GUIPanel. */
-    private String carLoanInstallmentCalculatorViewIndex = "CarLoanInstallmentCalculatorView";
+    public static final String carLoanInstallmentCalculatorViewIndex = "CarLoanInstallmentCalculatorView";
     /** Index used to access Loan Installment Report View in JPanel GUIPanel. */
-    private String loanInstallmentReportViewIndex = "LoanInstallmentReportView";
+    public static final String loanInstallmentReportViewIndex = "LoanInstallmentReportView";
 
 
     /** A new JFrame with all the view classes. */
@@ -72,29 +71,24 @@ public class GUI {
         cl.show(GUIPanel, index);
     }
 
-    /** Sets JPanel carLoanSchemeView table data. */
-    public void setCarLoanSchemeViewTable(String[][] tableData, String[] columnNames) {
-        carLoanSchemeView.setCarLoanSchemeTable(tableData, columnNames);
+    /** Return JPanel mainMenuView. */
+    public MainMenuView getMainMenuView() {
+        return mainMenuView;
     }
 
-    /** Return String mainMenuViewIndex. */
-    public String getMainMenuViewIndex() {
-        return mainMenuViewIndex;
+    /** Return JPanel carLoanSchemeView. */
+    public CarLoanSchemeView getCarLoanSchemeView() {
+        return carLoanSchemeView;
     }
 
-    /** Return String carLoanSchemeViewIndex. */
-    public String getCarLoanSchemeViewIndex() {
-        return carLoanSchemeViewIndex;
+    /** Return JPanel carLoanInstallmentCalculatorView. */
+    public CarLoanInstallmentCalculatorView getCarLoanInstallmentCalculatorView() {
+        return carLoanInstallmentCalculatorView;
     }
 
-    /** Return String carLoanInstallmentCalculationViewIndex. */
-    public String getCarLoanInstallmentCalculatorViewIndex() {
-        return carLoanInstallmentCalculatorViewIndex;
-    }
-
-    /** Return String loanInstallmentReportViewIndex. */
-    public String getLoanInstallmentReportViewIndex() {
-        return loanInstallmentReportViewIndex;
+    /** Return JPanel loanInstallmentReportView. */
+    public LoanInstallmentReportView getLoanInstallmentReportView() {
+        return loanInstallmentReportView;
     }
     
     /** Add ActionListener listenForAllDisplayCarLoanSchemeButton to all JButton displayCarLoanSchemeButton. */
