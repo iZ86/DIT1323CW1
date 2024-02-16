@@ -116,9 +116,9 @@ public class GUI {
         summaryReportView.addBackToMainMenuButtonListener(listenForAllBackToMainMenuButton);
     }
 
-    /** Add ActionListener listenForAllCalculateCarLoanButton to all JButton calculateCarLoanButton. */
-    public void addAllCalculateCarLoanButtonListener(ActionListener listenForAllCalculateCarLoanButton) {
-        carLoanInstallmentCalculatorView.addCalculateCarLoanButtonListener(listenForAllCalculateCarLoanButton);
+    /** Add ActionListener listenForAllCalculateCarLoanInstallmentReportButtonButton to all JButton calculateCarLoanInstallmentReportButton. */
+    public void addAllCalculateCarLoanInstallmentReportButtonListener(ActionListener listenForAllCalculateCarLoanInstallmentReportButton) {
+        carLoanInstallmentCalculatorView.addCalculateCarLoanInstallmentReportButtonListener(listenForAllCalculateCarLoanInstallmentReportButton);
     }
 
 
