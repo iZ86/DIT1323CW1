@@ -16,14 +16,14 @@ public class Controller {
         this.gui = gui;
         this.carLoanSchemeModel = carLoanSchemeModel;
         this.carLoanCalculationModel = carLoanCalculationModel;
-        this.gui.addAllDisplayCarLoanSchemeButtonListener(new displayCarLoanSchemeButtonListener());
-        this.gui.addAllCalculateCarLoanInstallmentButtonListener(new calculateCarLoanInstallmentButtonListener());
-        this.gui.addAllExitButtonListener(new exitButtonListener());
-        this.gui.addAllBackToMainMenuButtonListener(new backToMainMenuButtonListener());
-        this.gui.addAllCalculateCarLoanButtonListener(new calculateCarLoanButtonListener());
+        this.gui.addAllDisplayCarLoanSchemeButtonListener(new DisplayCarLoanSchemeButtonListener());
+        this.gui.addAllCalculateCarLoanInstallmentButtonListener(new CalculateCarLoanInstallmentButtonListener());
+        this.gui.addAllExitButtonListener(new ExitButtonListener());
+        this.gui.addAllBackToMainMenuButtonListener(new BackToMainMenuButtonListener());
+        this.gui.addAllCalculateCarLoanInstallmentReportButtonListener(new CalculateCarLoanInstallmentReportButtonListener());
     }
 
-    public class displayCarLoanSchemeButtonListener implements ActionListener {
+    public class DisplayCarLoanSchemeButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
@@ -32,7 +32,7 @@ public class Controller {
 
     }
 
-    public class calculateCarLoanInstallmentButtonListener implements ActionListener {
+    public class CalculateCarLoanInstallmentButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
@@ -40,7 +40,7 @@ public class Controller {
         }
     }
 
-    public class exitButtonListener implements ActionListener {
+    public class ExitButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
@@ -48,7 +48,7 @@ public class Controller {
         }
     }
 
-    public class backToMainMenuButtonListener implements ActionListener {
+    public class BackToMainMenuButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
@@ -56,7 +56,7 @@ public class Controller {
         }
     }
 
-    public class calculateCarLoanButtonListener implements ActionListener {
+    public class CalculateCarLoanInstallmentReportButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
