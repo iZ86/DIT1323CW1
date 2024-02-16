@@ -18,7 +18,7 @@ public class TempMain {
         Controller controller = new Controller(gui, carLoanSchemeModel, carLoanCalculationModel);
         gui.display();
     }
-    
+
     /** To test each individual Views. */
     public static void testIndividualView() {
         JFrame test = new JFrame();
@@ -63,8 +63,8 @@ public class TempMain {
         return clim.getCarLoanInstallmentCalculatorViewPanel();
     }
 
-    public static JPanel summaryReportViewPanel() {
-        SummaryReportView SRV = new SummaryReportView();
-        return SRV.getSummaryReportViewPanel();
+    public static JPanel loanInstallmentReportViewPanel() {
+        LoanInstallmentReportView LIRV = new LoanInstallmentReportView();
+        return LIRV.getLoanInstallmentReportViewPanel();
     }
 }
