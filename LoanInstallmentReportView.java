@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class LoanInstallmentReportView {
     /** JPanel that contains all the component in LoanInstallmentReportView. */
-    JPanel loanInstallmentReportViewPanel = new JPanel(new GridBagLayout());
+    private JPanel loanInstallmentReportViewPanel = new JPanel(new GridBagLayout());
     /** Type of car loaned. */
     private String carType;
     /** Loan data. */
@@ -18,7 +18,7 @@ public class LoanInstallmentReportView {
 
     /** Constructor to set up the loanInstallmentReportViewPanel. */
     public LoanInstallmentReportView() {
-        resetView();
+        setupLoanInstallmentReportViewPanel();
     }
 
     /** Return loanInstallmentReportViewPanel. */
@@ -57,11 +57,8 @@ public class LoanInstallmentReportView {
     }
 
 
-    /** Resets JPanel loanInstallmentReportView to contain all the necessary components. */
-    private void resetView() {
-
-        // Clear the view.
-        clearView();
+    /** Sets up JPanel loanInstallmentReportView to contain all the necessary components. */
+    private void setupLoanInstallmentReportViewPanel() {
 
         // Initialization.
         JPanel titlePanel = setupLoanInstallmentReportTitlePanel(); // Loan installment report title.
@@ -86,6 +83,16 @@ public class LoanInstallmentReportView {
         loanInstallmentReportViewPanel.add(titlePanel, constraintsForTitlePanel);
         loanInstallmentReportViewPanel.add(showLoanDataPanel, constraintsForShowLoanDataPanel);
         loanInstallmentReportViewPanel.add(buttonsPanel, constraintsForButtonsPanel);
+    }
+
+    /** Resets JPanel loanInstallmentReportView. */
+    public void resetView() {
+
+        // Clears the view.
+        clearView();
+
+        // Setup again.
+        setupLoanInstallmentReportViewPanel();
     }
 
     /** Clear every component in JPanel loanInstallmentReportView. */
