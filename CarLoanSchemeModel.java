@@ -10,7 +10,7 @@ public class CarLoanSchemeModel {
     private final String[][] carLoanTableData = {
             {"Imported",">300,000","2.35%"},
             {null,"100,000-300,000","2.55%"},
-            {null,"<100,000","2.55%"},
+            {null,"<100,000","2.75%"},
             {"Local",">100,000","3.0%"},
             {null,"50,000-100,000","3.1%"},
             {null,"<50,000","3.2%"},
