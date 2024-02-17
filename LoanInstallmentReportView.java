@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class LoanInstallmentReportView {
     /** JPanel that contains all the component in LoanInstallmentReportView. */
-    JPanel loanInstallmentReportViewPanel;
+    JPanel loanInstallmentReportViewPanel = new JPanel(new GridBagLayout());
     /** Type of car loaned. */
     private String carType;
     /** Loan data. */
@@ -18,7 +18,7 @@ public class LoanInstallmentReportView {
 
     /** Constructor to set up the loanInstallmentReportViewPanel. */
     public LoanInstallmentReportView() {
-        this.loanInstallmentReportViewPanel = setupLoanInstallmentReportViewPanel();
+        resetView();
     }
 
     /** Return loanInstallmentReportViewPanel. */
@@ -48,18 +48,22 @@ public class LoanInstallmentReportView {
         this.monthlyRepayment = monthlyRepayment;
         this.loanInsuranceStatus = loanInsuranceStatus;
 
+        // Reset the view.
+        resetView();
+
         // Updating the view.
         this.loanInstallmentReportViewPanel.revalidate();
         this.loanInstallmentReportViewPanel.repaint();
     }
 
-    /** Return a JPanel that contains all the necessary components needed,
-     * to set up LoanInstallmentReportView.
-     */
-    private JPanel setupLoanInstallmentReportViewPanel() {
+
+    /** Resets JPanel loanInstallmentReportView to contain all the necessary components. */
+    private void resetView() {
+
+        // Clear the view.
+        clearView();
 
         // Initialization.
-        JPanel viewPanel = new JPanel(new GridBagLayout());
         JPanel titlePanel = setupLoanInstallmentReportTitlePanel(); // Loan installment report title.
         JPanel showLoanDataPanel = setupShowLoanDataPanel(); // Loan data.
         JPanel buttonsPanel = setupLoanInstallmentReportButtonsPanel(); // Buttons in loan installment report view.
@@ -79,12 +83,14 @@ public class LoanInstallmentReportView {
         constraintsForButtonsPanel.insets = new Insets(100, 0, 0, 0); // Add gap above this component.
 
         // Add the JPanels to JPanel viewPanel with their configurations.
-        viewPanel.add(titlePanel, constraintsForTitlePanel);
-        viewPanel.add(showLoanDataPanel, constraintsForShowLoanDataPanel);
-        viewPanel.add(buttonsPanel, constraintsForButtonsPanel);
+        loanInstallmentReportViewPanel.add(titlePanel, constraintsForTitlePanel);
+        loanInstallmentReportViewPanel.add(showLoanDataPanel, constraintsForShowLoanDataPanel);
+        loanInstallmentReportViewPanel.add(buttonsPanel, constraintsForButtonsPanel);
+    }
 
-        // Return JPanel viewPanel.
-        return viewPanel;
+    /** Clear every component in JPanel loanInstallmentReportView. */
+    private void clearView() {
+        loanInstallmentReportViewPanel.removeAll();
     }
 
     /** Return a JPanel that contains the title of the LoanInstallmentReportView. */
