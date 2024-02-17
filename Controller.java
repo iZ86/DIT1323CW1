@@ -66,14 +66,52 @@ public class Controller {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
+
             // Initialization
             String carType;
             double loanTerm;
             double loanAmount;
+            double interestRate;
+            double outstandingLoanAmount;
+            double monthlyRepayment;
+            String loanInsuranceStatus;
             boolean loanInsurance;
 
+            // Try-catch for validating loanTerm and loanAmount.
+            try {
+                // Get the values from CarLoanInstallmentCalculatorView.
+                carType = gui.getCarLoanInstallmentCalculatorView().getSelectedCarType();
+                loanTerm = gui.getCarLoanInstallmentCalculatorView().getLoanTerm();
+                loanAmount = gui.getCarLoanInstallmentCalculatorView().getLoanAmount();
+                loanInsurance = gui.getCarLoanInstallmentCalculatorView().getLoanInsuranceCheckBoxChecked();
 
-            gui.changeView(GUI.loanInstallmentReportViewIndex);
+                // If loanTerm or loanAmount is lesser than or equal to 0, error.
+                if (loanTerm <= 0 || loanAmount <= 0) {
+                    throw new NumberFormatException();
+                }
+
+                // Calculate the loan installment.
+                carLoanCalculationModel.calculateLoan(carType, loanTerm, loanAmount, loanInsurance);
+
+                // Get the results from carLoanCalculationModel.
+                interestRate = carLoanCalculationModel.getInterestRate();
+                outstandingLoanAmount = carLoanCalculationModel.getOutstandingLoanAmount();
+                monthlyRepayment = carLoanCalculationModel.getMonthlyRepayment();
+                loanInsuranceStatus = carLoanCalculationModel.getLoanInsuranceStatus();
+
+                // Update LoanInstallmentReportView.
+                gui.getLoanInstallmentReportView().updateLoanInstallmentReportView(carType, loanTerm,
+                        loanAmount, interestRate, outstandingLoanAmount,
+                        monthlyRepayment, loanInsuranceStatus);
+
+                // Show LoanInstallmentReportView.
+                gui.changeView(GUI.loanInstallmentReportViewIndex);
+
+
+            } catch(NumberFormatException ex) {
+                System.out.print("test error");
+            }
+
         }
     }
 
