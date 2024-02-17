@@ -71,7 +71,7 @@ public class Controller {
             String carType;
             double loanTerm;
             double loanAmount;
-            double interestRate;
+            double interestRatePercentage;
             double outstandingLoanAmount;
             double monthlyRepayment;
             String loanInsuranceStatus;
@@ -79,29 +79,39 @@ public class Controller {
 
             // Try-catch for validating loanTerm and loanAmount.
             try {
+
                 // Get the values from CarLoanInstallmentCalculatorView.
                 carType = gui.getCarLoanInstallmentCalculatorView().getSelectedCarType();
                 loanTerm = gui.getCarLoanInstallmentCalculatorView().getLoanTerm();
                 loanAmount = gui.getCarLoanInstallmentCalculatorView().getLoanAmount();
                 loanInsurance = gui.getCarLoanInstallmentCalculatorView().getLoanInsuranceCheckBoxChecked();
 
+
                 // If loanTerm or loanAmount is lesser than or equal to 0, error.
                 if (loanTerm <= 0 || loanAmount <= 0) {
                     throw new NumberFormatException();
                 }
 
+                // Sets the carType, loanTerm, loanAmount and loanInsuranceStatus of carLoanCalculationModel.
+                carLoanCalculationModel.setCarType(carType);
+                carLoanCalculationModel.setLoanTerm(loanTerm);
+                carLoanCalculationModel.setLoanAmount(loanAmount);
+                carLoanCalculationModel.setLoanInsurance(loanInsurance);
+
                 // Calculate the loan installment.
-                carLoanCalculationModel.calculateLoan(carType, loanTerm, loanAmount, loanInsurance);
+                carLoanCalculationModel.calculateLoan();
 
                 // Get the results from carLoanCalculationModel.
-                interestRate = carLoanCalculationModel.getInterestRate();
+                interestRatePercentage = carLoanCalculationModel.getInterestRatePercentage();
                 outstandingLoanAmount = carLoanCalculationModel.getOutstandingLoanAmount();
                 monthlyRepayment = carLoanCalculationModel.getMonthlyRepayment();
-                loanInsuranceStatus = carLoanCalculationModel.getLoanInsuranceStatus();
+
+                // Convert the boolean loanInsurance to String loanInsuranceStatus
+                loanInsuranceStatus = getLoanInsuranceStatus(loanInsurance);
 
                 // Update LoanInstallmentReportView.
                 gui.getLoanInstallmentReportView().updateLoanInstallmentReportView(carType, loanTerm,
-                        loanAmount, interestRate, outstandingLoanAmount,
+                        loanAmount, interestRatePercentage, outstandingLoanAmount,
                         monthlyRepayment, loanInsuranceStatus);
 
                 // Show LoanInstallmentReportView.
@@ -113,6 +123,18 @@ public class Controller {
             }
 
         }
+    }
+
+    /** Return the loan insurance status. */
+    private String getLoanInsuranceStatus(boolean loanInsurance) {
+
+        String loanInsuranceStatus = "Not insured";
+
+        if (loanInsurance) {
+            loanInsuranceStatus = "Insured";
+        }
+
+        return loanInsuranceStatus;
     }
 
 
