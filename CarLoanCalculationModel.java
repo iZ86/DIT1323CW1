@@ -28,7 +28,7 @@ public class CarLoanCalculationModel {
         interestRatePercentage = findInterestRatePercentage(carType, loanAmount);
 
         // Calculate the outstanding loan amount and round it up to two decimal points.
-        outstandingLoanAmount = calculateOutstandingLoanAmount(loanAmount, loanTerm, interestRatePercentage, loanInsurance);
+        outstandingLoanAmount = calculateOutstandingLoanAmount(loanTerm, loanAmount, interestRatePercentage, loanInsurance);
         outstandingLoanAmount = roundUpTwoDecimal(outstandingLoanAmount);
 
 
@@ -47,7 +47,7 @@ public class CarLoanCalculationModel {
 
             if (loanAmount > 300000) {
                 interestRatePercentage = 2.35;
-            } else if (loanAmount > 100000) {
+            } else if (loanAmount >= 100000) {
                 interestRatePercentage = 2.55;
             } else {
                 interestRatePercentage = 2.75;
@@ -56,7 +56,7 @@ public class CarLoanCalculationModel {
         } else if (carType.equals("Local")) {
             if (loanAmount > 100000) {
                 interestRatePercentage = 3;
-            } else if (loanAmount > 50000) {
+            } else if (loanAmount >= 50000) {
                 interestRatePercentage = 3.1;
             } else {
                 interestRatePercentage = 3.2;
