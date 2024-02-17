@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -119,7 +120,9 @@ public class Controller {
 
 
             } catch(NumberFormatException ex) {
-                System.out.print("test error");
+                // Error Window
+                JOptionPane.showMessageDialog(new JFrame(), "You must enter a valid loan term and loan amount.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
 
         }
