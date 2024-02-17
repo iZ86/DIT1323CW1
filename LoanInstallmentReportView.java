@@ -86,7 +86,7 @@ public class LoanInstallmentReportView {
     }
 
     /** Resets JPanel loanInstallmentReportView. */
-    public void resetView() {
+    private void resetView() {
 
         // Clears the view.
         clearView();
