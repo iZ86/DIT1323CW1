@@ -28,6 +28,7 @@ public class MainMenuView {
         return mainMenuViewPanel;
     }
 
+    // TODO: Specify the name of the comments for the three addListener methods.
     /** Adds an ActionListener to JButton displayCarLoanSchemeButton. */
     public void addDisplayCarLoanSchemeButtonListener(ActionListener listenForDisplayCarLoanSchemeButton) {
         displayCarLoanSchemeButton.addActionListener(listenForDisplayCarLoanSchemeButton);
@@ -36,6 +37,11 @@ public class MainMenuView {
     /** Adds an ActionListener to JButton calculateCarLoanInstallmentButton. */
     public void addCalculateCarLoanInstallmentButtonListener(ActionListener listenForCalculateCarLoanInstallmentButton) {
         calculateCarLoanInstallmentButton.addActionListener(listenForCalculateCarLoanInstallmentButton);
+    }
+
+    /** Adds an ActionListener to JButton generateSummaryReportButton. */
+    public void addGenerateSummaryReportButtonListener(ActionListener listenForGenerateSummaryReportButton) {
+        generateSummaryReportButton.addActionListener(listenForGenerateSummaryReportButton);
     }
 
     /** Adds an ActionListener to JButton exitButton. */
