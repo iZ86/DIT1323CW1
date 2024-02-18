@@ -22,19 +22,19 @@ public class SummaryReportView {
         return summaryReportViewPanel;
     }
 
-    /** Add ActionListener listenForBackToMainMenuButton to JButton backToMainMenuButton. */
-    public void addBackToMainMenuButtonListener(ActionListener listenForBackToMainMenuButton) {
-        backToMainMenuButton.addActionListener(listenForBackToMainMenuButton);
-    }
-
-    /** Reset JPanel summaryReportViewPanel. */
-    public void resetView() {
+    /** update JPanel summaryReportViewPanel. */
+    public void updateView() {
 
         // Clear the view by removing all components.
         clearView();
 
-        // Setup again.
+        // Set up JPanel summaryReportViewPanel again.
         setupSummaryReportView();
+    }
+
+    /** Add ActionListener listenForBackToMainMenuButton to JButton backToMainMenuButton. */
+    public void addBackToMainMenuButtonListener(ActionListener listenForBackToMainMenuButton) {
+        backToMainMenuButton.addActionListener(listenForBackToMainMenuButton);
     }
 
     /** Clear view by removing every component in JPanel summaryReportViewPanel. */
@@ -141,7 +141,7 @@ public class SummaryReportView {
         // Setting up configuration for JLabel totalLoanAmountOfCarLoanTransactionLabel.
         GridBagConstraints constraintsForTotalLoanAmountOfCarLoanTransactionLabel = new GridBagConstraints();
         constraintsForTotalLoanAmountOfCarLoanTransactionLabel.gridy = 3; // Position is fourth in Y order.
-        constraintsForTotalLoanAmountOfCarLoanTransactionLabel.anchor = GridBagConstraints.LINE_START;
+        constraintsForTotalLoanAmountOfCarLoanTransactionLabel.anchor = GridBagConstraints.LINE_START; // Placed at the left side.
 
         // Configuring JTable carLoanTransactionTable.
         configureCarLoanTransactionTable(carLoanTransactionTable);
@@ -164,26 +164,26 @@ public class SummaryReportView {
         carLoanTransactionTable.setPreferredScrollableViewportSize(new Dimension(400, 32)); // Setting size of table.
     }
 
-    /** Return JPanel buttonsPanel, after setting it up. */
+    /** Return JPanel summaryReportButtonsPanel, after setting it up. */
     private JPanel setupSummaryReportButtonsPanel() {
 
         // Initialization.
-        JPanel buttonsPanel = new JPanel(new GridBagLayout());
-        int widthOfButton = 10;
-        int heightOfButton = 7;
+        JPanel summaryReportButtonsPanel = new JPanel(new GridBagLayout());
+        int horizontalSizeOfButton = 10;
+        int verticalSizeOfButton = 7;
 
 
         // Configuration for JButton backToMainMenuButton.
         GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
         constraintsForBackToMainMenuButton.gridy = 0; // Position is first in Y order.
-        constraintsForBackToMainMenuButton.ipadx = widthOfButton; // Adjust width.
-        constraintsForBackToMainMenuButton.ipady = heightOfButton; // Adjust height.
+        constraintsForBackToMainMenuButton.ipadx = horizontalSizeOfButton; // Adjust horizontal size.
+        constraintsForBackToMainMenuButton.ipady = verticalSizeOfButton; // Adjust vertical size.
 
-        // Add JButton backToMainMenuButton to JPanel buttonsPanel with its configuration.
-        buttonsPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
+        // Add JButton backToMainMenuButton to JPanel summaryReportButtonsPanel with its configuration.
+        summaryReportButtonsPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
 
-        // Return JPanel buttonsPanel.
-        return buttonsPanel;
+        // Return JPanel summaryReportButtonsPanel.
+        return summaryReportButtonsPanel;
     }
 
 }
