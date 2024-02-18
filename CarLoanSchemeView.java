@@ -71,7 +71,7 @@ public class CarLoanSchemeView {
     private JScrollPane setupCarLoanSchemeTablePane(Object[][] tableData, String[] columnNames) {
 
         // Initialization
-        JTable carLoanSchemeTable = new JTable(new CarLoanSchemeTableModel(tableData, columnNames));
+        JTable carLoanSchemeTable = new JTable(new CarLoanTableModel(tableData, columnNames));
 
         // Configuring JTable carLoanSchemeTable.
         carLoanSchemeTable.setFocusable(false);
