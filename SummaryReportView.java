@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-// TODO: Logic connect with controller
+
 public class SummaryReportView {
     /** Summary Report View. */
     private JPanel summaryReportViewPanel = new JPanel(new GridBagLayout());
@@ -97,85 +97,60 @@ public class SummaryReportView {
     /** Return JPanel importedCarLoanTransactionTablePanel, after setting it up. */
     private JPanel setupImportedCarLoanTransactionTablePanel() {
 
-        // Initialization
-        JPanel importedCarLoanTransactionTablePanel = new JPanel(new GridBagLayout());
-        JLabel importedCarLoanTransactionTableLabel = new JLabel("Imported Car");
-        JTable importedCarLoanTransactionTable = new JTable(new CarLoanTableModel(summaryReportModel.getTableDataForImportedCarLoanTransaction(),
-                summaryReportModel.getCarLoanTransactionDataTableColumn()));
-        JScrollPane importedCarLoanTransactionTablePane = new JScrollPane(importedCarLoanTransactionTable);
-
-        // Setting up configuration for JLabel importedCarLoanTransactionTableLabel.
-        GridBagConstraints constraintsForImportedCarLoanTransactionTableLabel = new GridBagConstraints();
-        constraintsForImportedCarLoanTransactionTableLabel.gridy = 0; // Position is first in Y order.
-
-        // Setting up configuration for JScrollPane importedCarLoanTransactionTablePane.
-        GridBagConstraints constraintsForImportedCarLoanTransactionTablePane = new GridBagConstraints();
-        constraintsForImportedCarLoanTransactionTablePane.gridy = 1; // Position is second in Y order.
-
-        // Configuring JTable importedCarLoanTransactionTable.
-        configureCarLoanTransactionTable(importedCarLoanTransactionTable);
-
-        // Add the components to JPanel importedCarLoanTransactionTablePanel with their configurations.
-        importedCarLoanTransactionTablePanel.add(importedCarLoanTransactionTableLabel, constraintsForImportedCarLoanTransactionTableLabel);
-        importedCarLoanTransactionTablePanel.add(importedCarLoanTransactionTablePane, constraintsForImportedCarLoanTransactionTablePane);
-
-        // Return JPanel importedCarLoanTransactionTablePanel.
-        return importedCarLoanTransactionTablePanel;
+        return setupCarLoanTransactionTablePanel("Imported car", summaryReportModel.getTotalNumberOfCarLoanTransactionForImportedCar(),
+                summaryReportModel.getTableDataForImportedCarLoanTransaction(),
+                summaryReportModel.getTableColumnForCarLoanTransaction(),
+                summaryReportModel.getTotalLoanAmountOfCarLoanTransactionForImportedCar());
     }
 
     /** Return JPanel localCarLoanTransactionTablePanel, after setting it up. */
     private JPanel setupLocalCarLoanTransactionTablePanel() {
 
-        // Initialization
-        JPanel localCarLoanTransactionTablePanel = new JPanel(new GridBagLayout());
-        JLabel localCarLoanTransactionTableLabel = new JLabel("Local Car");
-        JTable localCarLoanTransactionTable = new JTable(new CarLoanTableModel(summaryReportModel.getTableDataForLocalCarLoanTransaction(),
-                summaryReportModel.getCarLoanTransactionDataTableColumn()));
-        JScrollPane localCarLoanTransactionTablePane = new JScrollPane(localCarLoanTransactionTable);
-
-        // Setting up configuration for JLabel localCarLoanTransactionTableLabel.
-        GridBagConstraints constraintsForLocalCarLoanTransactionTableLabel = new GridBagConstraints();
-        constraintsForLocalCarLoanTransactionTableLabel.gridy = 0; // Position is first in Y order.
-
-        // Setting up configuration for JScrollPane localCarLoanTransactionTablePane.
-        GridBagConstraints constraintsForLocalCarLoanTransactionTablePane = new GridBagConstraints();
-        constraintsForLocalCarLoanTransactionTablePane.gridy = 1; // Position is second in Y order.
-
-        // Configuring JTable localCarLoanTransactionTable.
-        configureCarLoanTransactionTable(localCarLoanTransactionTable);
-
-        // Add the components to JPanel localCarLoanTransactionTablePanel with their configurations.
-        localCarLoanTransactionTablePanel.add(localCarLoanTransactionTableLabel, constraintsForLocalCarLoanTransactionTableLabel);
-        localCarLoanTransactionTablePanel.add(localCarLoanTransactionTablePane, constraintsForLocalCarLoanTransactionTablePane);
-
-        // Return JPanel localCarLoanTransactionTablePanel.
-        return localCarLoanTransactionTablePanel;
+        return setupCarLoanTransactionTablePanel("Local car", summaryReportModel.getTotalNumberOfCarLoanTransactionForLocalCar(),
+                summaryReportModel.getTableDataForLocalCarLoanTransaction(),
+                summaryReportModel.getTableColumnForCarLoanTransaction(),
+                summaryReportModel.getTotalLoanAmountOfCarLoanTransactionForLocalCar());
     }
 
-    /** Return JPanel carLoanTransactionTablePanel, after setting it up. */
-    private JPanel setupCarLoanTransactionTablePanel(String carLoanTransactionTableLabel, Object[][] carLoanTransactionTableData, String[] carLoanTransactionTableColumn) {
+    /** Return JPanel carLoanTransactionTablePanel, after setting it up with the given data. */
+    private JPanel setupCarLoanTransactionTablePanel(String carType,  int totalNumberOfCarLoanTransaction, Object[][] carLoanTransactionTableData, String[] carLoanTransactionTableColumn, int totalLoanAmountOfCarLoanTransaction) {
 
         // Initialization
         JPanel carLoanTransactionTablePanel = new JPanel(new GridBagLayout());
-        JLabel _carLoanTransactionTableLabel = new JLabel(carLoanTransactionTableLabel);
+        JLabel _carLoanTransactionTableLabel = new JLabel(carType);
+        JLabel totalNumberOfCarLoanTransactionLabel = new JLabel("Total Number of Car Loan Transaction: " + totalNumberOfCarLoanTransaction);
         JTable carLoanTransactionTable = new JTable(new CarLoanTableModel(carLoanTransactionTableData,
                 carLoanTransactionTableColumn));
         JScrollPane carLoanTransactionTablePane = new JScrollPane(carLoanTransactionTable);
+        JLabel totalLoanAmountOfCarLoanTransactionLabel = new JLabel("Total Loan Amount:" + totalLoanAmountOfCarLoanTransaction);
 
         // Setting up configuration for JLabel _carLoanTransactionTableLabel.
         GridBagConstraints constraintsForCarLoanTransactionTableLabel = new GridBagConstraints();
         constraintsForCarLoanTransactionTableLabel.gridy = 0; // Position is first in Y order.
+        constraintsForCarLoanTransactionTableLabel.anchor = GridBagConstraints.LINE_START; // Placed at left side.
+
+        // Setting up configuration for JLabel totalNumberOfCarLoanTransactionLabel.
+        GridBagConstraints constraintsForTotalNumberOfCarLoanTransactionLabel = new GridBagConstraints();
+        constraintsForTotalNumberOfCarLoanTransactionLabel.gridy = 1; // Position is second in Y order.
+        constraintsForTotalNumberOfCarLoanTransactionLabel.anchor = GridBagConstraints.LINE_START; // Placed at left side.
 
         // Setting up configuration for JScrollPane carLoanTransactionTablePane.
         GridBagConstraints constraintsForCarLoanTransactionTablePane = new GridBagConstraints();
-        constraintsForCarLoanTransactionTablePane.gridy = 1; // Position is second in Y order.
+        constraintsForCarLoanTransactionTablePane.gridy = 2; // Position is third in Y order.
+
+        // Setting up configuration for JLabel totalLoanAmountOfCarLoanTransactionLabel.
+        GridBagConstraints constraintsForTotalLoanAmountOfCarLoanTransactionLabel = new GridBagConstraints();
+        constraintsForTotalLoanAmountOfCarLoanTransactionLabel.gridy = 3; // Position is fourth in Y order.
+        constraintsForTotalLoanAmountOfCarLoanTransactionLabel.anchor = GridBagConstraints.LINE_START;
 
         // Configuring JTable carLoanTransactionTable.
         configureCarLoanTransactionTable(carLoanTransactionTable);
 
         // Add the components to JPanel carLoanTransactionTablePanel with their configurations.
         carLoanTransactionTablePanel.add(_carLoanTransactionTableLabel, constraintsForCarLoanTransactionTableLabel);
+        carLoanTransactionTablePanel.add(totalNumberOfCarLoanTransactionLabel, constraintsForTotalNumberOfCarLoanTransactionLabel);
         carLoanTransactionTablePanel.add(carLoanTransactionTablePane, constraintsForCarLoanTransactionTablePane);
+        carLoanTransactionTablePanel.add(totalLoanAmountOfCarLoanTransactionLabel, constraintsForTotalLoanAmountOfCarLoanTransactionLabel);
 
         // Return JPanel carLoanTransactionTablePanel.
         return carLoanTransactionTablePanel;
