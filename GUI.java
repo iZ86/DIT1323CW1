@@ -18,6 +18,8 @@ public class GUI {
     private CarLoanInstallmentCalculatorView carLoanInstallmentCalculatorView;
     /** Loan Installment Report View. */
     private LoanInstallmentReportView loanInstallmentReportView;
+    /** Summary Report View. */
+    private SummaryReportView summaryReportView;
     /** Index used to access Main Menu View in JPanel GUIPanel. */
     public static final String mainMenuViewIndex = "MainMenuView";
     /** Index used to access Car Loan Scheme View in JPanel GUIPanel. */
@@ -26,17 +28,20 @@ public class GUI {
     public static final String carLoanInstallmentCalculatorViewIndex = "CarLoanInstallmentCalculatorView";
     /** Index used to access Loan Installment Report View in JPanel GUIPanel. */
     public static final String loanInstallmentReportViewIndex = "LoanInstallmentReportView";
+    /** Index used to access Summary Report View in JPanel GUIPanel. */
+    public static final String summaryReportViewIndex = "SummaryReportView";
 
 
     /** A new JFrame with all the view classes. */
-    public GUI() {
+    public GUI(CarLoanSchemeModel carLoanSchemeModel, SummaryReportModel summaryReportModel) {
 
         GUI = new JFrame("Kawaguchi Bank Car Loan Application");
         GUIPanel = new JPanel(new CardLayout());
         mainMenuView = new MainMenuView();
-        carLoanSchemeView = new CarLoanSchemeView();
+        carLoanSchemeView = new CarLoanSchemeView(carLoanSchemeModel);
         carLoanInstallmentCalculatorView = new CarLoanInstallmentCalculatorView();
         loanInstallmentReportView = new LoanInstallmentReportView();
+        summaryReportView = new SummaryReportView(summaryReportModel);
 
         setupGUI();
 
@@ -53,6 +58,7 @@ public class GUI {
         GUIPanel.add(carLoanInstallmentCalculatorView.getCarLoanInstallmentCalculatorViewPanel(),
                 carLoanInstallmentCalculatorViewIndex);
         GUIPanel.add(loanInstallmentReportView.getLoanInstallmentReportViewPanel(), loanInstallmentReportViewIndex);
+        GUIPanel.add(summaryReportView.getSummaryReportViewPanel(), summaryReportViewIndex);
     }
 
     /** Displays the GUI. */
@@ -90,7 +96,12 @@ public class GUI {
     public LoanInstallmentReportView getLoanInstallmentReportView() {
         return loanInstallmentReportView;
     }
-    
+
+    /** Return JPanel summaryReportView. */
+    public SummaryReportView getSummaryReportView() {
+        return summaryReportView;
+    }
+
     /** Add ActionListener listenForAllDisplayCarLoanSchemeButton to all JButton displayCarLoanSchemeButton. */
     public void addAllDisplayCarLoanSchemeButtonListener(ActionListener listenForAllDisplayCarLoanSchemeButton) {
         mainMenuView.addDisplayCarLoanSchemeButtonListener(listenForAllDisplayCarLoanSchemeButton);
@@ -103,6 +114,11 @@ public class GUI {
         loanInstallmentReportView.addCalculateCarLoanInstallmentButtonListener(listenForAllCalculateCarLoanInstallmentButton);
     }
 
+    /** Add ActionListener listenForAllGenerateSummaryReportButton to all JButton generateSummaryReportButton. */
+    public void addAllGenerateSummaryReportButtonListener(ActionListener listenForAllGenerateSummaryReportButton) {
+        mainMenuView.addGenerateSummaryReportButtonListener(listenForAllGenerateSummaryReportButton);
+    }
+
     /** Add ActionListener listenForAllExitButton to all JButton exitButton. */
     public void addAllExitButtonListener(ActionListener listenForAllExitButton) {
         mainMenuView.addExitButtonListener(listenForAllExitButton);
@@ -113,6 +129,7 @@ public class GUI {
         carLoanSchemeView.addBackToMainMenuButtonListener(listenForAllBackToMainMenuButton);
         carLoanInstallmentCalculatorView.addBackToMainMenuButtonListener(listenForAllBackToMainMenuButton);
         loanInstallmentReportView.addBackToMainMenuButtonListener(listenForAllBackToMainMenuButton);
+        summaryReportView.addBackToMainMenuButtonListener(listenForAllBackToMainMenuButton);
     }
 
     /** Add ActionListener listenForAllCalculateCarLoanInstallmentReportButtonButton to all JButton calculateCarLoanInstallmentReportButton. */
