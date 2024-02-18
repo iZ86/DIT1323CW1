@@ -21,7 +21,7 @@ public class LoanInstallmentReportView {
         setupLoanInstallmentReportViewPanel();
     }
 
-    /** Return loanInstallmentReportViewPanel. */
+    /** Return JPanel loanInstallmentReportViewPanel. */
     public JPanel getLoanInstallmentReportViewPanel() {
         return loanInstallmentReportViewPanel;
     }
@@ -57,7 +57,7 @@ public class LoanInstallmentReportView {
     }
 
 
-    /** Sets up JPanel loanInstallmentReportView to contain all the necessary components. */
+    /** Set up JPanel loanInstallmentReportView. */
     private void setupLoanInstallmentReportViewPanel() {
 
         // Initialization.
@@ -88,14 +88,14 @@ public class LoanInstallmentReportView {
     /** Resets JPanel loanInstallmentReportView. */
     private void resetView() {
 
-        // Clears the view.
+        // Clears the view by removing all components.
         clearView();
 
         // Setup again.
         setupLoanInstallmentReportViewPanel();
     }
 
-    /** Clear every component in JPanel loanInstallmentReportView. */
+    /** Clear view by removing every component in JPanel loanInstallmentReportView. */
     private void clearView() {
         loanInstallmentReportViewPanel.removeAll();
     }
