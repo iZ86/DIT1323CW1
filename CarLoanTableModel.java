@@ -1,15 +1,16 @@
 import javax.swing.table.AbstractTableModel;
 
-public class CarLoanSchemeTableModel extends AbstractTableModel {
+public class CarLoanTableModel extends AbstractTableModel {
 
     private final Object[][] data;
     private final String[] columnNames;
 
-    public CarLoanSchemeTableModel(Object[][] data, String[] columnNames) {
+    public CarLoanTableModel(Object[][] data, String[] columnNames) {
         super();
         this.data = data;
         this.columnNames = columnNames;
     }
+
     @Override
     public int getRowCount() {
         return data.length;
@@ -29,6 +30,7 @@ public class CarLoanSchemeTableModel extends AbstractTableModel {
     public String getColumnName(int columnIndex) {
         return columnNames[columnIndex];
     }
+
     /** Makes all the cell uneditable. */
     @Override
     public boolean isCellEditable(int row, int col) {
