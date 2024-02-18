@@ -1,12 +1,16 @@
 
 
 public class SummaryReportModel {
-    /** Total number of loan transactions for imported cars. */
+    /** Total number of car loan transactions for imported cars. */
     private int totalNumberOfCarLoanTransactionForImportedCar;
-    /** Total number of loan transactions for local cars. */
+    /** Total number of car loan transactions for local cars. */
     private int totalNumberOfCarLoanTransactionForLocalCar;
+    /** Total loan amount of car loan transaction for imported cars. */
+    private int totalLoanAmountOfCarLoanTransactionForImportedCar;
+    /** Total loan amount of car loan transaction for local cars. */
+    private int totalLoanAmountOfCarLoanTransactionForLocalCar;
     /** Column for local and imported car loan transaction table. */
-    private String[] carLoanTransactionDataTableColumn = {"Total transaction", "Loan Insurance Status", "Amount"};
+    private String[] tableColumnForCarLoanTransaction = {"Total transaction", "Loan Insurance Status", "Amount"};
     // TODO: maybe put it in a function?
     /** The car loan transaction data for imported car transaction loan table. */
     private String[][] tableDataForImportedCarLoanTransaction = {
@@ -23,6 +27,8 @@ public class SummaryReportModel {
     public SummaryReportModel() {
         totalNumberOfCarLoanTransactionForImportedCar = 0;
         totalNumberOfCarLoanTransactionForLocalCar = 0;
+        totalLoanAmountOfCarLoanTransactionForImportedCar = 0;
+        totalLoanAmountOfCarLoanTransactionForLocalCar = 0;
     }
 
     /** Return int totalNumberOfCarLoanTransactionForImportedCar. */
@@ -45,10 +51,29 @@ public class SummaryReportModel {
         this.totalNumberOfCarLoanTransactionForLocalCar = totalNumberOfCarLoanTransactionForLocalCar;
     }
 
-    // TODO: Might change.
-    /** Return String[] carLoanTransactionDataTableColumn. */
-    public String[] getCarLoanTransactionDataTableColumn() {
-        return carLoanTransactionDataTableColumn;
+    /** Return int totalLoanAmountOfCarLoanTransactionForImportedCar. */
+    public int getTotalLoanAmountOfCarLoanTransactionForImportedCar() {
+        return totalLoanAmountOfCarLoanTransactionForImportedCar;
+    }
+
+    /** Set new int totalLoanAmountOfCarLoanTransactionForImportedCar. */
+    public void setTotalLoanAmountOfCarLoanTransactionForImportedCar(int totalLoanAmountOfCarLoanTransactionForImportedCar) {
+        this.totalLoanAmountOfCarLoanTransactionForImportedCar = totalLoanAmountOfCarLoanTransactionForImportedCar;
+    }
+
+    /** Return int totalLoanAmountOfCarLoanTransactionForLocalCar. */
+    public int getTotalLoanAmountOfCarLoanTransactionForLocalCar() {
+        return totalLoanAmountOfCarLoanTransactionForLocalCar;
+    }
+
+    /** Set new int totalLoanAmountOfCarLoanTransactionForLocalCar. */
+    public void setTotalLoanAmountOfCarLoanTransactionForLocalCar(int totalLoanAmountOfCarLoanTransactionForLocalCar) {
+        this.totalLoanAmountOfCarLoanTransactionForLocalCar = totalLoanAmountOfCarLoanTransactionForLocalCar;
+    }
+
+    /** Return String[] tableColumnForCarLoanTransaction. */
+    public String[] getTableColumnForCarLoanTransaction() {
+        return tableColumnForCarLoanTransaction;
     }
 
     /** Return String[][] tableDataForImportedCarLoanTransaction. */
