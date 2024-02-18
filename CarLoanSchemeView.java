@@ -96,7 +96,7 @@ public class CarLoanSchemeView {
         return carLoanSchemeTablePanel;
     }
 
-    /** Return JPanel buttonsPanel, after setting it up. */
+    /** Return JPanel carLoanSchemeButtonsPanel, after setting it up. */
     private JPanel setupCarLoanSchemeButtonsPanel() {
 
         // Initialization.
@@ -109,8 +109,8 @@ public class CarLoanSchemeView {
         GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
         constraintsForBackToMainMenuButton.gridx = 0; // Position is first in X order.
         constraintsForBackToMainMenuButton.ipadx = horizontalSizeOfButton; // Adjust horizontal size.
-        constraintsForBackToMainMenuButton.ipady = verticalSizeOfButton; // Adjust vertical size
-        constraintsForBackToMainMenuButton.insets = new Insets(0, 0, 0, gapXBetweenButtons); // Gap on the right side of button.
+        constraintsForBackToMainMenuButton.ipady = verticalSizeOfButton; // Adjust vertical size.
+        constraintsForBackToMainMenuButton.insets = new Insets(0, 0, 0, gapXBetweenButtons); // Add gap to the right.
 
         // Setting up configuration for JButton calculateCarLoanInstallmentButton.
         GridBagConstraints constraintsForCalculateCarLoanInstallmentButton = new GridBagConstraints();
@@ -118,7 +118,7 @@ public class CarLoanSchemeView {
         constraintsForCalculateCarLoanInstallmentButton.ipadx = horizontalSizeOfButton; // Adjust horizontal size.
         constraintsForCalculateCarLoanInstallmentButton.fill = GridBagConstraints.VERTICAL; // Vertical size of button is the same as the first button in X order.
 
-        // Add the JButtons to JPanel carLoanSchemeButtonsPanel with their configuration.
+        // Add the JButtons to JPanel carLoanSchemeButtonsPanel with their configurations.
         carLoanSchemeButtonsPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
         carLoanSchemeButtonsPanel.add(calculateCarLoanInstallmentButton,
                 constraintsForCalculateCarLoanInstallmentButton);
