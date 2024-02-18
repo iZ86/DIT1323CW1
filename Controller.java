@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// TODO: Logic between model and comments
+// TODO: Logic between model and comments for summary report.
 
 public class Controller {
     GUI gui;
@@ -18,22 +18,18 @@ public class Controller {
         this.carLoanCalculationModel = carLoanCalculationModel;
         this.gui.addAllDisplayCarLoanSchemeButtonListener(new DisplayCarLoanSchemeButtonListener());
         this.gui.addAllCalculateCarLoanInstallmentButtonListener(new CalculateCarLoanInstallmentButtonListener());
+        this.gui.addAllGenerateSummaryReportButtonListener(new GenerateSummaryReportButtonListener());
         this.gui.addAllExitButtonListener(new ExitButtonListener());
         this.gui.addAllBackToMainMenuButtonListener(new BackToMainMenuButtonListener());
         this.gui.addAllCalculateCarLoanInstallmentReportButtonListener(new CalculateCarLoanInstallmentReportButtonListener());
-        setupCarLoanSchemeViewTable();
     }
 
-    private void setupCarLoanSchemeViewTable() {
-        String[] carLoanTableDataColumn = carLoanSchemeModel.getCarLoanTableDataColumn();
-        String[][] carLoanTableData = carLoanSchemeModel.getCarLoanTableData();
-        gui.getCarLoanSchemeView().setCarLoanSchemeTable(carLoanTableData, carLoanTableDataColumn);
-    }
 
     public class DisplayCarLoanSchemeButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
+            gui.getCarLoanSchemeView().updateView();
             gui.changeView(GUI.carLoanSchemeViewIndex);
         }
 
@@ -45,6 +41,16 @@ public class Controller {
         public void actionPerformed(ActionEvent arg0) {
             gui.changeView(GUI.carLoanInstallmentCalculatorViewIndex);
         }
+    }
+
+    public class GenerateSummaryReportButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            gui.getSummaryReportView().updateView();
+            gui.changeView(GUI.summaryReportViewIndex);
+        }
+
     }
 
     public class ExitButtonListener implements ActionListener {
