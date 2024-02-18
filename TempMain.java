@@ -12,9 +12,11 @@ public class TempMain {
 
     /** To test the whole program. */
     public static void testProgram() {
-        GUI gui = new GUI();
+
         CarLoanSchemeModel carLoanSchemeModel = new CarLoanSchemeModel();
         CarLoanCalculationModel carLoanCalculationModel = new CarLoanCalculationModel();
+        SummaryReportModel summaryReportModel = new SummaryReportModel();
+        GUI gui = new GUI(carLoanSchemeModel, summaryReportModel);
         Controller controller = new Controller(gui, carLoanSchemeModel, carLoanCalculationModel);
         gui.display();
     }
@@ -24,7 +26,7 @@ public class TempMain {
         JFrame test = new JFrame();
 
         // Change the method to get the different view Panels.
-        test.add(mainMenuViewPanel());
+        test.add(summaryReportViewPanel());
 
         test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         test.setSize(new Dimension(700, 500));
@@ -44,17 +46,8 @@ public class TempMain {
      * For testing purposes
      */
     public static JPanel carLoanSchemeViewPanel() {
-        Object loans[][] = {
-                {"Imported",">300,000","2.35%"},
-                {null,"100,000-300,000","2.55%"},
-                {null,"<100,000","2.55%"},
-                {"Local",">100,000","3.0%"},
-                {null,"50,000-100,000","3.1%"},
-                {null,"<50,000","3.2%"},
-        };
-        String column[]= {"Car Type","Loan Amount (RM)","Interest Rate (%)"};
-        CarLoanSchemeView carLoanSchemeView = new CarLoanSchemeView();
-        carLoanSchemeView.setCarLoanSchemeTable(loans, column);
+        CarLoanSchemeModel carLoanSchemeModel = new CarLoanSchemeModel();
+        CarLoanSchemeView carLoanSchemeView = new CarLoanSchemeView(carLoanSchemeModel);
         return carLoanSchemeView.getCarLoanSchemeViewPanel();
     }
 
@@ -66,5 +59,12 @@ public class TempMain {
     public static JPanel loanInstallmentReportViewPanel() {
         LoanInstallmentReportView LIRV = new LoanInstallmentReportView();
         return LIRV.getLoanInstallmentReportViewPanel();
+    }
+
+    public static JPanel summaryReportViewPanel() {
+        SummaryReportModel summaryReportModel = new SummaryReportModel();
+        SummaryReportView summaryReportViewPanel = new SummaryReportView(summaryReportModel);
+        return summaryReportViewPanel.getSummaryReportViewPanel();
+
     }
 }
