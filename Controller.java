@@ -44,7 +44,7 @@ public class Controller {
             gui.getCarLoanSchemeView().updateView();
 
             // Change the view to CarLoanSchemeView.
-            gui.changeView(GUI.carLoanSchemeViewIndex);
+            gui.changeView(GUI.CARLOANSCHEMEVIEWINDEX);
         }
 
     }
@@ -61,7 +61,7 @@ public class Controller {
             gui.getCarLoanInstallmentCalculatorView().setDefaultValue();
 
             // Change the view to CarLoanInstallmentCalculatorView.
-            gui.changeView(GUI.carLoanInstallmentCalculatorViewIndex);
+            gui.changeView(GUI.CARLOANINSTALLMENTCALCULATORVIEWINDEX);
         }
     }
 
@@ -77,7 +77,7 @@ public class Controller {
             gui.getSummaryReportView().updateView();
 
             // Change the view to SummaryReportView.
-            gui.changeView(GUI.summaryReportViewIndex);
+            gui.changeView(GUI.SUMMARYREPORTVIEWINDEX);
         }
 
     }
@@ -102,7 +102,7 @@ public class Controller {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            gui.changeView(GUI.mainMenuViewIndex);
+            gui.changeView(GUI.MAINMENUVIEWINDEX);
         }
     }
 
@@ -156,7 +156,7 @@ public class Controller {
                 gui.getLoanInstallmentReportView().updateView();
 
                 // Show LoanInstallmentReportView.
-                gui.changeView(GUI.loanInstallmentReportViewIndex);
+                gui.changeView(GUI.LOANINSTALLMENTREPORTVIEWINDEX);
 
 
             } catch (NumberFormatException ex) {
