@@ -19,15 +19,15 @@ public class GUI {
     /** Summary Report View. */
     private final SummaryReportView summaryReportView;
     /** Index used to access Main Menu View in JPanel GUIPanel. */
-    public static final String mainMenuViewIndex = "MainMenuView";
+    public static final String MAINMENUVIEWINDEX = "MainMenuView";
     /** Index used to access Car Loan Scheme View in JPanel GUIPanel. */
-    public static final String carLoanSchemeViewIndex = "CarLoanSchemeView";
+    public static final String CARLOANSCHEMEVIEWINDEX = "CarLoanSchemeView";
     /** Index used to access Car Loan Installment Calculator View in JPanel GUIPanel. */
-    public static final String carLoanInstallmentCalculatorViewIndex = "CarLoanInstallmentCalculatorView";
+    public static final String CARLOANINSTALLMENTCALCULATORVIEWINDEX = "CarLoanInstallmentCalculatorView";
     /** Index used to access Loan Installment Report View in JPanel GUIPanel. */
-    public static final String loanInstallmentReportViewIndex = "LoanInstallmentReportView";
+    public static final String LOANINSTALLMENTREPORTVIEWINDEX = "LoanInstallmentReportView";
     /** Index used to access Summary Report View in JPanel GUIPanel. */
-    public static final String summaryReportViewIndex = "SummaryReportView";
+    public static final String SUMMARYREPORTVIEWINDEX = "SummaryReportView";
 
 
     /** A new JFrame with all the view classes, that acts as the GUI. */
@@ -53,12 +53,12 @@ public class GUI {
 
     /** Adds all the view panels with their respective indexes to JPanel GUIPanel. */
     private void setupGUI() {
-        GUIPanel.add(mainMenuView.getMainMenuViewPanel(), mainMenuViewIndex);
-        GUIPanel.add(carLoanSchemeView.getCarLoanSchemeViewPanel(), carLoanSchemeViewIndex);
+        GUIPanel.add(mainMenuView.getMainMenuViewPanel(), MAINMENUVIEWINDEX);
+        GUIPanel.add(carLoanSchemeView.getCarLoanSchemeViewPanel(), CARLOANSCHEMEVIEWINDEX);
         GUIPanel.add(carLoanInstallmentCalculatorView.getCarLoanInstallmentCalculatorViewPanel(),
-                carLoanInstallmentCalculatorViewIndex);
-        GUIPanel.add(loanInstallmentReportView.getLoanInstallmentReportViewPanel(), loanInstallmentReportViewIndex);
-        GUIPanel.add(summaryReportView.getSummaryReportViewPanel(), summaryReportViewIndex);
+                CARLOANINSTALLMENTCALCULATORVIEWINDEX);
+        GUIPanel.add(loanInstallmentReportView.getLoanInstallmentReportViewPanel(), LOANINSTALLMENTREPORTVIEWINDEX);
+        GUIPanel.add(summaryReportView.getSummaryReportViewPanel(), SUMMARYREPORTVIEWINDEX);
     }
 
     /** Displays the GUI. */
