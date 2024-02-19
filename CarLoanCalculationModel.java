@@ -3,8 +3,6 @@
 public class CarLoanCalculationModel {
     /** Type of car loaned. */
     private String carType;
-    /** Loan insurance status. */
-    private String loanInsuranceStatus;
     /** Loan term. */
     private int loanTerm;
     /** Loan amount. */
@@ -15,6 +13,8 @@ public class CarLoanCalculationModel {
     private double outstandingLoanAmount;
     /** Monthly repayment for the loan. */
     private double monthlyRepayment;
+    /** Loan insurance status. */
+    private String loanInsuranceStatus;
 
     public CarLoanCalculationModel() {
         carType = null;
