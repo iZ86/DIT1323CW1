@@ -33,14 +33,14 @@ public class GUI {
 
 
     /** A new JFrame with all the view classes. */
-    public GUI(CarLoanSchemeModel carLoanSchemeModel, SummaryReportModel summaryReportModel) {
+    public GUI(CarLoanSchemeModel carLoanSchemeModel, CarLoanCalculationModel carLoanCalculationModel, SummaryReportModel summaryReportModel) {
 
         GUI = new JFrame("Kawaguchi Bank Car Loan Application");
         GUIPanel = new JPanel(new CardLayout());
         mainMenuView = new MainMenuView();
         carLoanSchemeView = new CarLoanSchemeView(carLoanSchemeModel);
         carLoanInstallmentCalculatorView = new CarLoanInstallmentCalculatorView();
-        loanInstallmentReportView = new LoanInstallmentReportView();
+        loanInstallmentReportView = new LoanInstallmentReportView(carLoanCalculationModel);
         summaryReportView = new SummaryReportView(summaryReportModel);
 
         setupGUI();
