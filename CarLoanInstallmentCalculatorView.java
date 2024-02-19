@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/** This class represents the car loan installment calculator view in the GUI. */
 public class CarLoanInstallmentCalculatorView {
 
     /** The car loan installment calculator view. */
