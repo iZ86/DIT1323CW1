@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 
 /** This class represents the car loan installment calculator view in the GUI. */
 public class CarLoanInstallmentCalculatorView {
-
     /** The car loan installment calculator view. */
     private final JPanel carLoanInstallmentCalculatorViewPanel = new JPanel(new GridBagLayout());
     /** Drop-down box to allow user to choose between imported and local car types. */

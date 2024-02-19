@@ -4,7 +4,6 @@ import javax.swing.table.AbstractTableModel;
  * that extends the AbstractTableModel.
  */
 public class CarLoanTableModel extends AbstractTableModel {
-
     /** Table data. */
     private final Object[][] data;
     /** Table column. */

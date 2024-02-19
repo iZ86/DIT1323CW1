@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 
 /** This class represents the car loan scheme view in the GUI. */
 public class CarLoanSchemeView {
-
     /** The car loan scheme view. */
     private final JPanel carLoanSchemeViewPanel = new JPanel(new GridBagLayout());
     /** Model for Car Loan Scheme View. */
@@ -90,7 +89,6 @@ public class CarLoanSchemeView {
         // Add JScrollPane carLoanSchemeTablePane to JPanel carLoanSchemeTablePanel.
         carLoanSchemeTablePanel.add(carLoanSchemeTablePane);
 
-        // Return JPanel carLoanSchemeTablePanel.
         return carLoanSchemeTablePanel;
     }
 
@@ -114,14 +112,13 @@ public class CarLoanSchemeView {
         GridBagConstraints constraintsForCalculateCarLoanInstallmentButton = new GridBagConstraints();
         constraintsForCalculateCarLoanInstallmentButton.gridx = 1; // Position is second in X order.
         constraintsForCalculateCarLoanInstallmentButton.ipadx = horizontalSizeOfButton; // Adjust horizontal size.
-        constraintsForCalculateCarLoanInstallmentButton.fill = GridBagConstraints.VERTICAL; // Vertical size of button is the same as the first button in X order.
+        constraintsForCalculateCarLoanInstallmentButton.fill = GridBagConstraints.VERTICAL; // Vertical size is the same as the first button in X order.
 
         // Add the JButtons to JPanel carLoanSchemeButtonsPanel with their configurations.
         carLoanSchemeButtonsPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
         carLoanSchemeButtonsPanel.add(calculateCarLoanInstallmentButton,
                 constraintsForCalculateCarLoanInstallmentButton);
 
-        // Return the JPanel carLoanSchemeButtonsPanel.
         return carLoanSchemeButtonsPanel;
     }
 }

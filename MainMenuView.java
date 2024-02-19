@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 
 /** This class represents the main menu view in the GUI. */
 public class MainMenuView {
-
     /** The main menu view. */
     private final JPanel mainMenuViewPanel = new JPanel(new GridBagLayout());
     /** Button that changes the view to the car loan scheme view. */
