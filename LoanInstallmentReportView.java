@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/** This class represents the loan installment report view in the GUI. */
 public class LoanInstallmentReportView {
     /** JPanel that contains all the component in LoanInstallmentReportView. */
     private final JPanel loanInstallmentReportViewPanel = new JPanel(new GridBagLayout());
@@ -43,6 +44,10 @@ public class LoanInstallmentReportView {
         calculateCarLoanInstallmentButton.addActionListener(listenForCalculateCarLoanInstallmentButton);
     }
 
+    /** Clear view by removing every component in JPanel loanInstallmentReportView. */
+    private void clearView() {
+        loanInstallmentReportViewPanel.removeAll();
+    }
 
     /** Set up JPanel loanInstallmentReportView. */
     private void setupLoanInstallmentReportViewPanel() {
@@ -70,11 +75,6 @@ public class LoanInstallmentReportView {
         loanInstallmentReportViewPanel.add(titlePanel, constraintsForTitlePanel);
         loanInstallmentReportViewPanel.add(showLoanDataPanel, constraintsForShowLoanDataPanel);
         loanInstallmentReportViewPanel.add(buttonsPanel, constraintsForButtonsPanel);
-    }
-
-    /** Clear view by removing every component in JPanel loanInstallmentReportView. */
-    private void clearView() {
-        loanInstallmentReportViewPanel.removeAll();
     }
 
     /** Return a JPanel that contains the title of the LoanInstallmentReportView. */
