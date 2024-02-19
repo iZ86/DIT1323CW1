@@ -10,7 +10,7 @@ public class SummaryReportModel {
     /** Total loan amount of car loan transaction for local cars. */
     private double totalLoanAmountOfCarLoanTransactionForLocalCar;
     /** Column for local and imported car loan transaction table. */
-    private String[] tableColumnForCarLoanTransaction = {"Total transaction", "Loan Insurance Status", "Amount"};
+    private String[] tableColumnForCarLoanTransaction = {"Total transaction", "Loan Insurance Status", "Amount (RM)"};
     /** The car loan transaction data for imported car transaction loan table. */
     private String[][] tableDataForImportedCarLoanTransaction = {
             {"0", "Insured", "0"},

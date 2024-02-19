@@ -125,7 +125,7 @@ public class SummaryReportView {
         JTable carLoanTransactionTable = new JTable(new CarLoanTableModel(carLoanTransactionTableData,
                 carLoanTransactionTableColumn));
         JScrollPane carLoanTransactionTablePane = new JScrollPane(carLoanTransactionTable);
-        JLabel totalLoanAmountOfCarLoanTransactionLabel = new JLabel("Total Loan Amount:" + totalLoanAmountOfCarLoanTransaction);
+        JLabel totalLoanAmountOfCarLoanTransactionLabel = new JLabel("Total Loan Amount (RM): " + totalLoanAmountOfCarLoanTransaction);
 
         // Setting up configuration for JLabel _carLoanTransactionTableLabel.
         GridBagConstraints constraintsForCarLoanTransactionTableLabel = new GridBagConstraints();
@@ -175,7 +175,7 @@ public class SummaryReportView {
         JPanel summaryReportButtonsPanel = new JPanel(new GridBagLayout());
         int horizontalSizeOfButton = 10;
         int verticalSizeOfButton = 7;
-        
+
         // Configuration for JButton backToMainMenuButton.
         GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
         constraintsForBackToMainMenuButton.gridy = 0; // Position is first in Y order.
