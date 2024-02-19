@@ -121,6 +121,7 @@ public class Controller {
             double loanAmount;
             String loanInsuranceStatus;
             boolean loanInsurance;
+            double loanInsuranceFee;
 
             // Try-catch for validating loanTerm and loanAmount.
             try {
@@ -149,8 +150,11 @@ public class Controller {
                 // Calculate the loan installment.
                 carLoanCalculationModel.calculateLoan();
 
+                // Get loan insurance fee.
+                loanInsuranceFee = carLoanCalculationModel.getLoanInsuranceFee();
+
                 // Update SummaryReportModel summaryReportModel.
-                updateSummaryReportModel(carType, loanAmount, loanInsuranceStatus);
+                updateSummaryReportModel(carType, loanAmount, loanInsuranceStatus, loanInsuranceFee);
 
                 // Update LoanInstallmentReportView.
                 gui.getLoanInstallmentReportView().updateView();
@@ -183,12 +187,12 @@ public class Controller {
     }
 
     /** Update SummaryReportModel summaryReportModel.*/
-    private void updateSummaryReportModel(String carType, double loanAmount, String loanInsuranceStatus) {
+    private void updateSummaryReportModel(String carType, double loanAmount, String loanInsuranceStatus, double loanInsuranceFee) {
 
         if (carType.equals("Imported")) {
-            updateTableDataForImportedCarLoanTransaction(loanAmount, loanInsuranceStatus);
+            updateTableDataForImportedCarLoanTransaction(loanAmount, loanInsuranceStatus, loanInsuranceFee);
         } else {
-            updateTableDataForLocalCarLoanTransaction(loanAmount, loanInsuranceStatus);
+            updateTableDataForLocalCarLoanTransaction(loanAmount, loanInsuranceStatus, loanInsuranceFee);
         }
 
     }
@@ -196,17 +200,16 @@ public class Controller {
     /** Update String[][] tableDataForImportedCarLoanTransaction,
      * in SummaryReportModel summaryReportModel.
      */
-    private void updateTableDataForImportedCarLoanTransaction(double loanAmount, String loanInsuranceStatus) {
+    private void updateTableDataForImportedCarLoanTransaction(double loanAmount, String loanInsuranceStatus, double loanInsuranceFee) {
 
         int totalNumberOfCarLoanTransactionForImportedCar = summaryReportModel.getTotalNumberOfCarLoanTransactionForImportedCar();
         double totalLoanAmountOfCarLoanTransactionForImportedCar = summaryReportModel.getTotalLoanAmountOfCarLoanTransactionForImportedCar();
 
         totalNumberOfCarLoanTransactionForImportedCar += 1;
-        totalLoanAmountOfCarLoanTransactionForImportedCar += loanAmount;
+        totalLoanAmountOfCarLoanTransactionForImportedCar += loanAmount + loanInsuranceFee;
 
         summaryReportModel.setTotalNumberOfCarLoanTransactionForImportedCar(totalNumberOfCarLoanTransactionForImportedCar);
         summaryReportModel.setTotalLoanAmountOfCarLoanTransactionForImportedCar(totalLoanAmountOfCarLoanTransactionForImportedCar);
-
 
         if (loanInsuranceStatus.equals("Insured")) {
 
@@ -214,12 +217,13 @@ public class Controller {
             double totalLoanAmountOfInsuredCarLoanTransactionForImportedCar = summaryReportModel.getTotalLoanAmountOfInsuredCarLoanTransactionForImportedCar();
 
             totalNumberOfInsuredCarLoanTransactionForImportedCar += 1;
-            totalLoanAmountOfInsuredCarLoanTransactionForImportedCar += loanAmount;
+            totalLoanAmountOfInsuredCarLoanTransactionForImportedCar += loanAmount + loanInsuranceFee;
 
             summaryReportModel.setTotalNumberOfInsuredCarLoanTransactionForImportedCar(totalNumberOfInsuredCarLoanTransactionForImportedCar);
             summaryReportModel.setTotalLoanAmountOfInsuredCarLoanTransactionForImportedCar(totalLoanAmountOfInsuredCarLoanTransactionForImportedCar);
 
         } else {
+
             int totalNumberOfNotInsuredCarLoanTransactionForImportedCar = summaryReportModel.getTotalNumberOfNotInsuredCarLoanTransactionForImportedCar();
             double totalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar = summaryReportModel.getTotalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar();
 
@@ -234,13 +238,13 @@ public class Controller {
     /** Update String[][] tableDataForLocalCarLoanTransaction,
      * in SummaryReportModel summaryReportModel.
      */
-    private void updateTableDataForLocalCarLoanTransaction(double loanAmount, String loanInsuranceStatus) {
+    private void updateTableDataForLocalCarLoanTransaction(double loanAmount, String loanInsuranceStatus, double loanInsuranceFee) {
 
         int totalNumberOfCarLoanTransactionForLocalCar = summaryReportModel.getTotalNumberOfCarLoanTransactionForLocalCar();
         double totalLoanAmountOfCarLoanTransactionForLocalCar = summaryReportModel.getTotalLoanAmountOfCarLoanTransactionForLocalCar();
 
         totalNumberOfCarLoanTransactionForLocalCar += 1;
-        totalLoanAmountOfCarLoanTransactionForLocalCar += loanAmount;
+        totalLoanAmountOfCarLoanTransactionForLocalCar += loanAmount + loanInsuranceFee;
 
         summaryReportModel.setTotalNumberOfCarLoanTransactionForLocalCar(totalNumberOfCarLoanTransactionForLocalCar);
         summaryReportModel.setTotalLoanAmountOfCarLoanTransactionForLocalCar(totalLoanAmountOfCarLoanTransactionForLocalCar);
@@ -251,12 +255,13 @@ public class Controller {
             double totalLoanAmountOfInsuredCarLoanTransactionForLocalCar = summaryReportModel.getTotalLoanAmountOfInsuredCarLoanTransactionForLocalCar();
 
             totalNumberOfInsuredCarLoanTransactionForLocalCar += 1;
-            totalLoanAmountOfInsuredCarLoanTransactionForLocalCar += loanAmount;
+            totalLoanAmountOfInsuredCarLoanTransactionForLocalCar += loanAmount + loanInsuranceFee;
 
             summaryReportModel.setTotalNumberOfInsuredCarLoanTransactionForLocalCar(totalNumberOfInsuredCarLoanTransactionForLocalCar);
             summaryReportModel.setTotalLoanAmountOfInsuredCarLoanTransactionForLocalCar(totalLoanAmountOfInsuredCarLoanTransactionForLocalCar);
 
         } else {
+
             int totalNumberOfNotInsuredCarLoanTransactionForLocalCar = summaryReportModel.getTotalNumberOfNotInsuredCarLoanTransactionForLocalCar();
             double totalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar = summaryReportModel.getTotalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar();
 
