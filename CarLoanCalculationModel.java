@@ -1,5 +1,5 @@
 
-/** This class represents the model for carLoanInstallmentCalculatorView,
+/** This class represents the model for CarLoanInstallmentCalculatorView,
  * and LoanInstallmentReportView.
  */
 public class CarLoanCalculationModel {
