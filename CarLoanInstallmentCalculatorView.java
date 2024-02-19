@@ -55,7 +55,9 @@ public class CarLoanInstallmentCalculatorView {
         backToMainMenuButton.addActionListener(listenForBackToMainMenuButton);
     }
 
-    /** Add ActionListener listenForCalculateLoanInstallmentReportButton to JButton calculateCarLoanInstallmentReportButton. */
+    /** Add ActionListener listenForCalculateLoanInstallmentReportButton,
+     * to JButton calculateCarLoanInstallmentReportButton.
+     */
     public void addCalculateCarLoanInstallmentReportButtonListener(ActionListener listenForCalculateCarLoanInstallmentReportButton) {
         calculateCarLoanInstallmentReportButton.addActionListener(listenForCalculateCarLoanInstallmentReportButton);
     }
