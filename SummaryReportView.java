@@ -99,20 +99,20 @@ public class SummaryReportView {
     private JPanel setupImportedCarLoanTransactionTablePanel() {
 
         return setupCarLoanTransactionTablePanel("Imported car",
-                summaryReportModel.getTotalNumberOfCarLoanTransactionForImportedCar(),
-                summaryReportModel.getTableDataForImportedCarLoanTransaction(),
-                summaryReportModel.getTableColumnForCarLoanTransaction(),
-                summaryReportModel.getTotalLoanAmountOfCarLoanTransactionForImportedCar());
+                summaryReportModel.getTotalNumberOfCarLoanTransactionsForImportedCar(),
+                summaryReportModel.getTableDataForImportedCarLoanTransactions(),
+                summaryReportModel.getTableColumnForCarLoanTransactions(),
+                summaryReportModel.getTotalLoanAmountOfCarLoanTransactionsForImportedCar());
     }
 
     /** Return a JPanel that contains a table of local car loan transactions data. */
     private JPanel setupLocalCarLoanTransactionTablePanel() {
 
         return setupCarLoanTransactionTablePanel("Local car",
-                summaryReportModel.getTotalNumberOfCarLoanTransactionForLocalCar(),
-                summaryReportModel.getTableDataForLocalCarLoanTransaction(),
-                summaryReportModel.getTableColumnForCarLoanTransaction(),
-                summaryReportModel.getTotalLoanAmountOfCarLoanTransactionForLocalCar());
+                summaryReportModel.getTotalNumberOfCarLoanTransactionsForLocalCar(),
+                summaryReportModel.getTableDataForLocalCarLoanTransactions(),
+                summaryReportModel.getTableColumnForCarLoanTransactions(),
+                summaryReportModel.getTotalLoanAmountOfCarLoanTransactionsForLocalCar());
     }
 
     /** Return a JPanel that contains a table of the given data. */
