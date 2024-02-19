@@ -190,89 +190,117 @@ public class Controller {
     private void updateSummaryReportModel(String carType, double loanAmount, String loanInsuranceStatus, double loanInsuranceFee) {
 
         if (carType.equals("Imported")) {
-            updateTableDataForImportedCarLoanTransaction(loanAmount, loanInsuranceStatus, loanInsuranceFee);
+            updateTableDataForImportedCarLoanTransactions(loanAmount, loanInsuranceStatus, loanInsuranceFee);
         } else {
-            updateTableDataForLocalCarLoanTransaction(loanAmount, loanInsuranceStatus, loanInsuranceFee);
+            updateTableDataForLocalCarLoanTransactions(loanAmount, loanInsuranceStatus, loanInsuranceFee);
         }
-
     }
 
-    /** Update String[][] tableDataForImportedCarLoanTransaction,
+    /** Update String[][] tableDataForImportedCarLoanTransactions,
      * in SummaryReportModel summaryReportModel.
      */
-    private void updateTableDataForImportedCarLoanTransaction(double loanAmount, String loanInsuranceStatus, double loanInsuranceFee) {
+    private void updateTableDataForImportedCarLoanTransactions(double loanAmount, String loanInsuranceStatus, double loanInsuranceFee) {
 
-        int totalNumberOfCarLoanTransactionForImportedCar = summaryReportModel.getTotalNumberOfCarLoanTransactionForImportedCar();
-        double totalLoanAmountOfCarLoanTransactionForImportedCar = summaryReportModel.getTotalLoanAmountOfCarLoanTransactionForImportedCar();
+        // Get the total number of car loan transactions and total loan amount of car loan transactions for imported car.
+        int totalNumberOfCarLoanTransactionsForImportedCar = summaryReportModel.getTotalNumberOfCarLoanTransactionsForImportedCar();
+        double totalLoanAmountOfCarLoanTransactionsForImportedCar = summaryReportModel.getTotalLoanAmountOfCarLoanTransactionsForImportedCar();
 
-        totalNumberOfCarLoanTransactionForImportedCar += 1;
-        totalLoanAmountOfCarLoanTransactionForImportedCar += loanAmount + loanInsuranceFee;
+        // Increase the total number of car loan transactions for imported car by one.
+        totalNumberOfCarLoanTransactionsForImportedCar += 1;
 
-        summaryReportModel.setTotalNumberOfCarLoanTransactionForImportedCar(totalNumberOfCarLoanTransactionForImportedCar);
-        summaryReportModel.setTotalLoanAmountOfCarLoanTransactionForImportedCar(totalLoanAmountOfCarLoanTransactionForImportedCar);
+        // Increase the total loan amount of car loan transactions for imported car by the LOANAMOUNT and LOANINSURANCEFEE.
+        totalLoanAmountOfCarLoanTransactionsForImportedCar += loanAmount + loanInsuranceFee;
 
+        // Set the new values to SummaryReportModel summaryReportModel.
+        summaryReportModel.setTotalNumberOfCarLoanTransactionsForImportedCar(totalNumberOfCarLoanTransactionsForImportedCar);
+        summaryReportModel.setTotalLoanAmountOfCarLoanTransactionsForImportedCar(totalLoanAmountOfCarLoanTransactionsForImportedCar);
+
+        // If got insurance.
         if (loanInsuranceStatus.equals("Insured")) {
 
-            int totalNumberOfInsuredCarLoanTransactionForImportedCar = summaryReportModel.getTotalNumberOfInsuredCarLoanTransactionForImportedCar();
-            double totalLoanAmountOfInsuredCarLoanTransactionForImportedCar = summaryReportModel.getTotalLoanAmountOfInsuredCarLoanTransactionForImportedCar();
+            // Get the total number of insured car loan transactions and total loan amount of insured car loan transactions for imported car.
+            int totalNumberOfInsuredCarLoanTransactionsForImportedCar = summaryReportModel.getTotalNumberOfInsuredCarLoanTransactionsForImportedCar();
+            double totalLoanAmountOfInsuredCarLoanTransactionsForImportedCar = summaryReportModel.getTotalLoanAmountOfInsuredCarLoanTransactionsForImportedCar();
 
-            totalNumberOfInsuredCarLoanTransactionForImportedCar += 1;
-            totalLoanAmountOfInsuredCarLoanTransactionForImportedCar += loanAmount + loanInsuranceFee;
+            // Increase the total number of insured car loan transactions for imported car by one.
+            totalNumberOfInsuredCarLoanTransactionsForImportedCar += 1;
 
-            summaryReportModel.setTotalNumberOfInsuredCarLoanTransactionForImportedCar(totalNumberOfInsuredCarLoanTransactionForImportedCar);
-            summaryReportModel.setTotalLoanAmountOfInsuredCarLoanTransactionForImportedCar(totalLoanAmountOfInsuredCarLoanTransactionForImportedCar);
+            // Increase the total loan amount of insured car loan transactions for imported car by the LOANAMOUNT and LOANINSURANCEFEE.
+            totalLoanAmountOfInsuredCarLoanTransactionsForImportedCar += loanAmount + loanInsuranceFee;
+
+            // Set the new values to SummaryReportModel summaryReportModel.
+            summaryReportModel.setTotalNumberOfInsuredCarLoanTransactionsForImportedCar(totalNumberOfInsuredCarLoanTransactionsForImportedCar);
+            summaryReportModel.setTotalLoanAmountOfInsuredCarLoanTransactionsForImportedCar(totalLoanAmountOfInsuredCarLoanTransactionsForImportedCar);
 
         } else {
 
-            int totalNumberOfNotInsuredCarLoanTransactionForImportedCar = summaryReportModel.getTotalNumberOfNotInsuredCarLoanTransactionForImportedCar();
-            double totalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar = summaryReportModel.getTotalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar();
+            // Get the total number of not insured car loan transactions and total loan amount of not insured car loan transactions for imported car.
+            int totalNumberOfNotInsuredCarLoanTransactionsForImportedCar = summaryReportModel.getTotalNumberOfNotInsuredCarLoanTransactionsForImportedCar();
+            double totalLoanAmountOfNotInsuredCarLoanTransactionsForImportedCar = summaryReportModel.getTotalLoanAmountOfNotInsuredCarLoanTransactionsForImportedCar();
 
-            totalNumberOfNotInsuredCarLoanTransactionForImportedCar += 1;
-            totalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar += loanAmount;
+            // Increase the total number of not insured car loan transactions for imported car by one.
+            totalNumberOfNotInsuredCarLoanTransactionsForImportedCar += 1;
 
-            summaryReportModel.setTotalNumberOfNotInsuredCarLoanTransactionForImportedCar(totalNumberOfNotInsuredCarLoanTransactionForImportedCar);
-            summaryReportModel.setTotalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar(totalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar);
+            // Increase the total loan amount of not insured car loan transactions for imported car by the LOANAMOUNT and LOANINSURANCEFEE.
+            totalLoanAmountOfNotInsuredCarLoanTransactionsForImportedCar += loanAmount;
+
+            // Set the new values to SummaryReportModel summaryReportModel.
+            summaryReportModel.setTotalNumberOfNotInsuredCarLoanTransactionsForImportedCar(totalNumberOfNotInsuredCarLoanTransactionsForImportedCar);
+            summaryReportModel.setTotalLoanAmountOfNotInsuredCarLoanTransactionsForImportedCar(totalLoanAmountOfNotInsuredCarLoanTransactionsForImportedCar);
         }
     }
 
     /** Update String[][] tableDataForLocalCarLoanTransaction,
      * in SummaryReportModel summaryReportModel.
      */
-    private void updateTableDataForLocalCarLoanTransaction(double loanAmount, String loanInsuranceStatus, double loanInsuranceFee) {
+    private void updateTableDataForLocalCarLoanTransactions(double loanAmount, String loanInsuranceStatus, double loanInsuranceFee) {
 
-        int totalNumberOfCarLoanTransactionForLocalCar = summaryReportModel.getTotalNumberOfCarLoanTransactionForLocalCar();
-        double totalLoanAmountOfCarLoanTransactionForLocalCar = summaryReportModel.getTotalLoanAmountOfCarLoanTransactionForLocalCar();
+        // Get the total number of car loan transactions and total loan amount of car loan transactions for local car.
+        int totalNumberOfCarLoanTransactionsForLocalCar = summaryReportModel.getTotalNumberOfCarLoanTransactionsForLocalCar();
+        double totalLoanAmountOfCarLoanTransactionsForLocalCar = summaryReportModel.getTotalLoanAmountOfCarLoanTransactionsForLocalCar();
 
-        totalNumberOfCarLoanTransactionForLocalCar += 1;
-        totalLoanAmountOfCarLoanTransactionForLocalCar += loanAmount + loanInsuranceFee;
+        // Increase the total number of car loan transactions for local car by one.
+        totalNumberOfCarLoanTransactionsForLocalCar += 1;
 
-        summaryReportModel.setTotalNumberOfCarLoanTransactionForLocalCar(totalNumberOfCarLoanTransactionForLocalCar);
-        summaryReportModel.setTotalLoanAmountOfCarLoanTransactionForLocalCar(totalLoanAmountOfCarLoanTransactionForLocalCar);
+        // Increase the total loan amount of car loan transactions for local car by the LOANAMOUNT and LOANINSURANCEFEE.
+        totalLoanAmountOfCarLoanTransactionsForLocalCar += loanAmount + loanInsuranceFee;
 
+        // Set the new values to SummaryReportModel summaryReportModel.
+        summaryReportModel.setTotalNumberOfCarLoanTransactionsForLocalCar(totalNumberOfCarLoanTransactionsForLocalCar);
+        summaryReportModel.setTotalLoanAmountOfCarLoanTransactionsForLocalCar(totalLoanAmountOfCarLoanTransactionsForLocalCar);
+
+        // If got insurance.
         if (loanInsuranceStatus.equals("Insured")) {
 
-            int totalNumberOfInsuredCarLoanTransactionForLocalCar = summaryReportModel.getTotalNumberOfInsuredCarLoanTransactionForLocalCar();
-            double totalLoanAmountOfInsuredCarLoanTransactionForLocalCar = summaryReportModel.getTotalLoanAmountOfInsuredCarLoanTransactionForLocalCar();
+            // Get the total number of insured car loan transactions and total loan amount of insured car loan transactions for local car.
+            int totalNumberOfInsuredCarLoanTransactionsForLocalCar = summaryReportModel.getTotalNumberOfInsuredCarLoanTransactionsForLocalCar();
+            double totalLoanAmountOfInsuredCarLoanTransactionsForLocalCar = summaryReportModel.getTotalLoanAmountOfInsuredCarLoanTransactionsForLocalCar();
 
-            totalNumberOfInsuredCarLoanTransactionForLocalCar += 1;
-            totalLoanAmountOfInsuredCarLoanTransactionForLocalCar += loanAmount + loanInsuranceFee;
+            // Increase the total number of insured car loan transactions for local car by one.
+            totalNumberOfInsuredCarLoanTransactionsForLocalCar += 1;
 
-            summaryReportModel.setTotalNumberOfInsuredCarLoanTransactionForLocalCar(totalNumberOfInsuredCarLoanTransactionForLocalCar);
-            summaryReportModel.setTotalLoanAmountOfInsuredCarLoanTransactionForLocalCar(totalLoanAmountOfInsuredCarLoanTransactionForLocalCar);
+            // Increase the total loan amount of insured car loan transactions for local car by the LOANAMOUNT and LOANINSURANCEFEE.
+            totalLoanAmountOfInsuredCarLoanTransactionsForLocalCar += loanAmount + loanInsuranceFee;
+
+            // Set the new values to SummaryReportModel summaryReportModel.
+            summaryReportModel.setTotalNumberOfInsuredCarLoanTransactionsForLocalCar(totalNumberOfInsuredCarLoanTransactionsForLocalCar);
+            summaryReportModel.setTotalLoanAmountOfInsuredCarLoanTransactionsForLocalCar(totalLoanAmountOfInsuredCarLoanTransactionsForLocalCar);
 
         } else {
 
-            int totalNumberOfNotInsuredCarLoanTransactionForLocalCar = summaryReportModel.getTotalNumberOfNotInsuredCarLoanTransactionForLocalCar();
-            double totalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar = summaryReportModel.getTotalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar();
+            // Get the total number of not insured car loan transactions and total loan amount of not insured car loan transactions for local car.
+            int totalNumberOfNotInsuredCarLoanTransactionsForLocalCar = summaryReportModel.getTotalNumberOfNotInsuredCarLoanTransactionsForLocalCar();
+            double totalLoanAmountOfNotInsuredCarLoanTransactionsForLocalCar = summaryReportModel.getTotalLoanAmountOfNotInsuredCarLoanTransactionsForLocalCar();
 
-            totalNumberOfNotInsuredCarLoanTransactionForLocalCar += 1;
-            totalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar += loanAmount;
+            // Increase the total number of not insured car loan transactions for local car by one.
+            totalNumberOfNotInsuredCarLoanTransactionsForLocalCar += 1;
 
-            summaryReportModel.setTotalNumberOfNotInsuredCarLoanTransactionForLocalCar(totalNumberOfNotInsuredCarLoanTransactionForLocalCar);
-            summaryReportModel.setTotalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar(totalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar);
+            // Increase the total loan amount of not insured car loan transactions for local car by the LOANAMOUNT and LOANINSURANCEFEE.
+            totalLoanAmountOfNotInsuredCarLoanTransactionsForLocalCar += loanAmount;
+
+            // Set the new values to SummaryReportModel summaryReportModel.
+            summaryReportModel.setTotalNumberOfNotInsuredCarLoanTransactionsForLocalCar(totalNumberOfNotInsuredCarLoanTransactionsForLocalCar);
+            summaryReportModel.setTotalLoanAmountOfNotInsuredCarLoanTransactionsForLocalCar(totalLoanAmountOfNotInsuredCarLoanTransactionsForLocalCar);
         }
-
     }
-
-
 }
