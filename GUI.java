@@ -2,21 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/** The GUI of Kawaguchi Bank Loan Application. */
 public class GUI {
-    /** GUI. */
-    private JFrame GUI;
+    /** GUI JFrame. */
+    private final JFrame GUI;
     /** JPanel of the GUI. */
-    private JPanel GUIPanel;
+    private final JPanel GUIPanel;
     /** Main Menu View. */
-    private MainMenuView mainMenuView;
+    private final MainMenuView mainMenuView;
     /** Car Loan Scheme View. */
-    private CarLoanSchemeView carLoanSchemeView;
+    private final CarLoanSchemeView carLoanSchemeView;
     /** Car Loan Installment Calculator View. */
-    private CarLoanInstallmentCalculatorView carLoanInstallmentCalculatorView;
+    private final CarLoanInstallmentCalculatorView carLoanInstallmentCalculatorView;
     /** Loan Installment Report View. */
-    private LoanInstallmentReportView loanInstallmentReportView;
+    private final LoanInstallmentReportView loanInstallmentReportView;
     /** Summary Report View. */
-    private SummaryReportView summaryReportView;
+    private final SummaryReportView summaryReportView;
     /** Index used to access Main Menu View in JPanel GUIPanel. */
     public static final String mainMenuViewIndex = "MainMenuView";
     /** Index used to access Car Loan Scheme View in JPanel GUIPanel. */
@@ -29,7 +30,7 @@ public class GUI {
     public static final String summaryReportViewIndex = "SummaryReportView";
 
 
-    /** A new JFrame with all the view classes. */
+    /** A new JFrame with all the view classes, that acts as the GUI. */
     public GUI(CarLoanSchemeModel carLoanSchemeModel, CarLoanCalculationModel carLoanCalculationModel, SummaryReportModel summaryReportModel) {
 
         GUI = new JFrame("Kawaguchi Bank Car Loan Application");
@@ -42,13 +43,15 @@ public class GUI {
 
         setupGUI();
 
+        // Add JPanel GUIPane to JFrame GUI.
         GUI.add(GUIPanel);
 
+        // Configuring JFrame GUI.
         GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GUI.setSize(new Dimension(700, 500));
     }
 
-    /** Adds all the view panels to the main JPanel GUIPanel. */
+    /** Adds all the view panels with their respective indexes to JPanel GUIPanel. */
     private void setupGUI() {
         GUIPanel.add(mainMenuView.getMainMenuViewPanel(), mainMenuViewIndex);
         GUIPanel.add(carLoanSchemeView.getCarLoanSchemeViewPanel(), carLoanSchemeViewIndex);
@@ -72,11 +75,6 @@ public class GUI {
     public void changeView(String index) {
         CardLayout cl = (CardLayout) (GUIPanel.getLayout());
         cl.show(GUIPanel, index);
-    }
-
-    /** Return JPanel mainMenuView. */
-    public MainMenuView getMainMenuView() {
-        return mainMenuView;
     }
 
     /** Return JPanel carLoanSchemeView. */
@@ -133,6 +131,4 @@ public class GUI {
     public void addAllCalculateCarLoanInstallmentReportButtonListener(ActionListener listenForAllCalculateCarLoanInstallmentReportButton) {
         carLoanInstallmentCalculatorView.addCalculateCarLoanInstallmentReportButtonListener(listenForAllCalculateCarLoanInstallmentReportButton);
     }
-
-
 }
