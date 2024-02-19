@@ -2,19 +2,20 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// TODO: Logic between model and comments for summary report.
-
+/** The controller for Kawaguchi Bank Loan Application GUI,
+ * and its models.
+ */
 public class Controller {
     /** GUI of Kawaguchi bank loan application. */
     GUI gui;
-    /** Model for CarLoanSchemeView carLoanSchemeView. */
+    /** Model for CarLoanSchemeView. */
     CarLoanSchemeModel carLoanSchemeModel;
-    /** Model for CarLoanInstallmentCalculatorView carLoanInstallmentCalculatorView. */
+    /** Model for CarLoanInstallmentCalculatorView. */
     CarLoanCalculationModel carLoanCalculationModel;
-    /** Model for SummaryReportView summaryReportView. */
+    /** Model for SummaryReportView. */
     SummaryReportModel summaryReportModel;
 
-    /** Controller that acts as a bridge between GUI and carLoanSchemeModel,
+    /** Constructs a controller that acts as a bridge between GUI and carLoanSchemeModel,
      * GUI and carLoanCalculationModel, and GUI and summaryReportModel,
      * controlling the workflow.
      */
@@ -31,55 +32,70 @@ public class Controller {
         this.gui.addAllCalculateCarLoanInstallmentReportButtonListener(new CalculateCarLoanInstallmentReportButtonListener());
     }
 
-    /** Listener subclass that changes the view to CarLoanSchemeView carLoanSchemeView,
+    /** Listener subclass that changes the view to CarLoanSchemeView,
      * when an action is performed.
      */
     public class DisplayCarLoanSchemeButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
+
+            // Update CarLoanSchemeView.
             gui.getCarLoanSchemeView().updateView();
+
+            // Change the view to CarLoanSchemeView.
             gui.changeView(GUI.carLoanSchemeViewIndex);
         }
 
     }
 
-    /** Listener class that changes the view to CarLoanInstallmentCalculatorView carLoanInstallmentCalculatorView,
+    /** Listener class that changes the view to CarLoanInstallmentCalculatorView,
      * when an action is performed.
      */
     public class CalculateCarLoanInstallmentButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
+
+            // Set the default value for CarLoanInstallmentCalculatorView.
+            gui.getCarLoanInstallmentCalculatorView().setDefaultValue();
+
+            // Change the view to CarLoanInstallmentCalculatorView.
             gui.changeView(GUI.carLoanInstallmentCalculatorViewIndex);
         }
     }
 
-    /** Listener class that changes the view to SummaryReportView summaryReportView,
+    /** Listener class that changes the view to SummaryReportView,
      * when an action is performed.
      */
     public class GenerateSummaryReportButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
+
+            // Update SummaryReportView.
             gui.getSummaryReportView().updateView();
+
+            // Change the view to SummaryReportView.
             gui.changeView(GUI.summaryReportViewIndex);
         }
 
     }
 
-    /** Listener class that finishes the program,
+    /** Listener class that exits the program,
      * when an action is performed.
      */
     public class ExitButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
+
+            // Exits the program.
             gui.exit();
         }
     }
 
-    /** Listener class that changes the view to MainMenuView mainMenuView,
+    /** Listener class that changes the view to MainMenuView,
      * when an action is performed.
      */
     public class BackToMainMenuButtonListener implements ActionListener {
@@ -91,7 +107,7 @@ public class Controller {
     }
 
     /** Listener class that calculates the car loan installment,
-     * and presents it in LoanInstallmentReportView loanInstallmentReportView,
+     * and presents it in LoanInstallmentReportView,
      * when an action is performed.
      */
     public class CalculateCarLoanInstallmentReportButtonListener implements ActionListener {
