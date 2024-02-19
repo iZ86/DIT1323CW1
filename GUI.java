@@ -2,9 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-// TODO: Get logic from controller
-// TODO: Maybe change the index variables to static.
-
 public class GUI {
     /** GUI. */
     private JFrame GUI;
