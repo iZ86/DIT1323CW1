@@ -73,7 +73,8 @@ public class SummaryReportView {
 
         // Add the components to JPanel summaryReportViewPanel with their configurations.
         summaryReportViewPanel.add(summaryReportViewTitlePanel, constraintsForSummaryReportViewTitlePanel);
-        summaryReportViewPanel.add(importedCarLoanTransactionTablePanel, constraintsForImportedCarLoanTransactionTablePanel);
+        summaryReportViewPanel.add(importedCarLoanTransactionTablePanel,
+                constraintsForImportedCarLoanTransactionTablePanel);
         summaryReportViewPanel.add(localCarLoanTransactionTablePanel, constraintsForLocalCarLoanTransactionTablePanel);
         summaryReportViewPanel.add(buttonsPanel, constraintsForButtonsPanel);
     }
@@ -150,9 +151,11 @@ public class SummaryReportView {
 
         // Add the components to JPanel carLoanTransactionTablePanel with their configurations.
         carLoanTransactionTablePanel.add(_carLoanTransactionTableLabel, constraintsForCarLoanTransactionTableLabel);
-        carLoanTransactionTablePanel.add(totalNumberOfCarLoanTransactionLabel, constraintsForTotalNumberOfCarLoanTransactionLabel);
+        carLoanTransactionTablePanel.add(totalNumberOfCarLoanTransactionLabel,
+                constraintsForTotalNumberOfCarLoanTransactionLabel);
         carLoanTransactionTablePanel.add(carLoanTransactionTablePane, constraintsForCarLoanTransactionTablePane);
-        carLoanTransactionTablePanel.add(totalLoanAmountOfCarLoanTransactionLabel, constraintsForTotalLoanAmountOfCarLoanTransactionLabel);
+        carLoanTransactionTablePanel.add(totalLoanAmountOfCarLoanTransactionLabel,
+                constraintsForTotalLoanAmountOfCarLoanTransactionLabel);
 
         return carLoanTransactionTablePanel;
     }

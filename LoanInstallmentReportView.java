@@ -167,7 +167,8 @@ public class LoanInstallmentReportView {
 
         // Add the JButtons to the JPanel loanInstallmentReportButtonsPanel with their configurations.
         loanInstallmentReportButtonsPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
-        loanInstallmentReportButtonsPanel.add(calculateCarLoanInstallmentButton, constraintsForCalculateCarLoanInstallmentButton);
+        loanInstallmentReportButtonsPanel.add(calculateCarLoanInstallmentButton,
+                constraintsForCalculateCarLoanInstallmentButton);
 
         return loanInstallmentReportButtonsPanel;
     }

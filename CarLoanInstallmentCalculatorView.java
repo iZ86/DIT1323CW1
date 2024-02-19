@@ -179,8 +179,10 @@ public class CarLoanInstallmentCalculatorView {
         loanInsuranceCheckBoxPanel.add(loanInsuranceCheckBox, constraintsForLoanInsuranceCheckBox);
         loanInsuranceCheckBoxPanel.add(loanInsuranceFirstDescription, constraintsForLoanInsuranceFirstDescription);
         loanInsuranceCheckBoxPanel.add(loanInsuranceSecondDescription, constraintsForLoanInsuranceSecondDescription);
-        loanInsuranceCheckBoxPanel.add(loanInsuranceFirstPriceDescription, constraintsForLoanInsuranceFirstPriceDescription);
-        loanInsuranceCheckBoxPanel.add(loanInsuranceSecondPriceDescription, constraintsForLoanInsuranceSecondPriceDescription);
+        loanInsuranceCheckBoxPanel.add(loanInsuranceFirstPriceDescription,
+                constraintsForLoanInsuranceFirstPriceDescription);
+        loanInsuranceCheckBoxPanel.add(loanInsuranceSecondPriceDescription,
+                constraintsForLoanInsuranceSecondPriceDescription);
 
         return loanInsuranceCheckBoxPanel;
     }
@@ -209,8 +211,10 @@ public class CarLoanInstallmentCalculatorView {
 
         // Initialization
         JPanel textFieldsPanel = new JPanel(new GridBagLayout());
-        JPanel loanTermTextFieldPanel = setupTextFieldPanel("Please insert your loan terms (Years)", loanTermTextField);
-        JPanel loanAmountTextFieldPanel = setupTextFieldPanel("Please insert your loan amount (RM)", loanAmountTextField);
+        JPanel loanTermTextFieldPanel = setupTextFieldPanel("Please insert your loan terms (Years)",
+                loanTermTextField);
+        JPanel loanAmountTextFieldPanel = setupTextFieldPanel("Please insert your loan amount (RM)",
+                loanAmountTextField);
         int gapBetweenTextFieldsPanels = 20; // Gap between text field panels.
 
 
@@ -279,7 +283,8 @@ public class CarLoanInstallmentCalculatorView {
 
         // Add the JButtons to JPanel carLoanInstallmentCalculationButtonPanel with their configurations.
         carLoanInstallmentCalculationButtonPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
-        carLoanInstallmentCalculationButtonPanel.add(calculateCarLoanInstallmentReportButton, constraintsForCalculateCarLoanInstallmentReportButton);
+        carLoanInstallmentCalculationButtonPanel.add(calculateCarLoanInstallmentReportButton,
+                constraintsForCalculateCarLoanInstallmentReportButton);
 
         return carLoanInstallmentCalculationButtonPanel;
     }

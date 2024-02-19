@@ -36,7 +36,8 @@ public class CarLoanCalculationModel {
         interestRatePercentage = findInterestRatePercentage(carType, loanAmount);
 
         // Calculate the outstanding loan amount and round it up to two decimal points.
-        outstandingLoanAmount = calculateOutstandingLoanAmount(loanTerm, loanAmount, interestRatePercentage, loanInsuranceStatus);
+        outstandingLoanAmount = calculateOutstandingLoanAmount(loanTerm, loanAmount,
+                interestRatePercentage, loanInsuranceStatus);
         outstandingLoanAmount = roundUpTwoDecimal(outstandingLoanAmount);
 
 
