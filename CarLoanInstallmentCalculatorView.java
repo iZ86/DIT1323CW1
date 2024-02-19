@@ -51,6 +51,14 @@ public class CarLoanInstallmentCalculatorView {
         return Double.parseDouble(loanAmountTextField.getText());
     }
 
+    /** Set the default value of all components in the view. */
+    public void setDefaultValue() {
+        carTypeDropDownBox.setSelectedIndex(0);
+        loanTermTextField.setText("");
+        loanAmountTextField.setText("");
+        loanInsuranceCheckBox.setSelected(false);
+    }
+
     /** Add ActionListener listenForBackToMainMenuButton to JButton backToMainMenuButton. */
     public void addBackToMainMenuButtonListener(ActionListener listenForBackToMainMenuButton) {
         backToMainMenuButton.addActionListener(listenForBackToMainMenuButton);
