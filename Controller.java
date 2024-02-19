@@ -5,17 +5,24 @@ import java.awt.event.ActionListener;
 // TODO: Logic between model and comments for summary report.
 
 public class Controller {
+    /** GUI of Kawaguchi bank loan application. */
     GUI gui;
+    /** Model for CarLoanSchemeView carLoanSchemeView. */
     CarLoanSchemeModel carLoanSchemeModel;
+    /** Model for CarLoanInstallmentCalculatorView carLoanInstallmentCalculatorView. */
     CarLoanCalculationModel carLoanCalculationModel;
+    /** Model for SummaryReportView summaryReportView. */
+    SummaryReportModel summaryReportModel;
 
-    /** Controller that bridges the gap between GUI and carLoanSchemeModel,
-     * and GUI and carLoanCalculationModel.
+    /** Controller that acts as a bridge between GUI and carLoanSchemeModel,
+     * GUI and carLoanCalculationModel, and GUI and summaryReportModel,
+     * controlling the workflow.
      */
-    public Controller(GUI gui, CarLoanSchemeModel carLoanSchemeModel, CarLoanCalculationModel carLoanCalculationModel) {
+    public Controller(GUI gui, CarLoanSchemeModel carLoanSchemeModel, CarLoanCalculationModel carLoanCalculationModel, SummaryReportModel summaryReportModel) {
         this.gui = gui;
         this.carLoanSchemeModel = carLoanSchemeModel;
         this.carLoanCalculationModel = carLoanCalculationModel;
+        this.summaryReportModel = summaryReportModel;
         this.gui.addAllDisplayCarLoanSchemeButtonListener(new DisplayCarLoanSchemeButtonListener());
         this.gui.addAllCalculateCarLoanInstallmentButtonListener(new CalculateCarLoanInstallmentButtonListener());
         this.gui.addAllGenerateSummaryReportButtonListener(new GenerateSummaryReportButtonListener());
@@ -24,7 +31,9 @@ public class Controller {
         this.gui.addAllCalculateCarLoanInstallmentReportButtonListener(new CalculateCarLoanInstallmentReportButtonListener());
     }
 
-
+    /** Listener subclass that changes the view to CarLoanSchemeView carLoanSchemeView,
+     * when an action is performed.
+     */
     public class DisplayCarLoanSchemeButtonListener implements ActionListener {
 
         @Override
@@ -35,6 +44,9 @@ public class Controller {
 
     }
 
+    /** Listener class that changes the view to CarLoanInstallmentCalculatorView carLoanInstallmentCalculatorView,
+     * when an action is performed.
+     */
     public class CalculateCarLoanInstallmentButtonListener implements ActionListener {
 
         @Override
@@ -43,6 +55,9 @@ public class Controller {
         }
     }
 
+    /** Listener class that changes the view to SummaryReportView summaryReportView,
+     * when an action is performed.
+     */
     public class GenerateSummaryReportButtonListener implements ActionListener {
 
         @Override
@@ -53,6 +68,9 @@ public class Controller {
 
     }
 
+    /** Listener class that finishes the program,
+     * when an action is performed.
+     */
     public class ExitButtonListener implements ActionListener {
 
         @Override
@@ -61,6 +79,9 @@ public class Controller {
         }
     }
 
+    /** Listener class that changes the view to MainMenuView mainMenuView,
+     * when an action is performed.
+     */
     public class BackToMainMenuButtonListener implements ActionListener {
 
         @Override
@@ -69,6 +90,10 @@ public class Controller {
         }
     }
 
+    /** Listener class that calculates the car loan installment,
+     * and presents it in LoanInstallmentReportView loanInstallmentReportView,
+     * when an action is performed.
+     */
     public class CalculateCarLoanInstallmentReportButtonListener implements ActionListener {
 
         @Override
@@ -76,11 +101,8 @@ public class Controller {
 
             // Initialization
             String carType;
-            double loanTerm;
+            int loanTerm;
             double loanAmount;
-            double interestRatePercentage;
-            double outstandingLoanAmount;
-            double monthlyRepayment;
             String loanInsuranceStatus;
             boolean loanInsurance;
 
@@ -93,6 +115,9 @@ public class Controller {
                 loanAmount = gui.getCarLoanInstallmentCalculatorView().getLoanAmount();
                 loanInsurance = gui.getCarLoanInstallmentCalculatorView().getLoanInsuranceCheckBoxChecked();
 
+                // Convert the boolean loanInsurance to String loanInsuranceStatus
+                loanInsuranceStatus = getLoanInsuranceStatus(loanInsurance);
+
 
                 // If loanTerm or loanAmount is lesser than or equal to 0, error.
                 if (loanTerm <= 0 || loanAmount <= 0) {
@@ -103,31 +128,26 @@ public class Controller {
                 carLoanCalculationModel.setCarType(carType);
                 carLoanCalculationModel.setLoanTerm(loanTerm);
                 carLoanCalculationModel.setLoanAmount(loanAmount);
-                carLoanCalculationModel.setLoanInsurance(loanInsurance);
+                carLoanCalculationModel.setLoanInsuranceStatus(loanInsuranceStatus);
 
                 // Calculate the loan installment.
                 carLoanCalculationModel.calculateLoan();
 
-                // Get the results from carLoanCalculationModel.
-                interestRatePercentage = carLoanCalculationModel.getInterestRatePercentage();
-                outstandingLoanAmount = carLoanCalculationModel.getOutstandingLoanAmount();
-                monthlyRepayment = carLoanCalculationModel.getMonthlyRepayment();
-
-                // Convert the boolean loanInsurance to String loanInsuranceStatus
-                loanInsuranceStatus = getLoanInsuranceStatus(loanInsurance);
+                // Update SummaryReportModel summaryReportModel.
+                updateSummaryReportModel(carType, loanAmount, loanInsuranceStatus);
 
                 // Update LoanInstallmentReportView.
-                gui.getLoanInstallmentReportView().updateLoanInstallmentReportView(carType, loanTerm,
-                        loanAmount, interestRatePercentage, outstandingLoanAmount,
-                        monthlyRepayment, loanInsuranceStatus);
+                gui.getLoanInstallmentReportView().updateView();
 
                 // Show LoanInstallmentReportView.
                 gui.changeView(GUI.loanInstallmentReportViewIndex);
 
 
-            } catch(NumberFormatException ex) {
+            } catch (NumberFormatException ex) {
                 // Error Window
-                JOptionPane.showMessageDialog(new JFrame(), "You must enter a valid loan term and loan amount.", "Error",
+                JOptionPane.showMessageDialog(new JFrame(),
+                        "You must enter a valid loan term and loan amount.",
+                        "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
 
@@ -146,7 +166,92 @@ public class Controller {
         return loanInsuranceStatus;
     }
 
+    /** Update SummaryReportModel summaryReportModel.*/
+    private void updateSummaryReportModel(String carType, double loanAmount, String loanInsuranceStatus) {
 
+        if (carType.equals("Imported")) {
+            updateTableDataForImportedCarLoanTransaction(loanAmount, loanInsuranceStatus);
+        } else {
+            updateTableDataForLocalCarLoanTransaction(loanAmount, loanInsuranceStatus);
+        }
+
+    }
+
+    /** Update String[][] tableDataForImportedCarLoanTransaction,
+     * in SummaryReportModel summaryReportModel.
+     */
+    private void updateTableDataForImportedCarLoanTransaction(double loanAmount, String loanInsuranceStatus) {
+
+        int totalNumberOfCarLoanTransactionForImportedCar = summaryReportModel.getTotalNumberOfCarLoanTransactionForImportedCar();
+        double totalLoanAmountOfCarLoanTransactionForImportedCar = summaryReportModel.getTotalLoanAmountOfCarLoanTransactionForImportedCar();
+
+        totalNumberOfCarLoanTransactionForImportedCar += 1;
+        totalLoanAmountOfCarLoanTransactionForImportedCar += loanAmount;
+
+        summaryReportModel.setTotalNumberOfCarLoanTransactionForImportedCar(totalNumberOfCarLoanTransactionForImportedCar);
+        summaryReportModel.setTotalLoanAmountOfCarLoanTransactionForImportedCar(totalLoanAmountOfCarLoanTransactionForImportedCar);
+
+
+        if (loanInsuranceStatus.equals("Insured")) {
+
+            int totalNumberOfInsuredCarLoanTransactionForImportedCar = summaryReportModel.getTotalNumberOfInsuredCarLoanTransactionForImportedCar();
+            double totalLoanAmountOfInsuredCarLoanTransactionForImportedCar = summaryReportModel.getTotalLoanAmountOfInsuredCarLoanTransactionForImportedCar();
+
+            totalNumberOfInsuredCarLoanTransactionForImportedCar += 1;
+            totalLoanAmountOfInsuredCarLoanTransactionForImportedCar += loanAmount;
+
+            summaryReportModel.setTotalNumberOfInsuredCarLoanTransactionForImportedCar(totalNumberOfInsuredCarLoanTransactionForImportedCar);
+            summaryReportModel.setTotalLoanAmountOfInsuredCarLoanTransactionForImportedCar(totalLoanAmountOfInsuredCarLoanTransactionForImportedCar);
+
+        } else {
+            int totalNumberOfNotInsuredCarLoanTransactionForImportedCar = summaryReportModel.getTotalNumberOfNotInsuredCarLoanTransactionForImportedCar();
+            double totalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar = summaryReportModel.getTotalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar();
+
+            totalNumberOfNotInsuredCarLoanTransactionForImportedCar += 1;
+            totalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar += loanAmount;
+
+            summaryReportModel.setTotalNumberOfNotInsuredCarLoanTransactionForImportedCar(totalNumberOfNotInsuredCarLoanTransactionForImportedCar);
+            summaryReportModel.setTotalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar(totalLoanAmountOfNotInsuredCarLoanTransactionForImportedCar);
+        }
+    }
+
+    /** Update String[][] tableDataForLocalCarLoanTransaction,
+     * in SummaryReportModel summaryReportModel.
+     */
+    private void updateTableDataForLocalCarLoanTransaction(double loanAmount, String loanInsuranceStatus) {
+
+        int totalNumberOfCarLoanTransactionForLocalCar = summaryReportModel.getTotalNumberOfCarLoanTransactionForLocalCar();
+        double totalLoanAmountOfCarLoanTransactionForLocalCar = summaryReportModel.getTotalLoanAmountOfCarLoanTransactionForLocalCar();
+
+        totalNumberOfCarLoanTransactionForLocalCar += 1;
+        totalLoanAmountOfCarLoanTransactionForLocalCar += loanAmount;
+
+        summaryReportModel.setTotalNumberOfCarLoanTransactionForLocalCar(totalNumberOfCarLoanTransactionForLocalCar);
+        summaryReportModel.setTotalLoanAmountOfCarLoanTransactionForLocalCar(totalLoanAmountOfCarLoanTransactionForLocalCar);
+
+        if (loanInsuranceStatus.equals("Insured")) {
+
+            int totalNumberOfInsuredCarLoanTransactionForLocalCar = summaryReportModel.getTotalNumberOfInsuredCarLoanTransactionForLocalCar();
+            double totalLoanAmountOfInsuredCarLoanTransactionForLocalCar = summaryReportModel.getTotalLoanAmountOfInsuredCarLoanTransactionForLocalCar();
+
+            totalNumberOfInsuredCarLoanTransactionForLocalCar += 1;
+            totalLoanAmountOfInsuredCarLoanTransactionForLocalCar += loanAmount;
+
+            summaryReportModel.setTotalNumberOfInsuredCarLoanTransactionForLocalCar(totalNumberOfInsuredCarLoanTransactionForLocalCar);
+            summaryReportModel.setTotalLoanAmountOfInsuredCarLoanTransactionForLocalCar(totalLoanAmountOfInsuredCarLoanTransactionForLocalCar);
+
+        } else {
+            int totalNumberOfNotInsuredCarLoanTransactionForLocalCar = summaryReportModel.getTotalNumberOfNotInsuredCarLoanTransactionForLocalCar();
+            double totalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar = summaryReportModel.getTotalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar();
+
+            totalNumberOfNotInsuredCarLoanTransactionForLocalCar += 1;
+            totalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar += loanAmount;
+
+            summaryReportModel.setTotalNumberOfNotInsuredCarLoanTransactionForLocalCar(totalNumberOfNotInsuredCarLoanTransactionForLocalCar);
+            summaryReportModel.setTotalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar(totalLoanAmountOfNotInsuredCarLoanTransactionForLocalCar);
+        }
+
+    }
 
 
 }
