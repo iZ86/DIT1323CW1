@@ -1,5 +1,7 @@
 
-/** This class represents the calculation model for the Kawaguchi bank car loan program. */
+/** This class represents the model for carLoanInstallmentCalculatorView,
+ * and LoanInstallmentReportView.
+ */
 public class CarLoanCalculationModel {
     /** Type of car loaned. */
     private String carType;
@@ -130,29 +132,14 @@ public class CarLoanCalculationModel {
         return outstandingLoanAmount;
     }
 
-    /** Set new double outstandingLoanAmount. */
-    public void setOutstandingLoanAmount(double outstandingLoanAmount) {
-        this.outstandingLoanAmount = outstandingLoanAmount;
-    }
-
     /** Return double interestRatePercentage. */
     public double getInterestRatePercentage() {
         return interestRatePercentage;
     }
 
-    /** Set new double interestRatePercentage. */
-    public void setInterestRatePercentage(double interestRatePercentage) {
-        this.interestRatePercentage = interestRatePercentage;
-    }
-
     /** Return double monthlyRepayment. */
     public double getMonthlyRepayment() {
         return monthlyRepayment;
-    }
-
-    /** Set new double monthlyRepayment. */
-    public void setMonthlyRepayment(double monthlyRepayment) {
-        this.monthlyRepayment = monthlyRepayment;
     }
 
     /** Return String carType. */
