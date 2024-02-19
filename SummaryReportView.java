@@ -116,7 +116,7 @@ public class SummaryReportView {
     }
 
     /** Return a JPanel that contains a table of the given data. */
-    private JPanel setupCarLoanTransactionTablePanel(String carType,  int totalNumberOfCarLoanTransaction, Object[][] carLoanTransactionTableData, String[] carLoanTransactionTableColumn, int totalLoanAmountOfCarLoanTransaction) {
+    private JPanel setupCarLoanTransactionTablePanel(String carType,  int totalNumberOfCarLoanTransaction, Object[][] carLoanTransactionTableData, String[] carLoanTransactionTableColumn, double totalLoanAmountOfCarLoanTransaction) {
 
         // Initialization
         JPanel carLoanTransactionTablePanel = new JPanel(new GridBagLayout());
