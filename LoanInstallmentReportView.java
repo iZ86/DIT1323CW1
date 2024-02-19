@@ -93,7 +93,7 @@ public class LoanInstallmentReportView {
         return loanInstallmentReportTitlePanel;
     }
 
-    /** Returns a JPanel that presents all the data of the loan. */
+    /** Return a JPanel that presents all the data of the loan. */
     private JPanel setupShowLoanDataPanel() {
 
         // Initialization.
@@ -157,7 +157,7 @@ public class LoanInstallmentReportView {
         // Setting up configuration for JButton backToMainMenuButton.
         GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
         constraintsForBackToMainMenuButton.gridx = 0; // Position is first in X order.
-        constraintsForBackToMainMenuButton.ipady = verticalSizeOfButton; // Vertical size of button.
+        constraintsForBackToMainMenuButton.ipady = verticalSizeOfButton; // Vertical size.
         constraintsForBackToMainMenuButton.insets = new Insets(0, 0, 0, gapXBetweenButtons); // Add gap on the right.
 
         //Setting up configuration for JButton calculateCarLoanInstallmentButton.
