@@ -16,8 +16,8 @@ public class TempMain {
         CarLoanSchemeModel carLoanSchemeModel = new CarLoanSchemeModel();
         CarLoanCalculationModel carLoanCalculationModel = new CarLoanCalculationModel();
         SummaryReportModel summaryReportModel = new SummaryReportModel();
-        GUI gui = new GUI(carLoanSchemeModel, summaryReportModel);
-        Controller controller = new Controller(gui, carLoanSchemeModel, carLoanCalculationModel);
+        GUI gui = new GUI(carLoanSchemeModel, carLoanCalculationModel, summaryReportModel);
+        Controller controller = new Controller(gui, carLoanSchemeModel, carLoanCalculationModel, summaryReportModel);
         gui.display();
     }
 
@@ -57,7 +57,8 @@ public class TempMain {
     }
 
     public static JPanel loanInstallmentReportViewPanel() {
-        LoanInstallmentReportView LIRV = new LoanInstallmentReportView();
+        CarLoanCalculationModel carLoanCalculationModel = new CarLoanCalculationModel();
+        LoanInstallmentReportView LIRV = new LoanInstallmentReportView(carLoanCalculationModel);
         return LIRV.getLoanInstallmentReportViewPanel();
     }
 
