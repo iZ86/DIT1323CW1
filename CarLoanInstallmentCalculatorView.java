@@ -272,7 +272,7 @@ public class CarLoanInstallmentCalculatorView {
         return textFieldPanel;
     }
 
-    /** Return a JPanel that contains all the necessary buttons for car loan installment calculation view. */
+    /** Return a JPanel that contains all the necessary buttons for CarLoanInstallmentCalculatorView. */
     private JPanel setupCarLoanInstallmentCalculationButtonPanel() {
 
         // Initialization.
