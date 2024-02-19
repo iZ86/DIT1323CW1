@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-
+/** This class represents the summary report view in the GUI. */
 public class SummaryReportView {
     /** Summary Report View. */
     private final JPanel summaryReportViewPanel = new JPanel(new GridBagLayout());
@@ -175,8 +175,7 @@ public class SummaryReportView {
         JPanel summaryReportButtonsPanel = new JPanel(new GridBagLayout());
         int horizontalSizeOfButton = 10;
         int verticalSizeOfButton = 7;
-
-
+        
         // Configuration for JButton backToMainMenuButton.
         GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
         constraintsForBackToMainMenuButton.gridy = 0; // Position is first in Y order.
