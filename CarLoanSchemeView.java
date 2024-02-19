@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-/** This class represents the view for the car loan scheme. */
+/** This class represents the car loan scheme view in the GUI. */
 public class CarLoanSchemeView {
 
     /** The car loan scheme view. */
@@ -14,9 +14,7 @@ public class CarLoanSchemeView {
     /** Button that changes the view to the CalculateCarLoanInstallmentView. */
     private final JButton calculateCarLoanInstallmentButton = new JButton("Calculate Car Loan Installment");
 
-    /** Constructor sets up the car loan scheme view.
-     * Takes in data needed for table.
-     */
+    /** A new JPanel that represents the CarLoanSchemeView. */
     public CarLoanSchemeView(CarLoanSchemeModel carLoanSchemeModel) {
         this.carLoanSchemeModel = carLoanSchemeModel;
         setupCarLoanSchemeViewPanel();
@@ -58,7 +56,7 @@ public class CarLoanSchemeView {
 
         // Initialization
         JPanel carLoanSchemeTablePanel = setupCarLoanSchemeTablePane();
-        JPanel buttonsPanel = setupCarLoanSchemeButtonsPanel(); // Buttons in JPanel carLoanSchemeViewPanel.
+        JPanel buttonsPanel = setupCarLoanSchemeButtonsPanel();
 
         // Setting up configuration for JPanel carLoanSchemeTablePanel.
         GridBagConstraints constraintsForCarLoanSchemeTablePanel = new GridBagConstraints();
@@ -74,7 +72,7 @@ public class CarLoanSchemeView {
         carLoanSchemeViewPanel.add(buttonsPanel, constraintsForButtonsPanel);
     }
 
-    /** Return JPanel carLoanSchemeTablePanel, after setting it up. */
+    /** Return a JScrollPane that contains the table of the car loan scheme data. */
     private JPanel setupCarLoanSchemeTablePane() {
 
         // Initialization
@@ -96,7 +94,7 @@ public class CarLoanSchemeView {
         return carLoanSchemeTablePanel;
     }
 
-    /** Return JPanel carLoanSchemeButtonsPanel, after setting it up. */
+    /** Return a JPanel that contains all the necessary buttons for CarLoanSchemeView. */
     private JPanel setupCarLoanSchemeButtonsPanel() {
 
         // Initialization.
