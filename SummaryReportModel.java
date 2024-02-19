@@ -1,5 +1,5 @@
 
-
+/** This class represents the model for SummaryReportView. */
 public class SummaryReportModel {
     /** Total number of car loan transactions for imported cars. */
     private int totalNumberOfCarLoanTransactionForImportedCar;
@@ -11,7 +11,6 @@ public class SummaryReportModel {
     private double totalLoanAmountOfCarLoanTransactionForLocalCar;
     /** Column for local and imported car loan transaction table. */
     private String[] tableColumnForCarLoanTransaction = {"Total transaction", "Loan Insurance Status", "Amount"};
-    // TODO: maybe put it in a function?
     /** The car loan transaction data for imported car transaction loan table. */
     private String[][] tableDataForImportedCarLoanTransaction = {
             {"0", "Insured", "0"},
