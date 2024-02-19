@@ -17,6 +17,8 @@ public class CarLoanCalculationModel {
     private double monthlyRepayment;
     /** Loan insurance status. */
     private String loanInsuranceStatus;
+    /** Loan insurance fee. */
+    private double loanInsuranceFee;
 
     public CarLoanCalculationModel() {
         carType = null;
@@ -26,20 +28,24 @@ public class CarLoanCalculationModel {
         outstandingLoanAmount = 0;
         monthlyRepayment = 0;
         loanInsuranceStatus = null;
+        loanInsuranceFee = 0;
     }
 
     /** Calculates the loan and saves the data. */
     public void calculateLoan() {
 
         // Initialization.
-        double interestRatePercentage, outstandingLoanAmount;
+        double interestRatePercentage, outstandingLoanAmount, loanInsuranceFee;
 
         // Finds the interest rate percentage based on String carType and double loanAmount.
         interestRatePercentage = findInterestRatePercentage(carType, loanAmount);
 
+        // Calculate the loanInsuranceFee.
+        loanInsuranceFee = calculateLoanInsuranceFee(loanTerm, loanInsuranceStatus);
+
         // Calculate the outstanding loan amount and round it up to two decimal points.
         outstandingLoanAmount = calculateOutstandingLoanAmount(loanTerm, loanAmount,
-                interestRatePercentage, loanInsuranceStatus);
+                interestRatePercentage, loanInsuranceFee);
         outstandingLoanAmount = roundUpTwoDecimal(outstandingLoanAmount);
 
 
@@ -47,6 +53,7 @@ public class CarLoanCalculationModel {
         this.interestRatePercentage = interestRatePercentage;
         this.outstandingLoanAmount = outstandingLoanAmount;
         this.monthlyRepayment = roundUpTwoDecimal((this.outstandingLoanAmount / loanTerm) / 12);
+        this.loanInsuranceFee = loanInsuranceFee;
     }
 
     /** Return the interest rate percentage based on String carType and double loanAmount. */
@@ -77,18 +84,21 @@ public class CarLoanCalculationModel {
         return interestRatePercentage;
     }
 
+    /** Return the result of calculating the loan insurance fee. */
+    private double calculateLoanInsuranceFee(int loanTerm, String loanInsuranceStatus) {
+
+        // If there is loan insurance, loan insurance fee is (RM200 * loan term).
+        if (loanInsuranceStatus.equals("Insured")) {
+            return (200 * loanTerm);
+        }
+        return 0;
+    }
+
     /** Return the result of calculating the outstanding loan amount. */
-    private double calculateOutstandingLoanAmount(int loanTerm, double loanAmount, double interestRatePercentage, String loanInsuranceStatus) {
+    private double calculateOutstandingLoanAmount(int loanTerm, double loanAmount, double interestRatePercentage, double loanInsuranceFee) {
 
         // Formula = loan amount + (loan term * loan amount * (interest rate percentage / 100)).
-        double outstandingLoanAmount = (loanAmount + (loanTerm * loanAmount * (interestRatePercentage / 100)));
-
-        // if there is loan insurance, increase outstanding loan amount by (RM200 * loan term).
-        if (loanInsuranceStatus.equals("Insured")) {
-            outstandingLoanAmount += (200 * loanTerm);
-        }
-
-        return outstandingLoanAmount;
+        return  ((loanAmount + (loanTerm * loanAmount * (interestRatePercentage / 100))) + loanInsuranceFee);
     }
 
     /** Rounds up any value to two decimal places. */
@@ -150,6 +160,11 @@ public class CarLoanCalculationModel {
     /** Set new String carType. */
     public void setCarType(String carType) {
         this.carType = carType;
+    }
+
+    /** Return double loanInsuranceFee. */
+    public double getLoanInsuranceFee() {
+        return loanInsuranceFee;
     }
 
 }
