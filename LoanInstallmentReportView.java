@@ -151,19 +151,19 @@ public class LoanInstallmentReportView {
 
         // Initialization.
         JPanel loanInstallmentReportButtonsPanel = new JPanel(new GridBagLayout());
-        int heightOfButton = 7;
+        int verticalSizeOfButton = 7;
         int gapXBetweenButtons = 10;
 
         // Setting up configuration for JButton backToMainMenuButton.
         GridBagConstraints constraintsForBackToMainMenuButton = new GridBagConstraints();
         constraintsForBackToMainMenuButton.gridx = 0; // Position is first in X order.
-        constraintsForBackToMainMenuButton.ipady = heightOfButton; // Vertical height of button.
+        constraintsForBackToMainMenuButton.ipady = verticalSizeOfButton; // Vertical size of button.
         constraintsForBackToMainMenuButton.insets = new Insets(0, 0, 0, gapXBetweenButtons); // Add gap on the right.
 
         //Setting up configuration for JButton calculateCarLoanInstallmentButton.
         GridBagConstraints constraintsForCalculateCarLoanInstallmentButton = new GridBagConstraints();
         constraintsForCalculateCarLoanInstallmentButton.gridx = 1; // Position is second in X order.
-        constraintsForCalculateCarLoanInstallmentButton.fill = GridBagConstraints.VERTICAL; // Make vertical height of this button same as the first button of X order.
+        constraintsForCalculateCarLoanInstallmentButton.fill = GridBagConstraints.VERTICAL; // Make vertical size of this button same as the first button of X order.
 
         // Add the JButtons to the JPanel loanInstallmentReportButtonsPanel with their configurations.
         loanInstallmentReportButtonsPanel.add(backToMainMenuButton, constraintsForBackToMainMenuButton);
