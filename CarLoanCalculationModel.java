@@ -3,19 +3,27 @@
 public class CarLoanCalculationModel {
     /** Type of car loaned. */
     private String carType;
-    /** Loan data. */
-    private double loanTerm, loanAmount, interestRatePercentage , outstandingLoanAmount, monthlyRepayment;
-    /** Loan insurance. */
-    private boolean loanInsurance;
+    /** Loan insurance status. */
+    private String loanInsuranceStatus;
+    /** Loan term. */
+    private int loanTerm;
+    /** Loan amount. */
+    private double loanAmount;
+    /** Interest Rate in percentage. */
+    private double interestRatePercentage;
+    /** Outstanding loan amount. */
+    private double outstandingLoanAmount;
+    /** Monthly repayment for the loan. */
+    private double monthlyRepayment;
 
     public CarLoanCalculationModel() {
-        this.carType = null;
-        this.loanTerm = 0;
-        this.loanAmount = 0;
-        this.interestRatePercentage = 0;
-        this.outstandingLoanAmount = 0;
-        this.monthlyRepayment = 0;
-        this.loanInsurance = false;
+        carType = null;
+        loanTerm = 0;
+        loanAmount = 0;
+        interestRatePercentage = 0;
+        outstandingLoanAmount = 0;
+        monthlyRepayment = 0;
+        loanInsuranceStatus = null;
     }
 
     /** Calculates the loan and saves the data. */
@@ -28,7 +36,7 @@ public class CarLoanCalculationModel {
         interestRatePercentage = findInterestRatePercentage(carType, loanAmount);
 
         // Calculate the outstanding loan amount and round it up to two decimal points.
-        outstandingLoanAmount = calculateOutstandingLoanAmount(loanTerm, loanAmount, interestRatePercentage, loanInsurance);
+        outstandingLoanAmount = calculateOutstandingLoanAmount(loanTerm, loanAmount, interestRatePercentage, loanInsuranceStatus);
         outstandingLoanAmount = roundUpTwoDecimal(outstandingLoanAmount);
 
 
@@ -67,13 +75,13 @@ public class CarLoanCalculationModel {
     }
 
     /** Return the result of calculating the outstanding loan amount. */
-    private double calculateOutstandingLoanAmount(double loanTerm, double loanAmount, double interestRatePercentage, boolean loanInsurance) {
+    private double calculateOutstandingLoanAmount(int loanTerm, double loanAmount, double interestRatePercentage, String loanInsuranceStatus) {
 
         // Formula = loan amount + (loan term * loan amount * (interest rate percentage / 100)).
         double outstandingLoanAmount = (loanAmount + (loanTerm * loanAmount * (interestRatePercentage / 100)));
 
-        // loanInsurance increases outstanding loan amount by (RM200 * loan term).
-        if (loanInsurance) {
+        // if there is loan insurance, increase outstanding loan amount by (RM200 * loan term).
+        if (loanInsuranceStatus.equals("Insured")) {
             outstandingLoanAmount += (200 * loanTerm);
         }
 
@@ -85,77 +93,73 @@ public class CarLoanCalculationModel {
         return (double) (Math.round(number * 100)) / 100;
     }
 
-    /** Returns true if there is loan insurance.
-     * Otherwise, false
-     */
-    public boolean getLoanInsurance() {
-        return loanInsurance;
+    /** Returns String loanInsuranceStatus. */
+    public String getLoanInsuranceStatus() {
+        return loanInsuranceStatus;
     }
 
-    /** Sets the loan insurance,
-     * true if it there is loan insurance.
-     * Otherwise, false
+    /** Set new String loanInsuranceStatus
      */
-    public void setLoanInsurance(boolean loanInsurance) {
-        this.loanInsurance = loanInsurance;
+    public void setLoanInsuranceStatus(String loanInsuranceStatus) {
+        this.loanInsuranceStatus = loanInsuranceStatus;
     }
 
-    /** Returns the loan term. */
-    public double getLoanTerm() {
+    /** Return int loanTerm. */
+    public int getLoanTerm() {
         return loanTerm;
     }
 
-    /** Sets the loan term. */
-    public void setLoanTerm(double loanTerm) {
+    /** Set new int loanTerm. */
+    public void setLoanTerm(int loanTerm) {
         this.loanTerm = loanTerm;
     }
 
-    /** Returns the loan amount. */
+    /** Return double loanAmount. */
     public double getLoanAmount() {
         return this.loanAmount;
     }
 
-    /** Sets the loan amount. */
+    /** Set new double loanAmount.. */
     public void setLoanAmount(double loanAmount) {
         this.loanAmount = loanAmount;
     }
 
-    /** Returns the outstanding loan amount. */
+    /** Return double outstandingLoanAmount. */
     public double getOutstandingLoanAmount() {
         return outstandingLoanAmount;
     }
 
-    /** Sets the outstanding loan amount. */
+    /** Set new double outstandingLoanAmount. */
     public void setOutstandingLoanAmount(double outstandingLoanAmount) {
         this.outstandingLoanAmount = outstandingLoanAmount;
     }
 
-    /** Returns the interest rate percentage. */
+    /** Return double interestRatePercentage. */
     public double getInterestRatePercentage() {
         return interestRatePercentage;
     }
 
-    /** Sets the interest rate percentage. */
+    /** Set new double interestRatePercentage. */
     public void setInterestRatePercentage(double interestRatePercentage) {
         this.interestRatePercentage = interestRatePercentage;
     }
 
-    /** Returns the monthly payment. */
+    /** Return double monthlyRepayment. */
     public double getMonthlyRepayment() {
         return monthlyRepayment;
     }
 
-    /** Sets the monthly payment. */
+    /** Set new double monthlyRepayment. */
     public void setMonthlyRepayment(double monthlyRepayment) {
         this.monthlyRepayment = monthlyRepayment;
     }
 
-    /** Returns the car type. */
+    /** Return String carType. */
     public String getCarType() {
         return carType;
     }
 
-    /** Sets the car type. */
+    /** Set new String carType. */
     public void setCarType(String carType) {
         this.carType = carType;
     }
