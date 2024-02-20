@@ -125,7 +125,7 @@ public class SummaryReportView {
         JTable carLoanTransactionTable = new JTable(new CarLoanTableModel(carLoanTransactionTableData,
                 carLoanTransactionTableColumn));
         JScrollPane carLoanTransactionTablePane = new JScrollPane(carLoanTransactionTable);
-        JLabel totalLoanAmountOfCarLoanTransactionLabel = new JLabel("Total Loan Amount (RM): " + totalLoanAmountOfCarLoanTransaction);
+        JLabel totalLoanAmountOfCarLoanTransactionLabel = new JLabel("Total Loan Amount (RM): " + String.format("%.2f", totalLoanAmountOfCarLoanTransaction));
 
         // Setting up configuration for JLabel _carLoanTransactionTableLabel.
         GridBagConstraints constraintsForCarLoanTransactionTableLabel = new GridBagConstraints();
