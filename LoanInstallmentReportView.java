@@ -100,10 +100,10 @@ public class LoanInstallmentReportView {
         JPanel showLoanDataPanel = new JPanel(new GridBagLayout());
         JLabel showCarType = new JLabel("Car Type: " + carLoanCalculationModel.getCarType());
         JLabel showLoanTerm = new JLabel("Loan Term (Years): " + carLoanCalculationModel.getLoanTerm());
-        JLabel showLoanAmount = new JLabel("Loan Amount (RM): " + carLoanCalculationModel.getLoanAmount());
+        JLabel showLoanAmount = new JLabel("Loan Amount (RM): " + String.format("%.2f", carLoanCalculationModel.getLoanAmount()));
         JLabel showInterestRate = new JLabel("Interest Rate (%): " + carLoanCalculationModel.getInterestRatePercentage());
-        JLabel showOutstandingLoanAmount = new JLabel("Total Outstanding Loan Amount (RM): " + carLoanCalculationModel.getOutstandingLoanAmount());
-        JLabel showMonthlyRepayment = new JLabel("Monthly Repayment (RM): " + carLoanCalculationModel.getMonthlyRepayment());
+        JLabel showOutstandingLoanAmount = new JLabel("Total Outstanding Loan Amount (RM): " + String.format("%.2f", carLoanCalculationModel.getOutstandingLoanAmount()));
+        JLabel showMonthlyRepayment = new JLabel("Monthly Repayment (RM): " + String.format("%.2f", carLoanCalculationModel.getMonthlyRepayment()));
         JLabel showLoanInstallmentInsurance = new JLabel("Loan Insurance Status: " + carLoanCalculationModel.getLoanInsuranceStatus());
 
         // Setting up configuration for JLabel showCarType.
