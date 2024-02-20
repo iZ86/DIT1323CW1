@@ -1,6 +1,6 @@
 import javax.swing.table.AbstractTableModel;
 
-/** The table model class used in the Kawaguchi Bank Loan Application,
+/** The table model class used in the Kawaguchi Bank Car Loan Application,
  * that extends the AbstractTableModel.
  */
 public class CarLoanTableModel extends AbstractTableModel {
