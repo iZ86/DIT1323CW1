@@ -2,11 +2,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/** The controller for Kawaguchi Bank Loan Application GUI,
+/** The controller for Kawaguchi Bank Car Loan Application GUI,
  * and its models.
  */
 public class Controller {
-    /** GUI of Kawaguchi bank loan application. */
+    /** GUI of Kawaguchi bank car loan application. */
     GUI gui;
     /** Model for CarLoanSchemeView. */
     CarLoanSchemeModel carLoanSchemeModel;
@@ -166,8 +166,8 @@ public class Controller {
             } catch (NumberFormatException ex) {
                 // Error Window
                 JOptionPane.showMessageDialog(new JFrame(),
-                        "You must enter a valid loan term and loan amount.",
-                        "Error",
+                        "Error! You must enter a valid loan term and loan amount.",
+                        "Kawaguchi Bank Car Loan Application",
                         JOptionPane.ERROR_MESSAGE);
             }
 
