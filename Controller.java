@@ -17,7 +17,7 @@ public class Controller {
      * and GUI and summaryReportModel,
      * controlling the workflow.
      */
-    public Controller(GUI gui,  CarLoanCalculationModel carLoanCalculationModel, SummaryReportModel summaryReportModel) {
+    public Controller(GUI gui, CarLoanCalculationModel carLoanCalculationModel, SummaryReportModel summaryReportModel) {
         this.gui = gui;
         this.carLoanCalculationModel = carLoanCalculationModel;
         this.summaryReportModel = summaryReportModel;
