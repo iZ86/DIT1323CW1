@@ -9,9 +9,9 @@ public class LoanInstallmentReportView {
     /** Model for LoanInstallReportView. */
     private final CarLoanCalculationModel carLoanCalculationModel;
     /** Button that changes the view to the MainMenuView. */
-    private final JButton backToMainMenuButton = new JButton("Back to main menu");
+    private final JButton backToMainMenuButton = new JButton("Back To Main Menu");
     /** Button that changes the view to CarLoanInstallmentCalculatorView. */
-    private final JButton calculateCarLoanInstallmentButton = new JButton("Calculate new car loan installment");
+    private final JButton calculateCarLoanInstallmentButton = new JButton("Calculate New Car Loan Installment");
 
     /** Constructor to set up the loanInstallmentReportViewPanel. */
     public LoanInstallmentReportView(CarLoanCalculationModel carLoanCalculationModel) {

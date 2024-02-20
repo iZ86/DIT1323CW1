@@ -9,7 +9,7 @@ public class SummaryReportView {
     /** Model for Summary Report View. */
     private final SummaryReportModel summaryReportModel;
     /** Button that changes the view to the MainMenuView. */
-    private final JButton backToMainMenuButton = new JButton("Back to main menu");
+    private final JButton backToMainMenuButton = new JButton("Back To Main Menu");
 
 
     /** A new JPanel that represents the SummaryReportView. */

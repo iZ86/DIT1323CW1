@@ -9,7 +9,7 @@ public class CarLoanSchemeView {
     /** Model for Car Loan Scheme View. */
     private final CarLoanSchemeModel carLoanSchemeModel;
     /** Button that changes the view back to the MainMenuView. */
-    private final JButton backToMainMenuButton = new JButton("Back to Main Menu");
+    private final JButton backToMainMenuButton = new JButton("Back To Main Menu");
     /** Button that changes the view to the CalculateCarLoanInstallmentView. */
     private final JButton calculateCarLoanInstallmentButton = new JButton("Calculate Car Loan Installment");
 

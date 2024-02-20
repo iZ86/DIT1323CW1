@@ -17,7 +17,7 @@ public class CarLoanInstallmentCalculatorView {
     /** Button that changes the view back to the MainMenuView. */
     private final JButton backToMainMenuButton = new JButton("Back to main menu");
     /** Button that calculates the car loan installment and changes the view to the LoanInstallmentReportView. */
-    private final JButton calculateCarLoanInstallmentReportButton = new JButton("Calculate car loan installment");
+    private final JButton calculateCarLoanInstallmentReportButton = new JButton("Calculate");
 
 
     /** A new JPanel that represents the CarLoanInstallmentCalculatorView. */
