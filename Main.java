@@ -8,7 +8,7 @@ public class Main {
         SummaryReportModel summaryReportModel = new SummaryReportModel();
 
         GUI gui = new GUI(carLoanSchemeModel, carLoanCalculationModel, summaryReportModel);
-        Controller controller = new Controller(gui, carLoanSchemeModel, carLoanCalculationModel, summaryReportModel);
+        Controller controller = new Controller(gui, carLoanCalculationModel, summaryReportModel);
 
         gui.display();
     }

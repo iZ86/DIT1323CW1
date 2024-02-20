@@ -7,21 +7,18 @@ import java.awt.event.ActionListener;
  */
 public class Controller {
     /** GUI of Kawaguchi bank car loan application. */
-    GUI gui;
-    /** Model for CarLoanSchemeView. */
-    CarLoanSchemeModel carLoanSchemeModel;
+    private final GUI gui;
     /** Model for CarLoanInstallmentCalculatorView. */
-    CarLoanCalculationModel carLoanCalculationModel;
+    private final CarLoanCalculationModel carLoanCalculationModel;
     /** Model for SummaryReportView. */
-    SummaryReportModel summaryReportModel;
+    private final SummaryReportModel summaryReportModel;
 
-    /** Constructs a controller that acts as a bridge between GUI and carLoanSchemeModel,
-     * GUI and carLoanCalculationModel, and GUI and summaryReportModel,
+    /** Constructs a controller that acts as a bridge between GUI and carLoanCalculationModel,
+     * and GUI and summaryReportModel,
      * controlling the workflow.
      */
-    public Controller(GUI gui, CarLoanSchemeModel carLoanSchemeModel, CarLoanCalculationModel carLoanCalculationModel, SummaryReportModel summaryReportModel) {
+    public Controller(GUI gui,  CarLoanCalculationModel carLoanCalculationModel, SummaryReportModel summaryReportModel) {
         this.gui = gui;
-        this.carLoanSchemeModel = carLoanSchemeModel;
         this.carLoanCalculationModel = carLoanCalculationModel;
         this.summaryReportModel = summaryReportModel;
         this.gui.addAllDisplayCarLoanSchemeButtonListener(new DisplayCarLoanSchemeButtonListener());
