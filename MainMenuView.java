@@ -11,7 +11,7 @@ public class MainMenuView {
     /** Button that changes the view to calculate car loan installment view. */
     private final JButton calculateCarLoanInstallmentButton = new JButton("Calculate Car Loan Installment");
     /** Button that changes the view to summary report view. */
-    private final JButton generateSummaryReportButton = new JButton("Generate summary report");
+    private final JButton generateSummaryReportButton = new JButton("Generate Summary Report");
     /** Button that exits out of the program. */
     private final JButton exitButton = new JButton("Exit");
 
