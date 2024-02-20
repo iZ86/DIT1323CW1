@@ -10,16 +10,16 @@ public class SummaryReportModel {
     /** Total loan amount of car loan transactions for local cars. */
     private double totalLoanAmountOfCarLoanTransactionsForLocalCar;
     /** Column for local and imported car loan transactions table. */
-    private String[] tableColumnForCarLoanTransactions = {"Total transactions", "Loan Insurance Status", "Amount (RM)"};
+    private String[] tableColumnForCarLoanTransactions = {"Loan Insurance Status", "Total transactions", "Amount (RM)"};
     /** The car loan transactions data for imported car transactions loan table. */
     private String[][] tableDataForImportedCarLoanTransactions = {
-            {"0", "Insured", "0"},
-            {"0", "Not insured", "0"}
+            {"Insured", "0", "0"},
+            {"Not insured", "0", "0"}
     };
     /** The car loan transactions data for local car loan transactions table. */
     private String[][] tableDataForLocalCarLoanTransactions = {
-            {"0", "Insured", "0"},
-            {"0", "Not insured", "0"}
+            {"Insured", "0", "0"},
+            {"Not insured", "0", "0"}
     };
 
 
@@ -84,7 +84,7 @@ public class SummaryReportModel {
      * from String[][] tableDataForImportedCarLoanTransactions.
      */
     public int getTotalNumberOfInsuredCarLoanTransactionsForImportedCar() {
-        return Integer.parseInt(tableDataForImportedCarLoanTransactions[0][0]);
+        return Integer.parseInt(tableDataForImportedCarLoanTransactions[0][1]);
 
     }
 
@@ -92,7 +92,7 @@ public class SummaryReportModel {
      *  in String[][] tableDataForImportedCarLoanTransactions.
      */
     public void setTotalNumberOfInsuredCarLoanTransactionsForImportedCar(int totalNumberOfInsuredCarLoanTransactionsForImportedCar) {
-        tableDataForImportedCarLoanTransactions[0][0] = Integer.toString(totalNumberOfInsuredCarLoanTransactionsForImportedCar);
+        tableDataForImportedCarLoanTransactions[0][1] = Integer.toString(totalNumberOfInsuredCarLoanTransactionsForImportedCar);
     }
 
     /** Return total loan amount from every insured car loan transactions for imported cars,
@@ -113,14 +113,14 @@ public class SummaryReportModel {
      * from String[][] tableDataForImportedCarLoanTransactions.
      */
     public int getTotalNumberOfNotInsuredCarLoanTransactionsForImportedCar() {
-        return Integer.parseInt(tableDataForImportedCarLoanTransactions[1][0]);
+        return Integer.parseInt(tableDataForImportedCarLoanTransactions[1][1]);
     }
 
     /** Set new total number of not insured car loan transactions for imported cars,
      * in String[][] tableDataForImportedCarLoanTransactions.
      */
     public void setTotalNumberOfNotInsuredCarLoanTransactionsForImportedCar(int totalNumberOfNotInsuredCarLoanTransactionsForImportedCar) {
-        tableDataForImportedCarLoanTransactions[1][0]= Integer.toString(totalNumberOfNotInsuredCarLoanTransactionsForImportedCar);
+        tableDataForImportedCarLoanTransactions[1][1] = Integer.toString(totalNumberOfNotInsuredCarLoanTransactionsForImportedCar);
     }
 
     /** Return total loan amount from every not insured car loan transactions for imported cars,
@@ -146,7 +146,7 @@ public class SummaryReportModel {
      * from String[][] tableDataForLocalCarLoanTransactions.
      */
     public int getTotalNumberOfInsuredCarLoanTransactionsForLocalCar() {
-        return Integer.parseInt(tableDataForLocalCarLoanTransactions[0][0]);
+        return Integer.parseInt(tableDataForLocalCarLoanTransactions[0][1]);
 
     }
 
@@ -154,7 +154,7 @@ public class SummaryReportModel {
      *  in String[][] tableDataForLocalCarLoanTransactions.
      */
     public void setTotalNumberOfInsuredCarLoanTransactionsForLocalCar(int totalNumberOfInsuredCarLoanTransactionsForLocalCar) {
-        tableDataForLocalCarLoanTransactions[0][0] = Integer.toString(totalNumberOfInsuredCarLoanTransactionsForLocalCar);
+        tableDataForLocalCarLoanTransactions[0][1] = Integer.toString(totalNumberOfInsuredCarLoanTransactionsForLocalCar);
     }
 
     /** Return total loan amount from every insured car loan transactions for local cars,
@@ -175,14 +175,14 @@ public class SummaryReportModel {
      * from String[][] tableDataForLocalCarLoanTransactions.
      */
     public int getTotalNumberOfNotInsuredCarLoanTransactionsForLocalCar() {
-        return Integer.parseInt(tableDataForLocalCarLoanTransactions[1][0]);
+        return Integer.parseInt(tableDataForLocalCarLoanTransactions[1][1]);
     }
 
     /** Set new total number of not insured car loan transactions for local cars,
      * in String[][] tableDataForLocalCarLoanTransactions.
      */
     public void setTotalNumberOfNotInsuredCarLoanTransactionsForLocalCar(int totalNumberOfNotInsuredCarLoanTransactionsForLocalCar) {
-        tableDataForLocalCarLoanTransactions[1][0]= Integer.toString(totalNumberOfNotInsuredCarLoanTransactionsForLocalCar);
+        tableDataForLocalCarLoanTransactions[1][1]= Integer.toString(totalNumberOfNotInsuredCarLoanTransactionsForLocalCar);
     }
 
     /** Return total loan amount from every not insured car loan transactions for local cars,
@@ -198,8 +198,4 @@ public class SummaryReportModel {
     public void setTotalLoanAmountOfNotInsuredCarLoanTransactionsForLocalCar(double totalLoanAmountOfNotInsuredCarLoanTransactionsForLocalCar) {
         tableDataForLocalCarLoanTransactions[1][2] = Double.toString(totalLoanAmountOfNotInsuredCarLoanTransactionsForLocalCar);
     }
-
-
-
-
 }
