@@ -25,7 +25,4 @@ public class CarLoanSchemeModel {
     public String[][] getCarLoanTableData() {
         return carLoanTableData;
     }
-
-
-
 }
