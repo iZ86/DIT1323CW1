@@ -54,7 +54,7 @@ public class CarLoanSchemeView {
     private void setupCarLoanSchemeViewPanel() {
 
         // Initialization
-        JPanel carLoanSchemeTablePanel = setupCarLoanSchemeTablePane();
+        JPanel carLoanSchemeTablePanel = setupCarLoanSchemeTablePanel();
         JPanel buttonsPanel = setupCarLoanSchemeButtonsPanel();
 
         // Setting up configuration for JPanel carLoanSchemeTablePanel.
@@ -71,8 +71,8 @@ public class CarLoanSchemeView {
         carLoanSchemeViewPanel.add(buttonsPanel, constraintsForButtonsPanel);
     }
 
-    /** Return a JScrollPane that contains the table of the car loan scheme data. */
-    private JPanel setupCarLoanSchemeTablePane() {
+    /** Return a JPanel that contains the table of the car loan scheme data. */
+    private JPanel setupCarLoanSchemeTablePanel() {
 
         // Initialization
         JPanel carLoanSchemeTablePanel = new JPanel(new GridBagLayout());
