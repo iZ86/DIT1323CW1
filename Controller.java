@@ -130,7 +130,7 @@ public class Controller {
                 loanInsurance = gui.getCarLoanInstallmentCalculatorView().isLoanInsuranceCheckBoxChecked();
 
                 // Convert the boolean loanInsurance to String loanInsuranceStatus
-                loanInsuranceStatus = getLoanInsuranceStatus(loanInsurance);
+                loanInsuranceStatus = convertLoanInsuranceStatus(loanInsurance);
 
 
                 // If loanTerm or loanAmount is lesser than or equal to 0, error.
@@ -171,8 +171,8 @@ public class Controller {
         }
     }
 
-    /** Return the loan insurance status. */
-    private String getLoanInsuranceStatus(boolean loanInsurance) {
+    /** Convert boolean loanInsurance to String loanInsuranceStatus. */
+    private String convertLoanInsuranceStatus(boolean loanInsurance) {
 
         String loanInsuranceStatus = "Not insured";
 
