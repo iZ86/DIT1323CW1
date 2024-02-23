@@ -36,7 +36,7 @@ public class CarLoanInstallmentCalculatorView {
     }
 
     /** Return true iff JCheckBox loanInsuranceCheckBox has been checked. */
-    public boolean getLoanInsuranceCheckBoxChecked() {
+    public boolean isLoanInsuranceCheckBoxChecked() {
         return loanInsuranceCheckBox.isSelected();
     }
 

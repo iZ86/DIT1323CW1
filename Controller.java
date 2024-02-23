@@ -127,7 +127,7 @@ public class Controller {
                 carType = gui.getCarLoanInstallmentCalculatorView().getSelectedCarType();
                 loanTerm = gui.getCarLoanInstallmentCalculatorView().getLoanTerm();
                 loanAmount = gui.getCarLoanInstallmentCalculatorView().getLoanAmount();
-                loanInsurance = gui.getCarLoanInstallmentCalculatorView().getLoanInsuranceCheckBoxChecked();
+                loanInsurance = gui.getCarLoanInstallmentCalculatorView().isLoanInsuranceCheckBoxChecked();
 
                 // Convert the boolean loanInsurance to String loanInsuranceStatus
                 loanInsuranceStatus = getLoanInsuranceStatus(loanInsurance);
